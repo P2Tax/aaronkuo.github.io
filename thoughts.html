@@ -1,36 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Thoughts | Aaron Kuo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Pillar Two Changes Everything | Aaron Kuo</title>
+  <meta name="description" content="Why Pillar Two changes more than tax — it changes data, systems, and operating models." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --max: 820px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .article {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      padding: 72px 0 80px;
+    }
+
+    .meta {
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin: 0 0 18px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      margin: 42px 0 14px;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .footer {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding-bottom: 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+    }
+  </style>
 </head>
-
-<body style="font-family: Arial; margin: 0; background-color: #020617; color: #e2e8f0;">
-
-    <!-- NAV -->
-    <div style="padding: 20px; border-bottom: 1px solid #1e293b; text-align: center;">
-        <a href="index.html" style="margin: 0 15px; color: #94a3b8; text-decoration: none;">Home</a>
-        <a href="thoughts.html" style="margin: 0 15px; color: #60a5fa; text-decoration: none;">Thoughts</a>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Aaron Kuo</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+      </div>
     </div>
+  </nav>
 
-    <div style="max-width: 800px; margin: auto; padding: 60px 20px;">
+  <main class="article">
+    <div class="meta">April 2026 · Pillar Two · Systems Thinking</div>
+    <h1>Why Pillar Two Changes Everything (Beyond Tax)</h1>
+    <p class="intro">
+      For years, multinational tax planning operated on a simple assumption: profits can move faster than rules.
+      Pillar Two changes that. Not just technically, but structurally.
+    </p>
 
-        <h1>Thoughts</h1>
+    <h2>The end of tax arbitrage as strategy</h2>
+    <p>
+      Once a 15% minimum effective tax rate becomes the floor, a large part of traditional tax planning logic changes.
+      If a jurisdiction taxes profits below that level, another jurisdiction may collect the difference. That makes
+      low-tax positioning less of a winning strategy and more of a temporary accounting arrangement.
+    </p>
 
-        <p style="color: #94a3b8;">Writing on tax, data, and AI.</p>
+    <h2>This is not only a tax problem</h2>
+    <p>
+      The deeper issue is that Pillar Two is not just hard because the rules are complex. It is hard because the rules
+      force companies to assemble data that usually sits across finance, tax, consolidation, legal structure, and local reporting.
+    </p>
+    <p>
+      In practice, this means Pillar Two is as much a systems problem as a technical tax problem.
+    </p>
 
-        <hr style="margin: 30px 0; border-color: #1e293b;">
+    <h2>What companies actually need to build</h2>
+    <ul>
+      <li>Consistent jurisdictional data across entities and reporting periods</li>
+      <li>Repeatable logic for effective tax rate and top-up tax calculations</li>
+      <li>Governance over adjustments, source mapping, and filing responsibilities</li>
+      <li>Operating models that connect tax, finance, and technology teams</li>
+    </ul>
 
-        <h3>
-            <a href="post1.html" style="color: #60a5fa; text-decoration: none;">
-                Why Pillar Two Changes Everything (Beyond Tax)
-            </a>
-        </h3>
+    <h2>Why this changes the skill set required</h2>
+    <p>
+      Under older models, strong technical interpretation could often carry a project. Under Pillar Two, interpretation still matters,
+      but it is no longer enough. The real advantage now comes from being able to translate requirements into infrastructure.
+    </p>
+    <p>
+      That means data design, workflow discipline, system thinking, and execution capability become central to tax leadership.
+    </p>
 
-        <p style="color: #94a3b8;">
-            A practical perspective on how global minimum tax reshapes data, systems, and operating models.
-        </p>
+    <h2>Final thought</h2>
+    <p>
+      The companies that perform best under Pillar Two will not just be the ones that understand the rules. They will be the ones
+      that operationalize them faster and more cleanly.
+    </p>
+    <p class="muted">
+      This article is adapted from themes covered in my book, <em>OECD Pillar Two Essentials</em>. :contentReference[oaicite:0]{index=0}
+    </p>
+  </main>
 
-    </div>
-
+  <footer class="footer">
+    © 2026 Aaron Kuo
+  </footer>
 </body>
 </html>

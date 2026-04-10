@@ -4,10 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Aaron Kuo</title>
-  <meta name="description" content="Projects and practical builds by Aaron Kuo." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #020617;
@@ -15,27 +13,24 @@
       --line: #1e293b;
       --text: #e2e8f0;
       --muted: #94a3b8;
+      --accent: #60a5fa;
       --max: 1040px;
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: "Inter", Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
     }
 
     a { text-decoration: none; color: inherit; }
 
     .nav {
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(14px);
-      background: rgba(2, 6, 23, 0.82);
-      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+      border-bottom: 1px solid var(--line);
+      background: rgba(2,6,23,0.9);
     }
 
     .nav-inner, .container, .footer-inner {
@@ -50,34 +45,113 @@
       padding: 18px 0;
     }
 
-    .brand { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+    .brand {
+      font-weight: 700;
+      font-size: 18px;
+    }
 
     .nav-links {
       display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
+      gap: 20px;
     }
 
-    .nav-links a { color: var(--muted); font-size: 14px; }
-    .nav-links a.active,
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-    .container { padding: 70px 0 80px; }
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .container {
+      padding: 70px 0 80px;
+    }
 
     h1 {
-      font-size: clamp(34px, 5vw, 56px);
-      margin: 0 0 12px;
-      letter-spacing: -0.04em;
+      font-size: 48px;
+      margin-bottom: 10px;
     }
 
     .sub {
       color: var(--muted);
-      font-size: 17px;
-      line-height: 1.8;
-      max-width: 760px;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
-    .panel {
-      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
-      border: 1px solid var
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: all 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(96,165,250,0.4);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Aaron Kuo</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html" class="active">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Projects</h1>
+    <p class="sub">Selected work across tax, data, and systems.</p>
+
+    <div class="card">
+      <h3>Pillar Two Data Framework</h3>
+      <p>Design of data structures, mappings, and processes to support global minimum tax reporting.</p>
+    </div>
+
+    <div class="card">
+      <h3>Tax Automation Workflows</h3>
+      <p>Building repeatable processes across finance and tax systems to reduce manual intervention.</p>
+    </div>
+
+    <div class="card">
+      <h3>AI-assisted Documentation</h3>
+      <p>Using AI to accelerate requirement gathering, documentation, and system design thinking.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">© 2026 Aaron Kuo</div>
+  </footer>
+
+</body>
+</html>

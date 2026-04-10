@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thoughts | Aaron Kuo</title>
+</head>
+
+<body style="font-family: Arial; margin: 0; background-color: #020617; color: #e2e8f0;">
+
+    <!-- NAV -->
+    <div style="padding: 20px; border-bottom: 1px solid #1e293b; text-align: center;">
+        <a href="index.html" style="margin: 0 15px; color: #94a3b8; text-decoration: none;">Home</a>
+        <a href="thoughts.html" style="margin: 0 15px; color: #60a5fa; text-decoration: none;">Thoughts</a>
+    </div>
+
+    <div style="max-width: 800px; margin: auto; padding: 60px 20px;">
+
+        <h1>Thoughts</h1>
+
+        <p style="color: #94a3b8;">Writing on tax, data, and AI.</p>
+
+        <hr style="margin: 30px 0; border-color: #1e293b;">
+
+        <h3>
+            <a href="post1.html" style="color: #60a5fa; text-decoration: none;">
+                Why Pillar Two Changes Everything (Beyond Tax)
+            </a>
+        </h3>
+
+        <p style="color: #94a3b8;">
+            A practical perspective on how global minimum tax reshapes data, systems, and operating models.
+        </p>
+
+    </div>
+
+</body>
+</html>

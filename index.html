@@ -1,50 +1,339 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Aaron Kuo</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaron Kuo</title>
+  <meta name="description" content="Aaron Kuo | Tax Technology, AI, and data-driven operating models." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 84px 0 48px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      background: var(--accent-soft);
+      color: #bfdbfe;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      margin: 0 0 18px;
+      max-width: 900px;
+    }
+
+    .lead {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: #0f172a;
+      border-color: transparent;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .section {
+      padding: 26px 0 70px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      grid-column: span 4;
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      min-height: 220px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .highlight {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+    }
+
+    .panel h2 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .panel p, .panel li {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .mini-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(30,41,59,0.8);
+    }
+
+    .mini-list li:last-child { border-bottom: none; }
+
+    .footer {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .card { grid-column: span 12; }
+      .highlight { grid-template-columns: 1fr; }
+      .nav-inner { gap: 16px; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero { padding-top: 56px; }
+      .lead { font-size: 16px; }
+    }
+  </style>
 </head>
-
-<body style="font-family: Arial, sans-serif; margin: 0; background-color: #020617; color: #e2e8f0;">
-
-    <!-- NAV -->
-    <div style="padding: 20px; border-bottom: 1px solid #1e293b; text-align: center;">
-        <a href="index.html" style="margin: 0 15px; color: #60a5fa; text-decoration: none;">Home</a>
-        <a href="thoughts.html" style="margin: 0 15px; color: #94a3b8; text-decoration: none;">Thoughts</a>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Aaron Kuo</a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="thoughts.html">Thoughts</a>
+      </div>
     </div>
+  </nav>
 
-    <div style="max-width: 800px; margin: auto; padding: 60px 20px;">
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">Tax Technology · AI · Operating Models</div>
+      <h1>Building at the intersection of tax, technology, and AI.</h1>
+      <p class="lead">
+        I work on how complex regulatory frameworks become scalable systems, data structures,
+        and practical operating models. My focus sits where tax interpretation stops being theory
+        and starts becoming infrastructure.
+      </p>
 
-        <h1 style="font-size: 40px;">Aaron Kuo</h1>
+      <div class="hero-actions">
+        <a class="button primary" href="thoughts.html">
+          <i class="fa-solid fa-arrow-right"></i>
+          Read my thoughts
+        </a>
+        <a class="button secondary" href="https://www.linkedin.com/in/aaron-kuo-99775171/" target="_blank">
+          <i class="fab fa-linkedin"></i>
+          LinkedIn
+        </a>
+        <a class="button secondary" href="mailto:aaron.cl.kuo@gmail.com">
+          <i class="fas fa-envelope"></i>
+          Email
+        </a>
+      </div>
+    </section>
 
-        <p style="color: #94a3b8;">
-            Director, Tax Technology | Exploring AI & Data
-        </p>
+    <section class="section">
+      <div class="section-title">What I work on</div>
+      <div class="grid">
+        <div class="card">
+          <h3>Pillar Two & global tax reporting</h3>
+          <p>
+            Data readiness, compliance operating models, reporting mechanics, and the practical build-out
+            required to make Pillar Two sustainable.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Tax systems & data architecture</h3>
+          <p>
+            Translating tax requirements into workflows, control points, mapping logic, and systems that
+            actually stand up under reporting pressure.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Applied AI for professional work</h3>
+          <p>
+            Exploring where AI genuinely improves analysis, documentation, and design work without becoming
+            performative “innovation theatre.”
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <p>
-            I work at the intersection of tax, technology, and AI — translating complex regulatory frameworks
-            into scalable systems, data models, and practical tools.
-        </p>
-
-        <div style="margin-top: 20px; font-size: 22px;">
-            <a href="https://www.linkedin.com/in/aaron-kuo-99775171/" target="_blank" style="color: #60a5fa; margin-right: 20px;">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:aaron.cl.kuo@gmail.com" style="color: #60a5fa;">
-                <i class="fas fa-envelope"></i>
-            </a>
+    <section class="section">
+      <div class="highlight">
+        <div class="panel">
+          <h2>Current perspective</h2>
+          <p>
+            The interesting shift is not that tax is becoming more complicated. It is that compliance is now
+            forcing tax, finance, and technology into the same room. That changes the skill set required to lead.
+          </p>
         </div>
 
-        <hr style="margin: 40px 0; border-color: #1e293b;">
+        <div class="panel">
+          <h2>Now reading</h2>
+          <ul class="mini-list">
+            <li>OECD Pillar Two implementation developments</li>
+            <li>AI operating model design in professional services</li>
+            <li>Practical system thinking for compliance workflows</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-        <h2>What I’m Working On</h2>
-        <ul>
-            <li>Pillar Two data & reporting frameworks</li>
-            <li>AI applications in tax workflows</li>
-            <li>Building practical tools and prototypes</li>
-        </ul>
-
-    </div>
-
+    <footer class="footer">
+      © 2026 Aaron Kuo
+    </footer>
+  </main>
 </body>
 </html>

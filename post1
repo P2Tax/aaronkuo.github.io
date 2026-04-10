@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pillar Two Changes Everything | Aaron Kuo</title>
+</head>
+
+<body style="font-family: Arial; margin: 0; background-color: #020617; color: #e2e8f0;">
+
+    <!-- NAV -->
+    <div style="padding: 20px; border-bottom: 1px solid #1e293b; text-align: center;">
+        <a href="index.html" style="margin: 0 15px; color: #94a3b8; text-decoration: none;">Home</a>
+        <a href="thoughts.html" style="margin: 0 15px; color: #60a5fa; text-decoration: none;">Thoughts</a>
+    </div>
+
+    <div style="max-width: 800px; margin: auto; padding: 60px 20px;">
+
+        <h1>Why Pillar Two Changes Everything (Beyond Tax)</h1>
+
+        <p style="color: #94a3b8;">April 2026</p>
+
+        <p>
+        For years, multinational tax planning operated on a simple idea:
+        profits can move faster than rules.
+        </p>
+
+        <p>
+        Pillar Two changes that.
+        Not just technically — structurally.
+        </p>
+
+        <h2>The End of “Tax Arbitrage as Strategy”</h2>
+
+        <p>
+        The 15% global minimum tax introduces a hard floor.
+        If profits are taxed below that level, someone else will collect the difference.
+        </p>
+
+        <p>
+        That alone removes a large portion of traditional tax planning incentives.
+        </p>
+
+        <h2>This is Actually a Data Problem</h2>
+
+        <p>
+        What most people underestimate is this:
+        Pillar Two is not a tax problem — it is a data and systems problem.
+        </p>
+
+        <p>
+        To comply, companies must:
+        </p>
+
+        <ul>
+            <li>Calculate effective tax rates across jurisdictions</li>
+            <li>Standardize financial and tax data</li>
+            <li>Build repeatable reporting processes</li>
+        </ul>
+
+        <p>
+        That means tax is no longer just interpretation.
+        It becomes infrastructure.
+        </p>
+
+        <h2>From Compliance to Operating Model</h2>
+
+        <p>
+        The real shift is this:
+        Pillar Two forces organizations to rethink how tax integrates with finance and technology.
+        </p>
+
+        <p>
+        Data pipelines, system architecture, and governance models now matter as much as tax rules themselves.
+        </p>
+
+        <h2>Final Thought</h2>
+
+        <p>
+        The companies that win are not the ones that understand the rules better.
+        </p>
+
+        <p>
+        They are the ones that can operationalize them faster.
+        </p>
+
+    </div>
+
+</body>
+</html>

@@ -49,11 +49,12 @@
     }
 
     .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 72px;
+  padding: 0;
+}
 
     .brand {
       font-weight: 700;
@@ -269,10 +270,14 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="brand" style="display:flex; align-items:center; gap:12px;">
-  <img src="logo2.png" style="height:120px;">
-  <span style="font-size:20px; font-weight:600;">AK</span>
-</a>
+      <div style="display:flex; align-items:center; gap:18px;">
+  <a href="index.html" class="brand" style="display:flex; align-items:center;">
+    <img src="logo2.png" style="height:28px; display:block;">
+  </a>
+  <a href="index.html" style="font-size:22px; font-weight:700; color:#e2e8f0; text-decoration:none; letter-spacing:-0.02em;">
+    AK
+  </a>
+</div>
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="thoughts.html">Thoughts</a>

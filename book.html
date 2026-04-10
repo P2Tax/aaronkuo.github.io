@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book | Aaron Kuo</title>
+  <meta name="description" content="OECD Pillar Two Essentials by Aaron Kuo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --max: 1040px;
+    }
 
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .container, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .brand { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a { color: var(--muted); font-size: 14px; }
+    .nav-links a.active,
+    .nav-links a:hover { color: var(--text); }
+
+    .container { padding: 70px 0 80px; }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      margin: 0 0 12px;
+      letter-spacing: -0.04em;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .panel p, .panel li {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    ul { padding-left: 20px; }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Aaron Kuo</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html">Thoughts</a>
+        <a href="book.html" class="active">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Book</h1>
+    <p class="sub">
+      A practical guide to the global minimum tax, written to make Pillar Two more understandable for professionals
+      working across tax, finance, and implementation.
+    </p>
+
+    <div class="panel">
+      <h2>OECD Pillar Two Essentials</h2>
+      <p>
+        This book covers the foundations, mechanics, calculations, safe harbours, filing concepts,
+        and implementation thinking behind Pillar Two.
+      </p>
+      <ul>
+        <li>Background and foundations</li>
+        <li>Core rules and mechanisms</li>
+        <li>Calculations, adjustments, and compliance</li>
+        <li>Advanced applications</li>
+        <li>Technical tools and implementation</li>
+      </ul>
+      <p>
+        More book content and excerpts will be added here next.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">© 2026 Aaron Kuo</div>
+  </footer>
+</body>
+</html>

@@ -43,7 +43,7 @@
       border-bottom: 1px solid rgba(30, 41, 59, 0.85);
     }
 
-    .nav-inner, .container {
+    .nav-inner, .container, .footer-inner {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
@@ -65,6 +65,7 @@
       display: flex;
       gap: 22px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -169,6 +170,13 @@
       padding: 24px;
       min-height: 220px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(96,165,250,0.35);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
     }
 
     .card h3 {
@@ -223,7 +231,19 @@
 
     .mini-list li:last-child { border-bottom: none; }
 
-    .footer {
+    .feature-link {
+      display: block;
+      margin-top: 16px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
       padding: 24px 0 40px;
       color: var(--muted);
       font-size: 14px;
@@ -253,6 +273,9 @@
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="thoughts.html">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
       </div>
     </div>
   </nav>
@@ -304,7 +327,7 @@
           <h3>Applied AI for professional work</h3>
           <p>
             Exploring where AI genuinely improves analysis, documentation, and design work without becoming
-            performative “innovation theatre.”
+            performative innovation theatre.
           </p>
         </div>
       </div>
@@ -313,27 +336,28 @@
     <section class="section">
       <div class="highlight">
         <div class="panel">
-          <h2>Current perspective</h2>
+          <h2>Featured article</h2>
           <p>
-            The interesting shift is not that tax is becoming more complicated. It is that compliance is now
-            forcing tax, finance, and technology into the same room. That changes the skill set required to lead.
+            Pillar Two is not just a technical tax reform. It is a structural shift in data, systems, governance,
+            and execution. The harder part is rarely the rule itself. It is turning the rule into repeatable infrastructure.
           </p>
+          <a class="feature-link" href="post1.html">Read: Why Pillar Two Changes Everything →</a>
         </div>
 
         <div class="panel">
-          <h2>Now reading</h2>
+          <h2>Current perspective</h2>
           <ul class="mini-list">
-            <li>OECD Pillar Two implementation developments</li>
-            <li>AI operating model design in professional services</li>
-            <li>Practical system thinking for compliance workflows</li>
+            <li>Tax is increasingly a systems design problem</li>
+            <li>AI is useful when it improves thinking, not noise</li>
+            <li>Operating model discipline matters more than hype</li>
           </ul>
         </div>
       </div>
     </section>
-
-    <footer class="footer">
-      © 2026 Aaron Kuo
-    </footer>
   </main>
+
+  <footer>
+    <div class="footer-inner">© 2026 Aaron Kuo</div>
+  </footer>
 </body>
 </html>

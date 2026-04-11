@@ -34,6 +34,7 @@
     .nav {
       position: sticky;
       top: 0;
+      z-index: 20;
       backdrop-filter: blur(14px);
       background: rgba(2, 6, 23, 0.82);
       border-bottom: 1px solid rgba(30, 41, 59, 0.85);
@@ -48,20 +49,50 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
+      min-height: 72px;
+      gap: 20px;
     }
 
-    .brand { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
 
     .nav-links {
       display: flex;
       gap: 22px;
+      align-items: center;
       flex-wrap: wrap;
     }
 
-    .nav-links a { color: var(--muted); font-size: 14px; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     .nav-links a.active,
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover {
+      color: var(--text);
+    }
 
     .container { padding: 70px 0 80px; }
 
@@ -123,7 +154,12 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="brand">Aaron Kuo</a>
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo3.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="thoughts.html">Thoughts</a>

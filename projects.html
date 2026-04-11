@@ -122,24 +122,39 @@
     }
 
     .tag,
-    .capability-tag {
+    .capability-tag,
+    .project-signal {
       display: inline-flex;
       align-items: center;
-      border: 1px solid rgba(96, 165, 250, 0.22);
+      border: 1px solid rgba(96, 165, 250, 0.18);
       border-radius: 8px;
       padding: 7px 10px;
       color: #bfdbfe;
-      background: rgba(96, 165, 250, 0.08);
+      background: rgba(96, 165, 250, 0.06);
       font-size: 13px;
       line-height: 1.2;
     }
 
+    .work-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 8px;
+    }
+
     .project-card {
-      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
-      border: 1px solid var(--line);
+      position: relative;
+      background: rgba(11, 18, 32, 0.78);
+      border: 1px solid rgba(30, 41, 59, 0.95);
+      border-left: 3px solid rgba(45, 212, 191, 0.7);
       border-radius: 8px;
-      padding: 24px;
-      margin-bottom: 18px;
+      padding: 22px 24px;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: rgba(45, 212, 191, 0.34);
+      border-left-color: #2dd4bf;
+      background: rgba(13, 22, 36, 0.88);
     }
 
     .project-card summary {
@@ -151,20 +166,20 @@
       display: none;
     }
 
-    .project-heading {
+    .project-topline {
       display: flex;
       justify-content: space-between;
       gap: 18px;
-      align-items: flex-start;
+      align-items: center;
       margin-bottom: 12px;
     }
 
-    .project-title {
-      display: block;
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--text);
+    .project-index {
+      color: #2dd4bf;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
     }
 
     .project-toggle {
@@ -172,47 +187,80 @@
       color: #2dd4bf;
       font-size: 13px;
       font-weight: 700;
-      margin-top: 7px;
     }
 
     details[open] .project-toggle::before {
-      content: "Hide details";
+      content: "Hide case";
     }
 
     details:not([open]) .project-toggle::before {
-      content: "View details";
+      content: "View case";
     }
 
-    .project-meta {
-      color: #bfdbfe;
-      font-size: 14px;
-      margin: 0 0 14px;
+    .project-title {
+      display: block;
+      max-width: 840px;
+      color: var(--text);
+      font-size: 27px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
     }
 
-    .project-summary,
-    .project-detail p {
+    .project-hook {
+      max-width: 820px;
       color: var(--muted);
-      line-height: 1.75;
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0 0 18px;
+    }
+
+    .project-signals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .project-signal {
+      color: var(--muted);
+      background: rgba(148, 163, 184, 0.06);
+      border-color: rgba(148, 163, 184, 0.16);
     }
 
     .project-detail {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 22px;
+      gap: 22px;
+      margin-top: 24px;
       padding-top: 22px;
       border-top: 1px solid rgba(30, 41, 59, 0.85);
     }
 
     .project-detail h3 {
       margin: 0 0 8px;
-      color: var(--text);
+      color: #bfdbfe;
+      font-size: 13px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .project-detail p {
+      color: var(--muted);
       font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
     }
 
     .project-capabilities {
-      margin-top: 22px;
+      margin: 22px 0 0;
+    }
+
+    .capability-tag {
+      color: #bfdbfe;
+      background: rgba(96, 165, 250, 0.06);
     }
 
     .section-title {
@@ -220,7 +268,6 @@
       font-size: 24px;
       color: var(--text);
     }
-
     footer {
       border-top: 1px solid var(--line);
     }
@@ -231,20 +278,25 @@
       font-size: 14px;
     }
 
-    @media (max-width: 560px) {
+        @media (max-width: 560px) {
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
       }
 
-      .project-heading,
+      .project-topline,
       .project-detail {
         display: block;
       }
 
       .project-toggle {
-        margin-top: 12px;
+        display: inline-block;
+        margin-top: 10px;
+      }
+
+      .project-title {
+        font-size: 23px;
       }
 
       .project-detail > div {
@@ -286,42 +338,45 @@
       <span class="tag">Operating Model</span>
       <span class="tag">AI in Tax</span>
     </div>
-
-    <details class="project-card">
-      <summary>
-        <div class="project-heading">
+    <div class="work-list">
+      <details class="project-card">
+        <summary>
+          <div class="project-topline">
+            <span class="project-index">Selected work 01</span>
+            <span class="project-toggle" aria-hidden="true"></span>
+          </div>
           <span class="project-title">Designing a Pillar Two Compliance Model Across 100+ Entities</span>
-          <span class="project-toggle" aria-hidden="true"></span>
-        </div>
-        <p class="project-meta">Large multinational group · Pillar Two implementation · 100+ entities</p>
-        <p class="project-summary">Led the design and delivery of an end-to-end Pillar Two implementation, turning complex rule requirements into a workable compliance model across data, process, and reporting.</p>
-      </summary>
+          <p class="project-hook">Turning complex Pillar Two requirements into a scalable compliance model across data, workflow, and reporting.</p>
+          <ul class="project-signals" aria-label="Project signals">
+            <li class="project-signal">Large multinational group</li>
+            <li class="project-signal">Pillar Two implementation</li>
+            <li class="project-signal">100+ entities</li>
+          </ul>
+        </summary>
 
-      <div class="project-detail">
-        <div>
-          <h3>Challenge</h3>
-          <p>The core issue was not technical interpretation alone. Data sat across multiple sources, ownership was fragmented, and the compliance process needed to work at scale across jurisdictions.</p>
+        <div class="project-detail">
+          <div>
+            <h3>Challenge</h3>
+            <p>Data sat across multiple sources, ownership was fragmented, and the compliance process needed to work at scale across jurisdictions.</p>
+          </div>
+          <div>
+            <h3>What I led</h3>
+            <p>Directed the implementation approach across requirements, data logic, workflow design, stakeholder coordination, covered tax, deferred tax, and ETR logic.</p>
+          </div>
+          <div>
+            <h3>Outcome</h3>
+            <p>Helped create a more usable compliance model with clearer inputs, stronger workflow discipline, and a practical path to scaled reporting.</p>
+          </div>
         </div>
-        <div>
-          <h3>What I led</h3>
-          <p>Directed the implementation approach across requirements, data logic, workflow design, and stakeholder coordination, including covered tax, deferred tax, ETR logic, and the broader operating structure.</p>
-        </div>
-        <div>
-          <h3>Outcome</h3>
-          <p>Helped create a more usable compliance model with clearer inputs, stronger workflow discipline, and a practical path to scaled Pillar Two reporting.</p>
-        </div>
-      </div>
 
-      <div class="capabilities project-capabilities" aria-label="Project capabilities">
-        <span class="capability-tag">Pillar Two</span>
-        <span class="capability-tag">Tax Data</span>
-        <span class="capability-tag">ETR Logic</span>
-        <span class="capability-tag">Covered Tax</span>
-        <span class="capability-tag">Deferred Tax</span>
-        <span class="capability-tag">Operating Model</span>
-        <span class="capability-tag">Tax Technology Implementation</span>
-      </div>
-    </details>
+        <div class="capabilities project-capabilities" aria-label="Project capabilities">
+          <span class="capability-tag">Pillar Two</span>
+          <span class="capability-tag">ETR Logic</span>
+          <span class="capability-tag">Tax Data</span>
+          <span class="capability-tag">Operating Model</span>
+        </div>
+      </details>
+    </div>
   </main>
 
   <footer>

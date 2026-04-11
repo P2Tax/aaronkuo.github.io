@@ -8,20 +8,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --bg: #020617;
       --panel: #0b1220;
+      --panel-strong: #0f172a;
       --line: #1e293b;
+      --line-soft: rgba(30, 41, 59, 0.72);
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #60a5fa;
       --accent-soft: rgba(96, 165, 250, 0.12);
       --max: 1040px;
-      --article-max: 820px;
+      --article-max: 760px;
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -33,6 +37,7 @@
     }
 
     a { text-decoration: none; color: inherit; }
+
     .nav {
       position: sticky;
       top: 0;
@@ -42,7 +47,7 @@
       border-bottom: 1px solid rgba(30, 41, 59, 0.85);
     }
 
-    .nav-inner, .container, .footer-inner {
+    .nav-inner, .footer-inner {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
     }
@@ -51,8 +56,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 82px;
-      gap: 24px;
+      min-height: 78px;
+      gap: 20px;
     }
 
     .brand-wrap {
@@ -60,46 +65,27 @@
       align-items: center;
       gap: 14px;
       flex-shrink: 0;
-      min-width: 0;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      line-height: 1;
+      line-height: 0;
     }
 
     .brand img {
-      display: block;
-      height: 40px;
+      height: 38px;
       width: auto;
-      max-width: none;
-      object-fit: contain;
-    }
-
-    .brand-fallback {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 44px;
-      min-height: 44px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--text);
+      display: block;
     }
 
     .brand-mark {
-      font-size: 14px;
+      font-size: 17px;
       font-weight: 700;
-      letter-spacing: 0.18em;
+      color: var(--text);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
+      line-height: 1;
     }
 
     .nav-links {
@@ -107,12 +93,12 @@
       gap: 22px;
       align-items: center;
       flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
     .nav-links a {
       color: var(--muted);
       font-size: 14px;
+      line-height: 1;
     }
 
     .nav-links a.active,
@@ -120,23 +106,24 @@
       color: var(--text);
     }
 
-
     .article {
       width: min(var(--article-max), calc(100% - 32px));
       margin: 0 auto;
-      padding: 72px 0 80px;
+      padding: 76px 0 96px;
     }
 
     .topic-tag,
     .series-tag {
-      display: inline-block;
-      padding: 7px 11px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 12px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.03em;
       margin-right: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .topic-tag {
@@ -151,68 +138,80 @@
       color: var(--muted);
     }
 
+    .series-tag a {
+      color: var(--text);
+    }
+
     h1 {
-      font-size: clamp(34px, 5vw, 58px);
+      font-size: clamp(38px, 5vw, 60px);
       line-height: 1.02;
       letter-spacing: -0.05em;
-      margin: 0 0 16px;
+      margin: 0 0 18px;
+      text-wrap: balance;
     }
 
     .intro {
       color: var(--muted);
-      font-size: 18px;
-      line-height: 1.85;
-      margin: 0 0 34px;
+      font-size: 19px;
+      line-height: 1.9;
+      margin: 0 0 26px;
     }
 
     .article-meta {
       color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 28px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 38px;
     }
 
     h2 {
-      font-size: 28px;
-      letter-spacing: -0.03em;
-      margin: 42px 0 14px;
+      font-size: 30px;
+      line-height: 1.18;
+      letter-spacing: -0.035em;
+      margin: 56px 0 16px;
     }
 
     h3 {
-      font-size: 21px;
+      font-size: 22px;
+      line-height: 1.28;
       letter-spacing: -0.02em;
-      margin: 28px 0 12px;
+      margin: 34px 0 12px;
     }
 
     p, li {
       color: var(--text);
-      line-height: 1.9;
+      line-height: 1.95;
       font-size: 17px;
     }
 
     p { margin: 0 0 18px; }
 
     ul, ol {
-      padding-left: 22px;
-      margin: 0 0 18px;
+      padding-left: 24px;
+      margin: 0 0 22px;
     }
+
+    li { margin-bottom: 8px; }
 
     .formula,
     .note,
     .related {
-      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 22px 24px;
-      margin: 26px 0;
+      background: linear-gradient(180deg, rgba(11,18,32,0.98), rgba(9,14,25,0.98));
+      border: 1px solid var(--line-soft);
+      border-radius: 22px;
+      padding: 24px 26px;
+      margin: 32px 0;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.16);
     }
 
     .formula strong,
     .note strong,
     .related strong {
       display: block;
-      margin-bottom: 10px;
-      font-size: 14px;
-      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent);
     }
@@ -225,8 +224,24 @@
       color: var(--muted);
     }
 
-    .related ul {
+    .note p + p,
+    .formula p + p,
+    .related p + p {
       margin-top: 10px;
+    }
+
+    .related {
+      margin-top: 40px;
+      padding-top: 26px;
+    }
+
+    .related ul {
+      margin-top: 14px;
+      padding-left: 20px;
+    }
+
+    .related li {
+      margin-bottom: 10px;
     }
 
     .related a {
@@ -249,31 +264,42 @@
 
     .footer-inner img {
       height: 18px;
+      width: auto;
       display: block;
     }
 
     @media (max-width: 880px) {
-      .nav-inner { min-height: 78px; padding: 14px 0; }
+      .nav-inner {
+        align-items: flex-start;
+        padding: 14px 0;
+        min-height: 0;
+      }
       .nav-links { gap: 14px; }
-      .brand img { height: 36px; }
+      .article { padding-top: 60px; }
     }
 
     @media (max-width: 560px) {
-      .nav-inner { flex-direction: column; align-items: flex-start; min-height: auto; padding: 14px 0; }
-      .nav-links { width: 100%; justify-content: flex-start; gap: 12px 16px; }
+      .nav-inner { flex-direction: column; }
       .brand img { height: 34px; }
+      h2 { font-size: 27px; }
+      h3 { font-size: 21px; }
       p, li { font-size: 16px; }
       .intro { font-size: 17px; }
+      .formula,
+      .note,
+      .related {
+        padding: 20px 20px;
+      }
     }
   </style>
+
 </head>
 <body>
   <nav class="nav">
     <div class="nav-inner">
       <div class="brand-wrap">
-        <a href="index.html" class="brand" aria-label="Aaron Kuo home">
-          <img src="logo-v2.png" alt="Aaron Kuo logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
-          <span class="brand-fallback" style="display:none;">AK</span>
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
         </a>
         <a href="index.html" class="brand-mark">AK</a>
       </div>
@@ -427,7 +453,14 @@
         This article is the pillar page for the <em>Pillar Two Fundamentals</em> topic cluster.
       </p>
       <ul>
-        <li><a href="#">Income Inclusion Rule (IIR)</a> <span style="color:#94a3b8;">(link to be added)</span></li>
+        <li><a href="post2.html">Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</a></li>
+        <li><a href="post3.html">Undertaxed Profits Rule (UTPR): How Residual Pillar Two Top-Up Tax Is Collected</a></li>
+        <li><a href="post4.html">Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights</a></li>
+        <li><a href="post5.html">Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated</a></li>
+        <li><a href="post6.html">Effective Tax Rate (ETR) Under Pillar Two: How Low-Tax Outcomes Are Measured</a></li>
+        <li><a href="post7.html">Substance-Based Income Exclusion (SBIE): Why Not All Profit Is Subject to Pillar Two</a></li>
+        <li><a href="post8.html">Pillar Two Rule Order Explained: How QDMTT, IIR, and UTPR Interact</a></li>
+        <li><a href="post9.html">Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2026 Matters</a></li>
       </ul>
     </div>
   </main>

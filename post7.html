@@ -1,1 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Substance-Based Income Exclusion (SBIE): Why Not All Profit Is Subject to Pillar Two | Aaron Kuo</title>
+  <meta name="description" content="Understand how the Substance-Based Income Exclusion (SBIE) works under Pillar Two and how it reduces the profit exposed to top-up tax." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      margin: 42px 0 14px;
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      margin: 28px 0 12px;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 18px;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Fundamentals</div>
+    <div class="series-tag">Part of: <a href="post1.html">OECD Pillar Two Explained</a></div>
+
+    <h1>Substance-Based Income Exclusion (SBIE): Why Not All Profit Is Subject to Pillar Two</h1>
+
+    <p class="intro">
+      The Substance-Based Income Exclusion is a key adjustment within Pillar Two. It reduces the profit exposed to top-up tax by excluding a routine return linked to real economic substance.
+    </p>
+
+    <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
+
+    <h2>Introduction</h2>
+    <p>
+      The Substance-Based Income Exclusion (SBIE) is a key adjustment within the OECD Pillar Two framework.
+    </p>
+    <p>
+      It reduces the amount of profit exposed to top-up tax by excluding a routine return linked to real economic substance. That is an important design feature of Pillar Two. The rules are intended to apply the minimum tax to excess profit, not to all profit in a low-tax jurisdiction.
+    </p>
+
+    <h2>What the SBIE Does</h2>
+    <p>
+      The SBIE reduces the portion of GloBE income that is exposed to top-up tax.
+    </p>
+    <p>
+      In practical terms, it:
+    </p>
+    <ul>
+      <li>identifies a routine return based on substance</li>
+      <li>excludes that amount from the top-up tax base</li>
+      <li>limits the remaining exposure to excess profit</li>
+    </ul>
+    <p>
+      The result is that the Pillar Two calculation does not apply the top-up tax percentage to the full amount of GloBE income.
+    </p>
+
+    <h2>How the SBIE Works</h2>
+
+    <h3>1. Identify eligible substance components</h3>
+    <p>
+      The SBIE is based on two jurisdictional components:
+    </p>
+    <ul>
+      <li>eligible payroll costs</li>
+      <li>carrying value of eligible tangible assets</li>
+    </ul>
+    <p>
+      These are measured on a jurisdictional basis, not entity by entity.
+    </p>
+
+    <h3>2. Apply the exclusion percentages</h3>
+    <p>
+      A fixed percentage is applied to each component.
+    </p>
+    <p>
+      The Pillar Two rules provide transitional rates that step down over time before settling into the permanent rate structure.
+    </p>
+
+    <h3>3. Compute the excluded amount</h3>
+    <p>
+      The excluded amount is broadly calculated as:
+    </p>
+
+    <div class="formula">
+      <strong>Core calculation</strong>
+      <p>A percentage of eligible payroll costs plus a percentage of eligible tangible asset values.</p>
+    </div>
+
+    <p>
+      This amount represents the routine return attributed to local substance.
+    </p>
+
+    <h3>4. Reduce the excess profit base</h3>
+    <p>
+      The SBIE amount is deducted from the jurisdiction’s GloBE income in determining excess profit for top-up tax purposes.
+    </p>
+    <p>
+      That is the key point: the SBIE does not change the ETR itself. It reduces the amount of profit to which the top-up tax percentage is applied.
+    </p>
+
+    <h2>Simple Example</h2>
+    <p>
+      Assume a jurisdiction has:
+    </p>
+    <ul>
+      <li>GloBE income of 100</li>
+      <li>an SBIE amount of 20</li>
+    </ul>
+    <p>
+      The remaining profit exposed to top-up tax is 80.
+    </p>
+    <p>
+      If the jurisdictional ETR is below 15%, the relevant top-up tax percentage is applied to that 80, not to the full 100.
+    </p>
+    <p>
+      The practical consequence is straightforward: substance reduces the profit base exposed to top-up tax.
+    </p>
+
+    <h2>Why the SBIE Matters</h2>
+
+    <h3>It protects routine returns</h3>
+    <p>
+      The SBIE reflects the policy choice that a routine return linked to real economic activity should not be fully exposed to the minimum tax adjustment.
+    </p>
+
+    <h3>It narrows the scope of top-up tax</h3>
+    <p>
+      Pillar Two applies to excess profit after the exclusion, not mechanically to all GloBE income in a low-tax jurisdiction.
+    </p>
+
+    <h3>It changes effective outcomes</h3>
+    <p>
+      Two jurisdictions with the same ETR may not produce the same top-up tax result if their payroll and tangible asset profiles are different.
+    </p>
+
+    <h2>Interaction with ETR and Top-Up Tax</h2>
+    <p>
+      The SBIE does not affect the jurisdictional ETR calculation.
+    </p>
+    <p>
+      Instead, it affects the amount of excess profit to which the top-up tax percentage is applied.
+    </p>
+    <p>
+      The sequence is important:
+    </p>
+    <ul>
+      <li>ETR is calculated first</li>
+      <li>the top-up tax percentage is determined</li>
+      <li>the SBIE reduces the excess profit base</li>
+      <li>the top-up tax percentage is applied to the reduced amount</li>
+    </ul>
+    <p>
+      This distinction is essential to understanding how the final liability is derived.
+    </p>
+
+    <div class="note">
+      <strong>Why this matters in practice</strong>
+      <p>
+        The SBIE means Pillar Two exposure is shaped by more than the tax rate. A jurisdiction’s real operating footprint can materially affect how much profit remains exposed once the minimum tax mechanics are applied.
+      </p>
+    </div>
+
+    <h2>Practical Implications for Multinational Groups</h2>
+    <p>
+      The SBIE introduces operational considerations beyond basic tax rate analysis.
+    </p>
+
+    <h3>Substance mapping becomes more important</h3>
+    <p>
+      Groups need to understand where payroll and tangible assets sit across jurisdictions, because that directly affects the amount of profit exposed to top-up tax.
+    </p>
+
+    <h3>Data requirements increase</h3>
+    <p>
+      Reliable tracking of:
+    </p>
+    <ul>
+      <li>employee cost data</li>
+      <li>tangible asset values</li>
+      <li>jurisdictional allocation of those inputs</li>
+    </ul>
+    <p>
+      becomes necessary to compute the exclusion consistently.
+    </p>
+
+    <h3>Operating footprint affects exposure</h3>
+    <p>
+      Structures built around low-tax jurisdictions with limited substance are more likely to leave a larger excess profit base exposed to top-up tax.
+    </p>
+    <p>
+      Jurisdictions with real operating presence may produce a lower exposure outcome.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      The Substance-Based Income Exclusion is a key adjustment in the Pillar Two calculation.
+    </p>
+    <p>
+      It ensures that the framework focuses on excess profit rather than applying top-up tax to all profit in a low-tax jurisdiction.
+    </p>
+    <p>
+      For multinational groups, the implication is practical: Pillar Two exposure is shaped not only by tax rates, but also by where payroll and tangible assets are located and how that substance is measured under the GloBE rules.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article sits within the <em>Pillar Two Fundamentals</em> cluster and links back to the parent pillar page.
+      </p>
+      <ul>
+        <li><a href="post1.html">OECD Pillar Two Explained</a></li>
+        <li><a href="post5.html">Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated</a></li>
+        <li><a href="post6.html">Effective Tax Rate (ETR) Under Pillar Two: How Low-Tax Outcomes Are Measured</a></li>
+        <li><a href="post4.html">Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <img src="logo-v2.png" alt="Aaron Kuo logo">
+      <span>© 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>

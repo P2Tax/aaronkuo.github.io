@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Why Pillar Two Changes Everything | Aaron Kuo</title>
-  <meta name="description" content="Why Pillar Two changes more than tax — it changes data, systems, and operating models." />
+  <title>OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax | Aaron Kuo</title>
+  <meta name="description" content="OECD Pillar Two explained in simple terms. Learn how the 15% global minimum tax works, including IIR, UTPR, and QDMTT." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #020617;
+      --panel: #0b1220;
       --line: #1e293b;
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
       --max: 1040px;
       --article-max: 820px;
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: "Inter", Arial, sans-serif;
@@ -34,6 +37,7 @@
     .nav {
       position: sticky;
       top: 0;
+      z-index: 20;
       backdrop-filter: blur(14px);
       background: rgba(2, 6, 23, 0.82);
       border-bottom: 1px solid rgba(30, 41, 59, 0.85);
@@ -48,18 +52,38 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
     }
 
     .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
       font-weight: 700;
-      font-size: 18px;
+      color: var(--text);
       letter-spacing: -0.02em;
     }
 
     .nav-links {
       display: flex;
       gap: 22px;
+      align-items: center;
       flex-wrap: wrap;
     }
 
@@ -79,20 +103,35 @@
       padding: 72px 0 80px;
     }
 
-    .meta {
-      color: var(--accent);
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
       font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 700;
-      margin-bottom: 14px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
     }
 
     h1 {
       font-size: clamp(34px, 5vw, 58px);
       line-height: 1.02;
       letter-spacing: -0.05em;
-      margin: 0 0 18px;
+      margin: 0 0 16px;
     }
 
     .intro {
@@ -102,10 +141,22 @@
       margin: 0 0 34px;
     }
 
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
     h2 {
       font-size: 28px;
       letter-spacing: -0.03em;
       margin: 42px 0 14px;
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      margin: 28px 0 12px;
     }
 
     p, li {
@@ -116,13 +167,46 @@
 
     p { margin: 0 0 18px; }
 
-    ul {
+    ul, ol {
       padding-left: 22px;
       margin: 0 0 18px;
     }
 
-    .muted {
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
       color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
     }
 
     footer {
@@ -134,14 +218,23 @@
       padding: 24px 0 40px;
       color: var(--muted);
       font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 18px;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
     }
 
     @media (max-width: 560px) {
-      .nav-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
+      .nav-inner { flex-direction: column; }
       p, li { font-size: 16px; }
       .intro { font-size: 17px; }
     }
@@ -150,7 +243,13 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="brand">Aaron Kuo</a>
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="thoughts.html" class="active">Thoughts</a>
@@ -162,58 +261,154 @@
   </nav>
 
   <main class="article">
-    <div class="meta">April 2026 · Pillar Two · Systems Thinking</div>
-    <h1>Why Pillar Two Changes Everything (Beyond Tax)</h1>
+    <div class="topic-tag">Pillar Two Fundamentals</div>
+    <div class="series-tag">Pillar Page</div>
+
+    <h1>OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</h1>
+
+    <p class="article-meta">Updated April 2026</p>
+
     <p class="intro">
-      For years, multinational tax planning operated on a simple assumption: profits can move faster than rules.
-      Pillar Two changes that. Not just technically, but structurally.
+      OECD Pillar Two introduces a 15% global minimum tax designed to ensure that large multinational
+      enterprises pay a minimum level of tax regardless of where they operate. For decades, companies
+      could shift profits to low-tax jurisdictions. Pillar Two changes that by ensuring that income taxed
+      below 15% is subject to a top-up tax.
     </p>
 
-    <h2>The end of tax arbitrage as strategy</h2>
+    <h2>What Is OECD Pillar Two?</h2>
     <p>
-      Once a 15% minimum effective tax rate becomes the floor, a large part of traditional tax planning logic changes.
-      If a jurisdiction taxes profits below that level, another jurisdiction may collect the difference. That makes
-      low-tax positioning less of a winning strategy and more of a temporary accounting arrangement.
+      OECD Pillar Two is part of the broader BEPS 2.0 initiative. Its objective is to reduce tax avoidance
+      by establishing a minimum effective tax rate of 15%.
     </p>
-
-    <h2>This is not only a tax problem</h2>
-    <p>
-      The deeper issue is that Pillar Two is not just hard because the rules are complex. It is hard because the rules
-      force companies to assemble data that usually sits across finance, tax, consolidation, legal structure, and local reporting.
-    </p>
-    <p>
-      In practice, this means Pillar Two is as much a systems problem as a technical tax problem.
-    </p>
-
-    <h2>What companies actually need to build</h2>
+    <p>It applies to:</p>
     <ul>
-      <li>Consistent jurisdictional data across entities and reporting periods</li>
-      <li>Repeatable logic for effective tax rate and top-up tax calculations</li>
-      <li>Governance over adjustments, source mapping, and filing responsibilities</li>
-      <li>Operating models that connect tax, finance, and technology teams</li>
+      <li>Multinational groups</li>
+      <li>Annual revenue above €750 million</li>
     </ul>
 
-    <h2>Why this changes the skill set required</h2>
+    <h2>Why Was Pillar Two Introduced?</h2>
     <p>
-      Under older models, strong technical interpretation could often carry a project. Under Pillar Two, interpretation still matters,
-      but it is no longer enough. The real advantage now comes from being able to translate requirements into infrastructure.
+      The traditional international tax system struggled to keep up with the structure of modern multinational groups.
     </p>
+    <p>Key pressures included:</p>
+    <ul>
+      <li>Digital business models</li>
+      <li>Intangible assets</li>
+      <li>Cross-border profit shifting</li>
+    </ul>
     <p>
-      That means data design, workflow discipline, system thinking, and execution capability become central to tax leadership.
+      Significant global tax revenue losses were attributed to base erosion and profit shifting.
+      Pillar Two aims to:
+    </p>
+    <ul>
+      <li>Reduce tax avoidance</li>
+      <li>Improve fairness</li>
+      <li>Stabilize global tax competition</li>
+    </ul>
+
+    <h2>How the Global Minimum Tax Works</h2>
+    <p>At a high level, the system works as follows:</p>
+    <ol>
+      <li>Calculate the Effective Tax Rate (ETR) for each jurisdiction</li>
+      <li>Identify jurisdictions where ETR is below 15%</li>
+      <li>Apply a top-up tax to the difference</li>
+      <li>Allocate that tax using global rules</li>
+    </ol>
+
+    <h2>The Three Core Rules of Pillar Two</h2>
+
+    <h3>1. Income Inclusion Rule (IIR)</h3>
+    <p>The primary rule.</p>
+    <p>
+      If a subsidiary is taxed below 15%, the parent company’s jurisdiction collects the difference.
     </p>
 
-    <h2>Final thought</h2>
+    <h3>2. Undertaxed Profits Rule (UTPR)</h3>
+    <p>The backup rule.</p>
     <p>
-      The companies that perform best under Pillar Two will not just be the ones that understand the rules. They will be the ones
-      that operationalize them faster and more cleanly.
+      If the IIR is not applied, other jurisdictions step in to collect the tax.
     </p>
-    <p class="muted">
-      This article is adapted from themes covered in my book, <em>OECD Pillar Two Essentials</em>.
+
+    <h3>3. Qualified Domestic Minimum Top-up Tax (QDMTT)</h3>
+    <p>The local rule.</p>
+    <p>
+      Countries can collect the top-up tax domestically before others do.
     </p>
+
+    <h2>Effective Tax Rate (ETR)</h2>
+    <p>
+      The Effective Tax Rate determines whether additional tax is required.
+    </p>
+
+    <div class="formula">
+      <strong>Core Formula</strong>
+      <p>ETR = Taxes Paid ÷ Income</p>
+    </div>
+
+    <p>
+      If the ETR is below 15%, a top-up tax is triggered.
+    </p>
+
+    <h2>Example</h2>
+    <p>
+      A subsidiary is taxed at 10% in a jurisdiction where the minimum rate is 15%.
+    </p>
+    <p>A 5% top-up tax applies.</p>
+    <p>This tax can be collected by:</p>
+    <ul>
+      <li>The parent jurisdiction (IIR)</li>
+      <li>Other jurisdictions (UTPR)</li>
+      <li>The local jurisdiction (QDMTT)</li>
+    </ul>
+
+    <h2>Why Pillar Two Matters</h2>
+
+    <h3>Reduced Incentive for Profit Shifting</h3>
+    <p>
+      Low-tax jurisdictions provide less structural advantage than they did under earlier planning models.
+    </p>
+
+    <h3>Increased Transparency</h3>
+    <p>
+      Standardized reporting increases visibility across jurisdictions and makes low-tax outcomes more visible.
+    </p>
+
+    <h3>Shift in Tax Strategy</h3>
+    <p>
+      Tax becomes more of a constraint than a primary planning tool. The challenge moves from pure structuring
+      to execution, data, and operating model design.
+    </p>
+
+    <div class="note">
+      <strong>Positioning Note</strong>
+      <p>
+        In practice, Pillar Two is not just a tax rules exercise. It is also a data, systems, and governance challenge.
+        That is why it sits at the intersection of tax, technology, and operating model design.
+      </p>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>
+      OECD Pillar Two establishes a global tax floor. It does not eliminate tax planning, but it fundamentally changes
+      how multinational groups approach tax strategy.
+    </p>
+
+    <div class="related">
+      <strong>Part of This Series</strong>
+      <p>
+        This article is the pillar page for the <em>Pillar Two Fundamentals</em> topic cluster.
+      </p>
+      <ul>
+        <li><a href="#">Income Inclusion Rule (IIR)</a> <span style="color:#94a3b8;">(link to be added)</span></li>
+      </ul>
+    </div>
   </main>
 
   <footer>
-    <div class="footer-inner">© 2026 Aaron Kuo</div>
+    <div class="footer-inner">
+      <img src="logo-v2.png" alt="Aaron Kuo logo">
+      <span>© 2026 Aaron Kuo</span>
+    </div>
   </footer>
 </body>
 </html>

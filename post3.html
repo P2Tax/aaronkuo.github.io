@@ -1,1 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undertaxed Profits Rule (UTPR): How Residual Pillar Two Top-Up Tax Is Collected | Aaron Kuo</title>
+  <meta name="description" content="Understand how the Undertaxed Profits Rule (UTPR) works under Pillar Two and how residual top-up tax is allocated when the IIR does not apply." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      margin: 42px 0 14px;
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      margin: 28px 0 12px;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 18px;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Fundamentals</div>
+    <div class="series-tag">Part of: <a href="post1.html">OECD Pillar Two Explained</a></div>
+
+    <h1>Undertaxed Profits Rule (UTPR): How Residual Pillar Two Top-Up Tax Is Collected</h1>
+
+    <p class="intro">
+      The Undertaxed Profits Rule is the backstop mechanism of Pillar Two. Where top-up tax is not fully collected through a QDMTT or the IIR, the UTPR allows other jurisdictions to collect the residual amount.
+    </p>
+
+    <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
+
+    <h2>Introduction</h2>
+    <p>
+      The Undertaxed Profits Rule (UTPR) is the backstop mechanism of OECD Pillar Two.
+    </p>
+    <p>
+      Where top-up tax is not fully collected through a Qualified Domestic Minimum Top-up Tax (QDMTT) or the Income Inclusion Rule (IIR), the UTPR allows other jurisdictions to collect the residual amount.
+    </p>
+    <p>
+      That is what makes it important. The UTPR ensures that low-taxed income does not fall outside the Pillar Two system simply because the primary charging rule did not apply.
+    </p>
+
+    <h2>What the UTPR Does</h2>
+    <p>
+      The UTPR applies to top-up tax that remains uncollected after the operation of other Pillar Two rules.
+    </p>
+    <p>
+      In practical terms, it:
+    </p>
+    <ul>
+      <li>identifies residual top-up tax within the group</li>
+      <li>allocates that amount across UTPR jurisdictions</li>
+      <li>requires those jurisdictions to impose tax through domestic adjustments</li>
+    </ul>
+    <p>
+      Unlike the IIR, which charges tax upward through the ownership chain, the UTPR reallocates collection rights across the group’s operating footprint.
+    </p>
+
+    <h2>How the UTPR Works</h2>
+
+    <h3>1. Determine the residual top-up tax</h3>
+    <p>
+      The first step is to identify top-up tax that has not already been collected under:
+    </p>
+    <ul>
+      <li>a QDMTT in the source jurisdiction</li>
+      <li>the IIR at parent level</li>
+    </ul>
+    <p>
+      Only the remaining amount is subject to UTPR allocation.
+    </p>
+
+    <h3>2. Identify the jurisdictions that apply the UTPR</h3>
+    <p>
+      The rule applies only in jurisdictions that have implemented the UTPR.
+    </p>
+    <p>
+      These are generally jurisdictions where the group has employees or tangible assets and where domestic law gives effect to the rule.
+    </p>
+
+    <h3>3. Allocate the residual amount</h3>
+    <p>
+      The residual top-up tax is allocated using a formula based on:
+    </p>
+    <ul>
+      <li>employee headcount</li>
+      <li>carrying value of tangible assets</li>
+    </ul>
+    <p>
+      This determines how much of the uncollected top-up tax each UTPR jurisdiction is entitled to bring into charge.
+    </p>
+
+    <div class="formula">
+      <strong>Allocation basis</strong>
+      <p>Residual top-up tax is allocated across UTPR jurisdictions by reference to employee headcount and carrying value of tangible assets.</p>
+    </div>
+
+    <h3>4. Apply the domestic adjustment</h3>
+    <p>
+      Each jurisdiction then enforces its allocated share through its domestic tax mechanism.
+    </p>
+    <p>
+      This may be done through a denial of deductions or an equivalent upward adjustment to taxable income.
+    </p>
+    <p>
+      The result is additional local tax payable.
+    </p>
+
+    <h2>Simple Example</h2>
+    <p>
+      Assume a group has low-taxed income in a jurisdiction, but no QDMTT applies locally and the parent jurisdiction does not impose IIR.
+    </p>
+    <p>
+      In that case, the remaining top-up tax does not disappear. It may instead be allocated to other jurisdictions that apply the UTPR, based on the group’s employee headcount and tangible assets in those countries.
+    </p>
+    <p>
+      The practical consequence is clear: where the primary collection mechanisms do not apply, the Pillar Two system still provides a way to collect the residual amount.
+    </p>
+
+    <h2>Why the UTPR Matters</h2>
+
+    <h3>It closes the remaining gap</h3>
+    <p>
+      If top-up tax is not collected through a QDMTT or IIR, the UTPR provides a backstop.
+    </p>
+
+    <h3>It extends enforcement beyond the parent jurisdiction</h3>
+    <p>
+      The system no longer depends only on the parent jurisdiction to protect the minimum tax outcome.
+    </p>
+
+    <h3>It reinforces the overall design of Pillar Two</h3>
+    <p>
+      Jurisdictions that do not implement the primary rules may effectively leave taxing rights available to others that have adopted the UTPR.
+    </p>
+
+    <div class="note">
+      <strong>Why this matters in practice</strong>
+      <p>
+        The UTPR means Pillar Two exposure can spread across the group’s wider operating footprint. That makes governance, allocation logic, and cross-border consistency more important than a narrow parent-company view of the rules.
+      </p>
+    </div>
+
+    <h2>Practical Implications for Multinational Groups</h2>
+    <p>
+      The UTPR adds another layer of complexity to Pillar Two implementation.
+    </p>
+
+    <h3>Exposure can arise across multiple jurisdictions</h3>
+    <p>
+      Unlike the IIR, which generally concentrates collection at parent level, the UTPR can create adjustments in several jurisdictions at once.
+    </p>
+
+    <h3>Allocation tracking becomes important</h3>
+    <p>
+      Groups need visibility over:
+    </p>
+    <ul>
+      <li>where employees are located</li>
+      <li>where tangible assets sit</li>
+      <li>which jurisdictions apply the UTPR</li>
+      <li>how residual top-up tax is allocated</li>
+    </ul>
+
+    <h3>Cross-border coordination becomes more difficult</h3>
+    <p>
+      Because the rule depends on consistent data and implementation across multiple countries, groups face a greater risk of misalignment, disputes, and inconsistent outcomes if governance is weak.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      The Undertaxed Profits Rule is the backstop that prevents residual Pillar Two top-up tax from escaping collection.
+    </p>
+    <p>
+      It applies where other mechanisms have not already brought the amount into charge and reallocates collection rights across jurisdictions that have implemented the rule.
+    </p>
+    <p>
+      For multinational groups, the implication is practical: Pillar Two exposure is not limited to the parent jurisdiction. Where residual top-up tax remains, multiple countries may have a basis to collect it.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article sits within the <em>Pillar Two Fundamentals</em> cluster and links back to the parent pillar page.
+      </p>
+      <ul>
+        <li><a href="post1.html">OECD Pillar Two Explained</a></li>
+        <li><a href="post2.html">Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</a></li>
+        <li><a href="thoughts.html">Qualified Domestic Minimum Top-up Tax (QDMTT)</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <img src="logo-v2.png" alt="Aaron Kuo logo">
+      <span>© 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Income Inclusion Rule overview</title>
+  <desc id="desc">A visual showing low-taxed subsidiary income moving upward to the parent jurisdiction under the IIR.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#08110f"/><stop offset="1" stop-color="#111827"/></linearGradient><style>.title{font-family:Inter,Arial,sans-serif;fill:#f8fafc;font-weight:800;letter-spacing:0}.label{font-family:Inter,Arial,sans-serif;fill:#e2e8f0;font-weight:700;letter-spacing:0}.muted{font-family:Inter,Arial,sans-serif;fill:#a8b3bf;font-weight:500;letter-spacing:0}.box{fill:rgba(15,23,42,.76);stroke:rgba(226,232,240,.16);stroke-width:1.5}.arrow{stroke:#2dd4bf;stroke-width:8;stroke-linecap:round;fill:none}.thin{stroke:#94a3b8;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}</style></defs>
+  <rect width="1200" height="520" fill="url(#bg)"/>
+  <text x="72" y="88" class="muted" font-size="18">INCOME INCLUSION RULE</text>
+  <text x="72" y="150" class="title" font-size="46">Low-taxed income moves up</text>
+  <g transform="translate(116 238)"><rect class="box" x="0" y="0" width="300" height="132" rx="8"/><text x="32" y="54" class="label" font-size="30">Subsidiary</text><text x="32" y="94" class="muted" font-size="22">ETR below 15%</text></g>
+  <path class="arrow" d="M466 304C560 214 660 214 754 304"/><path class="thin" d="M733 282l22 22-32 8"/>
+  <g transform="translate(784 238)"><rect class="box" x="0" y="0" width="300" height="132" rx="8"/><text x="32" y="54" class="label" font-size="30">Parent</text><text x="32" y="94" class="muted" font-size="22">Pays top-up tax</text></g>
+  <text x="498" y="378" class="muted" font-size="22">IIR brings the shortfall into charge at parent level.</text>
+</svg>

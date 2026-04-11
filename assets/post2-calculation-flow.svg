@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">IIR calculation flow</title>
+  <desc id="desc">A three-step flow for IIR calculation: calculate ETR, identify shortfall, allocate to parent.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#08110f"/><stop offset="1" stop-color="#111827"/></linearGradient><style>.title{font-family:Inter,Arial,sans-serif;fill:#f8fafc;font-weight:800;letter-spacing:0}.label{font-family:Inter,Arial,sans-serif;fill:#e2e8f0;font-weight:700;letter-spacing:0}.muted{font-family:Inter,Arial,sans-serif;fill:#a8b3bf;font-weight:500;letter-spacing:0}.step{fill:rgba(15,23,42,.76);stroke:rgba(226,232,240,.16);stroke-width:1.5}.num{font-family:Inter,Arial,sans-serif;fill:#071014;font-weight:800}.arrow{stroke:#94a3b8;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}</style></defs>
+  <rect width="1200" height="520" fill="url(#bg)"/>
+  <text x="72" y="88" class="muted" font-size="18">CALCULATION LOGIC</text>
+  <text x="72" y="150" class="title" font-size="46">From ETR to parent charge</text>
+  <g transform="translate(84 248)"><rect class="step" x="0" y="0" width="288" height="142" rx="8"/><circle cx="40" cy="42" r="18" fill="#2dd4bf"/><text x="34" y="49" class="num" font-size="20">1</text><text x="74" y="54" class="label" font-size="28">Calculate ETR</text><text x="32" y="102" class="muted" font-size="20">Jurisdictional basis</text></g>
+  <path class="arrow" d="M392 319H462"/><path class="arrow" d="M442 307l20 12-20 12"/>
+  <g transform="translate(484 248)"><rect class="step" x="0" y="0" width="288" height="142" rx="8"/><circle cx="40" cy="42" r="18" fill="#facc15"/><text x="33" y="49" class="num" font-size="20">2</text><text x="74" y="54" class="label" font-size="28">Find shortfall</text><text x="32" y="102" class="muted" font-size="20">15% minus ETR</text></g>
+  <path class="arrow" d="M792 319H862"/><path class="arrow" d="M842 307l20 12-20 12"/>
+  <g transform="translate(884 248)"><rect class="step" x="0" y="0" width="288" height="142" rx="8"/><circle cx="40" cy="42" r="18" fill="#60a5fa"/><text x="33" y="49" class="num" font-size="20">3</text><text x="74" y="54" class="label" font-size="28">Allocate charge</text><text x="32" y="102" class="muted" font-size="20">Parent applies IIR</text></g>
+</svg>

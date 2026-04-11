@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">IIR operating model implications</title>
+  <desc id="desc">A visual showing data quality, central oversight, and planning review as practical implications of the IIR.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#08110f"/><stop offset="1" stop-color="#111827"/></linearGradient><style>.title{font-family:Inter,Arial,sans-serif;fill:#f8fafc;font-weight:800;letter-spacing:0}.label{font-family:Inter,Arial,sans-serif;fill:#e2e8f0;font-weight:700;letter-spacing:0}.muted{font-family:Inter,Arial,sans-serif;fill:#a8b3bf;font-weight:500;letter-spacing:0}.card{fill:rgba(15,23,42,.76);stroke:rgba(226,232,240,.16);stroke-width:1.5}.accent{fill:#2dd4bf}.warn{fill:#facc15}.blue{fill:#60a5fa}.line{stroke:rgba(226,232,240,.20);stroke-width:2;fill:none}</style></defs>
+  <rect width="1200" height="520" fill="url(#bg)"/>
+  <text x="72" y="88" class="muted" font-size="18">OPERATING MODEL</text>
+  <text x="72" y="150" class="title" font-size="46">What the IIR forces into view</text>
+  <circle cx="600" cy="304" r="76" fill="rgba(45,212,191,.12)" stroke="rgba(45,212,191,.45)" stroke-width="2"/>
+  <text x="562" y="296" class="label" font-size="34">IIR</text>
+  <text x="520" y="334" class="muted" font-size="20">parent charge</text>
+  <path class="line" d="M526 304H358M674 304H842M600 228V204M600 380V404"/>
+  <g transform="translate(86 246)"><rect class="card" x="0" y="0" width="270" height="118" rx="8"/><circle cx="34" cy="38" r="12" class="accent"/><text x="62" y="46" class="label" font-size="26">Data quality</text><text x="30" y="86" class="muted" font-size="19">ETR and covered taxes</text></g>
+  <g transform="translate(844 246)"><rect class="card" x="0" y="0" width="270" height="118" rx="8"/><circle cx="34" cy="38" r="12" class="warn"/><text x="62" y="46" class="label" font-size="26">Oversight</text><text x="30" y="86" class="muted" font-size="19">jurisdiction visibility</text></g>
+  <g transform="translate(465 72)"><rect class="card" x="0" y="0" width="270" height="118" rx="8"/><circle cx="34" cy="38" r="12" class="blue"/><text x="62" y="46" class="label" font-size="26">Governance</text><text x="30" y="86" class="muted" font-size="19">parent-level control</text></g>
+  <g transform="translate(465 408)"><rect class="card" x="0" y="0" width="270" height="92" rx="8"/><circle cx="34" cy="34" r="12" class="warn"/><text x="62" y="42" class="label" font-size="26">Planning review</text></g>
+</svg>

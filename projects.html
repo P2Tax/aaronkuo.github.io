@@ -29,8 +29,12 @@
     a { text-decoration: none; color: inherit; }
 
     .nav {
-      border-bottom: 1px solid var(--line);
-      background: rgba(2,6,23,0.9);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
     }
 
     .nav-inner, .container, .footer-inner {
@@ -42,22 +46,46 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
+      min-height: 78px;
+      gap: 24px;
     }
 
-    .brand {
+    .site-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    .site-logo {
+      width: auto;
+      height: 40px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .site-brand-text {
+      color: var(--text);
+      font-size: 17px;
       font-weight: 700;
-      font-size: 18px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a {
       color: var(--muted);
       font-size: 14px;
+      line-height: 1;
     }
 
     .nav-links a.active,
@@ -111,6 +139,27 @@
       color: var(--muted);
       font-size: 14px;
     }
+
+    @media (max-width: 880px) {
+      .nav-inner {
+        align-items: flex-start;
+        padding: 16px 0;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner {
+        flex-direction: column;
+      }
+
+      .site-logo {
+        height: 36px;
+      }
+    }
   </style>
 </head>
 
@@ -118,12 +167,17 @@
 
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand">Aaron Kuo</div>
+      <a href="index.html" class="site-brand" aria-label="Aaron Kuo home">
+        <img src="logo-v2.png" alt="Aaron Kuo logo" class="site-logo">
+        <span class="site-brand-text">Aaron Kuo</span>
+      </a>
+
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="thoughts.html">Thoughts</a>
         <a href="book.html">Book</a>
         <a href="projects.html" class="active">Projects</a>
+        <a href="about.html">About</a>
       </div>
     </div>
   </nav>

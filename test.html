@@ -52,32 +52,32 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 78px;
-      gap: 24px;
+      min-height: 72px;
+      gap: 20px;
     }
 
-    .site-brand {
-      display: inline-flex;
+    .brand-wrap {
+      display: flex;
       align-items: center;
-      gap: 14px;
-      min-width: 0;
+      gap: 18px;
       flex-shrink: 0;
     }
 
-    .site-logo {
-      width: auto;
-      height: 40px;
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
       display: block;
-      flex-shrink: 0;
     }
 
-    .site-brand-text {
-      color: var(--text);
-      font-size: 17px;
+    .brand-mark {
+      font-size: 22px;
       font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      white-space: nowrap;
+      color: var(--text);
+      letter-spacing: -0.02em;
     }
 
     .nav-links {
@@ -85,13 +85,11 @@
       gap: 22px;
       align-items: center;
       flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
     .nav-links a {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1;
     }
 
     .nav-links a.active,
@@ -243,34 +241,29 @@
     }
 
     @media (max-width: 880px) {
-      .nav-inner {
-        align-items: flex-start;
-        padding: 16px 0;
-      }
-
-      .nav-links {
-        gap: 14px;
-      }
+      .highlight { grid-template-columns: 1fr; }
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
     }
 
     @media (max-width: 560px) {
       .nav-inner {
         flex-direction: column;
       }
-
-      .site-logo {
-        height: 36px;
-      }
+      .hero { padding-top: 56px; }
+      .lead { font-size: 16px; }
     }
   </style>
 </head>
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="site-brand" aria-label="Aaron Kuo home">
-        <img src="logo-v2.png" alt="Aaron Kuo logo" class="site-logo">
-        <span class="site-brand-text">Aaron Kuo</span>
-      </a>
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
 
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>

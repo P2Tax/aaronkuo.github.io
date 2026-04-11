@@ -4,11 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aaron Kuo</title>
-  <meta name="description" content="Aaron Kuo | Tax Technology, AI, and data-driven operating models." />
+  <meta name="description" content="Aaron Kuo | Tax Technology, Pillar Two, AI, and data-driven operating models." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
       --bg: #020617;
@@ -23,6 +22,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: "Inter", Arial, sans-serif;
@@ -49,17 +49,35 @@
     }
 
     .nav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 72px;
-  padding: 0;
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
 
     .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
       font-weight: 700;
+      color: var(--text);
       letter-spacing: -0.02em;
-      font-size: 18px;
     }
 
     .nav-links {
@@ -157,45 +175,9 @@
       margin-bottom: 16px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      grid-column: span 4;
-      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 24px;
-      min-height: 220px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(96,165,250,0.35);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
-      letter-spacing: -0.02em;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 15px;
-    }
-
     .highlight {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 18px;
       margin-top: 14px;
     }
@@ -233,7 +215,7 @@
     .mini-list li:last-child { border-bottom: none; }
 
     .feature-link {
-      display: block;
+      display: inline-block;
       margin-top: 16px;
       color: var(--accent);
       font-weight: 600;
@@ -248,19 +230,25 @@
       padding: 24px 0 40px;
       color: var(--muted);
       font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 18px;
+      display: block;
     }
 
     @media (max-width: 880px) {
-      .card { grid-column: span 12; }
       .highlight { grid-template-columns: 1fr; }
-      .nav-inner { gap: 16px; }
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
       .nav-links { gap: 14px; }
     }
 
     @media (max-width: 560px) {
       .nav-inner {
         flex-direction: column;
-        align-items: flex-start;
       }
       .hero { padding-top: 56px; }
       .lead { font-size: 16px; }
@@ -270,14 +258,13 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <div style="display:flex; align-items:center; gap:18px;">
-  <a href="index.html" class="brand" style="display:flex; align-items:center;">
-    <img src="logo2.png" style="height:28px; display:block;">
-  </a>
-  <a href="index.html" style="font-size:22px; font-weight:700; color:#e2e8f0; text-decoration:none; letter-spacing:-0.02em;">
-    AK
-  </a>
-</div>
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="thoughts.html">Thoughts</a>
@@ -290,81 +277,40 @@
 
   <main class="container">
     <section class="hero">
-      <div class="eyebrow">Tax Technology · AI · Operating Models</div>
-      <h1>Building at the intersection of tax, technology, and AI.</h1>
+      <div class="eyebrow">Tax Technology · Pillar Two · AI</div>
+      <h1>Building a structured body of work at the intersection of tax, technology, and AI.</h1>
       <p class="lead">
-        I work on how complex regulatory frameworks become scalable systems, data structures,
-        and practical operating models. My focus sits where tax interpretation stops being theory
-        and starts becoming infrastructure.
+        I write about how complex regulatory frameworks become scalable systems, data structures,
+        and operating models. The focus is practical: what it takes to turn technical rules into
+        infrastructure that can actually be operated.
       </p>
 
       <div class="hero-actions">
-        <a class="button primary" href="thoughts.html">
-          <i class="fa-solid fa-arrow-right"></i>
-          Read my thoughts
-        </a>
-        <a class="button secondary" href="https://www.linkedin.com/in/aaron-kuo-99775171/" target="_blank">
-          <i class="fab fa-linkedin"></i>
-          LinkedIn
-        </a>
-        <a class="button secondary" href="mailto:aaron.cl.kuo@gmail.com">
-          <i class="fas fa-envelope"></i>
-          Email
-        </a>
+        <a class="button primary" href="thoughts.html">Read my thoughts</a>
+        <a class="button secondary" href="book.html">View the book</a>
+        <a class="button secondary" href="https://www.linkedin.com/in/aaron-kuo-99775171/" target="_blank">LinkedIn</a>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-title">What I work on</div>
-      <div class="grid">
-        <div class="card">
-          <h3>Pillar Two & global tax reporting</h3>
-          <p>
-            Data readiness, compliance operating models, reporting mechanics, and the practical build-out
-            required to make Pillar Two sustainable.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Tax systems & data architecture</h3>
-          <p>
-            Translating tax requirements into workflows, control points, mapping logic, and systems that
-            actually stand up under reporting pressure.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Applied AI for professional work</h3>
-          <p>
-            Exploring where AI genuinely improves analysis, documentation, and design work without becoming
-            performative innovation theatre.
-          </p>
-        </div>
-      </div>
-    </section>
+      <div class="section-title">Featured pillar</div>
 
-    <section class="section">
       <div class="highlight">
         <div class="panel">
-          <p style="margin-top:10px; color:#94a3b8;">
-  Based on my book:
-  <a href="https://www.amazon.com/OECD-PILLAR-TWO-ESSENTIALS-IMPLICATIONS-ebook/dp/B0DY32HW2M"
-     target="_blank"
-     style="color:#60a5fa;">
-     OECD Pillar Two Essentials
-  </a>
-</p>
+          <h2>OECD Pillar Two Explained</h2>
           <p>
-            Pillar Two is not just a technical tax reform. It is a structural shift in data, systems, governance,
-            and execution. The harder part is rarely the rule itself. It is turning the rule into repeatable infrastructure.
+            A structured guide to the 15% global minimum tax, including how Pillar Two works,
+            why it was introduced, and the role of the IIR, UTPR, and QDMTT.
           </p>
-          <a class="feature-link" href="post1.html">Read: Why Pillar Two Changes Everything →</a>
+          <a class="feature-link" href="post1.html">Read the guide →</a>
         </div>
 
         <div class="panel">
-          <h2>Current perspective</h2>
+          <h2>Current focus</h2>
           <ul class="mini-list">
-            <li>Tax is increasingly a systems design problem</li>
-            <li>AI is useful when it improves thinking, not noise</li>
-            <li>Operating model discipline matters more than hype</li>
+            <li>Pillar Two operating models and reporting architecture</li>
+            <li>Tax data design and implementation discipline</li>
+            <li>Applied AI in documentation, workflow, and analysis</li>
           </ul>
         </div>
       </div>
@@ -372,7 +318,10 @@
   </main>
 
   <footer>
-    <div class="footer-inner">© 2026 Aaron Kuo</div>
+    <div class="footer-inner">
+      <img src="logo-v2.png" alt="Aaron Kuo logo">
+      <span>© 2026 Aaron Kuo</span>
+    </div>
   </footer>
 </body>
 </html>

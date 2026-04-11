@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -112,7 +112,7 @@
       border-radius: 999px;
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.03em;
+      letter-spacing: 0;
       margin-right: 10px;
       margin-bottom: 16px;
     }
@@ -130,7 +130,7 @@
     }
 
     h1 {
-      font-size: clamp(34px, 5vw, 58px);
+      font-size: 52px;
       line-height: 1.02;
       letter-spacing: 0;
       margin: 0 0 16px;
@@ -318,7 +318,7 @@ h2 {
       margin-bottom: 14px;
       color: #2dd4bf;
       font-size: 13px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0;
       text-transform: uppercase;
     }
 
@@ -373,7 +373,7 @@ h2 {
       display: block;
       margin-bottom: 10px;
       font-size: 14px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0;
       text-transform: uppercase;
       color: var(--accent);
     }
@@ -421,6 +421,7 @@ h2 {
 
     @media (max-width: 560px) {
       .nav-inner { flex-direction: column; }
+      h1 { font-size: 36px; }
       p, li { font-size: 16px; }
       .intro { font-size: 17px; }
       .article-toc ol { columns: 1; }
@@ -457,7 +458,7 @@ h2 {
       The Income Inclusion Rule is the core charging mechanism of Pillar Two. It is the rule that turns the global minimum tax into something enforceable by bringing low-taxed income into charge at parent level.
     </p>
 
-    <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
+    <div class="article-meta">Cluster article &middot; Pillar Two Fundamentals</div>
 
     <nav class="article-toc" aria-label="In this article">
       <strong>In this article</strong>
@@ -544,7 +545,7 @@ h2 {
 
     <div class="formula">
       <strong>Core logic</strong>
-      <p>Top-up tax percentage = 15% minimum rate − jurisdictional ETR</p>
+      <p>Top-up tax percentage = 15% minimum rate minusjurisdictional ETR</p>
     </div>
 
     <h3>4. Apply the calculation to excess profit</h3>
@@ -664,8 +665,10 @@ h2 {
   <footer>
     <div class="footer-inner">
       <img src="logo3.png" alt="Aaron Kuo logo">
-      <span>© 2026 Aaron Kuo</span>
+      <span>&copy; 2026 Aaron Kuo</span>
     </div>
   </footer>
 </body>
 </html>
+
+

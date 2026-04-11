@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -112,7 +112,7 @@
       border-radius: 999px;
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.03em;
+      letter-spacing: 0;
       margin-right: 10px;
       margin-bottom: 16px;
     }
@@ -130,7 +130,7 @@
     }
 
     h1 {
-      font-size: clamp(34px, 5vw, 58px);
+      font-size: 52px;
       line-height: 1.02;
       letter-spacing: 0;
       margin: 0 0 16px;
@@ -319,7 +319,7 @@
       margin-bottom: 14px;
       color: #2dd4bf;
       font-size: 13px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0;
       text-transform: uppercase;
     }
 
@@ -374,7 +374,7 @@
       display: block;
       margin-bottom: 10px;
       font-size: 14px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0;
       text-transform: uppercase;
       color: var(--accent);
     }
@@ -422,6 +422,7 @@
 
     @media (max-width: 560px) {
       .nav-inner { flex-direction: column; }
+      h1 { font-size: 36px; }
       p, li { font-size: 16px; }
       .intro { font-size: 17px; }
       .article-toc ol { columns: 1; }
@@ -455,10 +456,10 @@
     <h1>Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated</h1>
 
     <p class="intro">
-      Top-up tax is the core calculation outcome of Pillar Two. It measures the shortfall between a jurisdiction’s effective tax rate and the 15% minimum, then turns that shortfall into an operational amount that may be collected under the rule order.
+      Top-up tax is the core calculation outcome of Pillar Two. It measures the shortfall between a jurisdiction's effective tax rate and the 15% minimum, then turns that shortfall into an operational amount that may be collected under the rule order.
     </p>
 
-    <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
+    <div class="article-meta">Cluster article &middot; Pillar Two Fundamentals</div>
 
     <nav class="article-toc" aria-label="In this article">
       <strong>In this article</strong>
@@ -553,7 +554,7 @@
 
     <div class="formula">
       <strong>Core formula</strong>
-      <p>Top-up tax percentage = 15% − jurisdictional ETR</p>
+      <p>Top-up tax percentage = 15% minusjurisdictional ETR</p>
     </div>
 
     <h3>5. Apply the substance-based income exclusion</h3>
@@ -682,8 +683,10 @@
   <footer>
     <div class="footer-inner">
       <img src="logo3.png" alt="Aaron Kuo logo">
-      <span>© 2026 Aaron Kuo</span>
+      <span>&copy; 2026 Aaron Kuo</span>
     </div>
   </footer>
 </body>
 </html>
+
+

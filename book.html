@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -13,19 +13,20 @@
       --bg: #020617;
       --panel: #0b1220;
       --line: #1e293b;
+      --line-soft: rgba(96, 165, 250, 0.24);
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #60a5fa;
+      --accent-2: #5eead4;
       --max: 1040px;
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: "Inter", Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
     }
 
@@ -75,7 +76,7 @@
       font-size: 22px;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       display: none;
     }
 
@@ -96,12 +97,43 @@
       color: var(--text);
     }
 
-    .container { padding: 70px 0 80px; }
+    .container {
+      padding: 70px 0 84px;
+    }
+
+    .book-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+      gap: 42px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--accent-2);
+      display: inline-block;
+    }
 
     h1 {
-      font-size: clamp(34px, 5vw, 56px);
-      margin: 0 0 12px;
-      letter-spacing: -0.04em;
+      font-size: 56px;
+      line-height: 1.05;
+      margin: 0 0 16px;
+      letter-spacing: 0;
     }
 
     .sub {
@@ -109,29 +141,134 @@
       font-size: 17px;
       line-height: 1.8;
       max-width: 760px;
-      margin-bottom: 28px;
+      margin: 0;
     }
 
-    .panel {
-      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+    .book-panel,
+    .book-cover,
+    .chapter-panel {
+      background: rgba(11, 18, 32, 0.72);
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: 8px;
+    }
+
+    .book-panel {
       padding: 28px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
     }
 
-    .panel h2 {
-      margin: 0 0 12px;
+    .book-cover {
+      min-height: 320px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-color: var(--line-soft);
+      background: linear-gradient(145deg, rgba(7, 17, 29, 0.96), rgba(11, 18, 32, 0.96));
+    }
+
+    .book-cover img {
+      width: 210px;
+      max-width: 82%;
+      height: auto;
+      display: block;
+      margin-bottom: 32px;
+    }
+
+    .cover-label {
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+
+    .cover-title {
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
       font-size: 28px;
-      letter-spacing: -0.03em;
+      line-height: 1.25;
+      letter-spacing: 0;
     }
 
-    .panel p, .panel li {
+    .book-panel p,
+    .book-panel li,
+    .chapter-panel p,
+    .chapter-panel li {
       color: var(--muted);
       line-height: 1.8;
     }
 
-    ul { padding-left: 20px; }
+    .book-panel p {
+      margin: 0 0 18px;
+    }
+
+    .book-panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .book-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid var(--line);
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: #020617;
+      border-color: transparent;
+    }
+
+    .button.secondary {
+      color: var(--text);
+      background: transparent;
+    }
+
+    .button.secondary:hover {
+      border-color: rgba(96, 165, 250, 0.42);
+    }
+
+    .chapter-panel {
+      padding: 26px 28px;
+      margin-top: 22px;
+    }
+
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .chapter-grid li {
+      border-top: 1px solid rgba(148, 163, 184, 0.18);
+      padding-top: 14px;
+    }
+
+    .chapter-grid strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 6px;
+    }
 
     footer {
       border-top: 1px solid rgba(30, 41, 59, 0.85);
@@ -144,11 +281,33 @@
       font-size: 14px;
     }
 
+    @media (max-width: 860px) {
+      .book-hero,
+      .chapter-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 560px) {
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
+        padding: 14px 0;
+      }
+
+      .container {
+        padding-top: 46px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .book-panel,
+      .book-cover,
+      .chapter-panel {
+        padding: 22px;
       }
     }
   </style>
@@ -173,39 +332,52 @@
   </nav>
 
   <main class="container">
-    <h1>Book</h1>
-    <p class="sub">
-      A practical guide to the global minimum tax, written to make Pillar Two more understandable for professionals
-      working across tax, finance, and implementation.
-    </p>
+    <section class="book-hero" aria-labelledby="book-title">
+      <div>
+        <p class="eyebrow">Book</p>
+        <h1 id="book-title">OECD Pillar Two Essentials</h1>
+        <p class="sub">
+          A practical guide to the global minimum tax, written to make Pillar Two more understandable for professionals working across tax, finance, and implementation.
+        </p>
+        <div class="book-actions">
+          <a class="button primary" href="https://www.amazon.com/OECD-PILLAR-TWO-ESSENTIALS-IMPLICATIONS-ebook/dp/B0DY32HW2M" target="_blank" rel="noopener">View on Amazon</a>
+          <a class="button secondary" href="post1.html">Read the Pillar Two guide</a>
+        </div>
+      </div>
 
-    <div class="panel">
-      <h2>OECD Pillar Two Essentials</h2>
+      <aside class="book-cover" aria-label="Book summary">
+        <div>
+          <img src="logo3.png" alt="Aaron Kuo logo">
+          <p class="cover-label">Practical guide</p>
+          <p class="cover-title">Global minimum tax explained for implementation-minded readers.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="book-panel" aria-labelledby="overview-title">
+      <h2 id="overview-title">What it covers</h2>
       <p>
-        This book covers the foundations, mechanics, calculations, safe harbours, filing concepts,
-        and implementation thinking behind Pillar Two.
+        The book covers the foundations, mechanics, calculations, safe harbours, filing concepts, and implementation thinking behind Pillar Two.
       </p>
-      <ul>
-        <li>Background and foundations</li>
-        <li>Core rules and mechanisms</li>
-        <li>Calculations, adjustments, and compliance</li>
-        <li>Advanced applications</li>
-        <li>Technical tools and implementation</li>
-      </ul>
-     <p>
-  Available on Amazon:
-</p>
+      <p>
+        It is designed for readers who need more than a rule summary: the emphasis is on understanding how the regime works and what it means for data, reporting, and operating model design.
+      </p>
+    </section>
 
-<a href="https://www.amazon.com/OECD-PILLAR-TWO-ESSENTIALS-IMPLICATIONS-ebook/dp/B0DY32HW2M"
-   target="_blank"
-   style="display:inline-block; margin-top:12px; padding:12px 18px; background:#e2e8f0; color:#020617; border-radius:10px; font-weight:600;">
-   View on Amazon
-</a>
-    </div>
+    <section class="chapter-panel" aria-labelledby="chapter-title">
+      <h2 id="chapter-title">Core Themes</h2>
+      <ul class="chapter-grid">
+        <li><strong>Foundations</strong><span>Background, policy intent, scope, and the core architecture of the rules.</span></li>
+        <li><strong>Mechanics</strong><span>Charging rules, calculations, ETR analysis, adjustments, and safe harbour concepts.</span></li>
+        <li><strong>Implementation</strong><span>Data readiness, workflow design, controls, and the practical burden of compliance.</span></li>
+      </ul>
+    </section>
   </main>
 
   <footer>
-    <div class="footer-inner">© 2026 Aaron Kuo</div>
+    <div class="footer-inner">&copy; 2026 Aaron Kuo</div>
   </footer>
 </body>
 </html>
+
+

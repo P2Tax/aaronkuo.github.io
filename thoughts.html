@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -13,10 +13,11 @@
       --bg: #020617;
       --panel: #0b1220;
       --line: #1e293b;
+      --line-soft: rgba(96, 165, 250, 0.24);
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #60a5fa;
-      --accent-soft: rgba(96, 165, 250, 0.12);
+      --accent-2: #5eead4;
       --max: 1040px;
     }
 
@@ -25,9 +26,7 @@
     body {
       margin: 0;
       font-family: "Inter", Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
     }
 
@@ -77,7 +76,7 @@
       font-size: 22px;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       display: none;
     }
 
@@ -99,92 +98,114 @@
     }
 
     .container {
-      padding: 56px 0 72px;
+      padding: 64px 0 82px;
     }
 
     .hero {
-      margin-bottom: 28px;
+      max-width: 780px;
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--accent-2);
+      display: inline-block;
     }
 
     h1 {
-      font-size: clamp(38px, 6vw, 64px);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-      margin: 0 0 12px;
+      font-size: 56px;
+      line-height: 1.05;
+      letter-spacing: 0;
+      margin: 0 0 16px;
     }
 
     .sub {
       color: var(--muted);
       font-size: 17px;
       line-height: 1.75;
-      max-width: 740px;
       margin: 0;
     }
 
     .section {
-      margin-top: 32px;
+      margin-top: 46px;
     }
 
-    .section-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .section-note {
       color: var(--muted);
-      margin: 0 0 14px;
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0;
+      font-size: 14px;
     }
 
     .top-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
       gap: 16px;
     }
 
-    .panel {
-      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+    .panel,
+    .archive {
+      background: rgba(11, 18, 32, 0.72);
       border: 1px solid var(--line);
-      border-radius: 22px;
+      border-radius: 8px;
       padding: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
     }
 
-    .feature-card,
-    .latest-card,
-    .cluster-card {
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    .panel:hover,
+    .archive-list a:hover {
+      border-color: rgba(96, 165, 250, 0.42);
     }
 
-    .feature-card:hover,
-    .latest-card:hover,
-    .cluster-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(96,165,250,0.35);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-    }
-
-    .meta {
-      color: var(--accent);
-      font-size: 11px;
+    .meta,
+    .item-type {
+      color: var(--accent-2);
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 10px;
+      letter-spacing: 0;
       font-weight: 700;
     }
 
-    .feature-card h2,
-    .latest-card h2,
-    .cluster-card h3 {
-      margin: 0 0 10px;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
+    .meta {
+      margin-bottom: 12px;
     }
 
-    .feature-card h2,
-    .latest-card h2 {
-      font-size: 30px;
-    }
-
+    .feature-card h3,
+    .latest-card h3,
     .cluster-card h3 {
-      font-size: 24px;
+      margin: 0 0 12px;
+      letter-spacing: 0;
+      line-height: 1.25;
+      font-size: 25px;
     }
 
     .feature-card p,
@@ -192,7 +213,6 @@
     .cluster-card p,
     .archive-list a span,
     .supporting-list a span,
-    .mini-cluster-list a span,
     .future-note {
       color: var(--muted);
       line-height: 1.7;
@@ -201,25 +221,24 @@
 
     .cta {
       display: inline-block;
-      margin-top: 14px;
+      margin-top: 16px;
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 14px;
     }
 
-    .cluster-grid {
+    .cluster-layout {
       display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr);
       gap: 16px;
       align-items: start;
     }
 
     .pillar-link {
       display: block;
-      padding: 14px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(96,165,250,0.22);
-      background: rgba(96, 165, 250, 0.08);
-      margin-top: 14px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(148, 163, 184, 0.18);
     }
 
     .pillar-link strong,
@@ -227,9 +246,10 @@
     .archive-title,
     .mini-cluster-list strong {
       display: block;
-      font-size: 17px;
-      line-height: 1.4;
-      margin-bottom: 3px;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.45;
+      margin: 4px 0 4px;
     }
 
     .supporting-list,
@@ -237,32 +257,28 @@
     .archive-list {
       list-style: none;
       padding: 0;
-      margin: 14px 0 0;
+      margin: 16px 0 0;
     }
 
     .supporting-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px 14px;
+      gap: 0 22px;
     }
 
     .supporting-list a,
     .mini-cluster-list a {
       display: block;
-      padding: 10px 0;
-      border-top: 1px solid rgba(30,41,59,0.85);
+      padding: 13px 0;
+      border-top: 1px solid rgba(148, 163, 184, 0.18);
     }
 
     .archive {
-      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
-      border: 1px solid var(--line);
-      border-radius: 22px;
       padding: 8px 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
     }
 
     .archive-list li {
-      border-bottom: 1px solid rgba(30,41,59,0.85);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
     .archive-list li:last-child {
@@ -271,32 +287,24 @@
 
     .archive-list a {
       display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 16px;
-      padding: 14px 0;
+      grid-template-columns: 112px 1fr;
+      gap: 18px;
+      padding: 15px 0;
       align-items: start;
+      border: 1px solid transparent;
+      border-radius: 8px;
     }
 
     .archive-date {
       color: var(--muted);
       font-size: 13px;
-      padding-top: 1px;
-    }
-
-    .item-type {
-      display: block;
-      color: var(--accent);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 700;
-      margin-bottom: 4px;
+      padding-top: 2px;
     }
 
     .future-note {
-      margin-top: 16px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(30,41,59,0.85);
+      margin: 16px 0 0;
+      padding-top: 14px;
+      border-top: 1px solid rgba(148, 163, 184, 0.18);
     }
 
     footer {
@@ -321,15 +329,18 @@
 
     @media (max-width: 920px) {
       .top-grid,
-      .cluster-grid,
+      .cluster-layout,
       .supporting-list {
         grid-template-columns: 1fr;
       }
-    }
 
-    @media (max-width: 880px) {
-      .nav-inner { align-items: flex-start; padding: 14px 0; }
-      .nav-links { gap: 14px; }
+      .section-heading {
+        display: block;
+      }
+
+      .section-note {
+        margin-top: 10px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -340,7 +351,20 @@
     }
 
     @media (max-width: 560px) {
-      .nav-inner { flex-direction: column; }
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 0;
+      }
+
+      .container {
+        padding-top: 46px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
     }
   </style>
 </head>
@@ -366,96 +390,100 @@
 
   <main class="container">
     <section class="hero">
+      <p class="eyebrow">Writing archive</p>
       <h1>Thoughts</h1>
       <p class="sub">
         A structured archive of writing on Pillar Two, tax technology, data, and AI. The goal is not a simple chronological blog, but a growing body of connected work that is easy to navigate by topic.
       </p>
     </section>
 
-    <section class="section">
-      <div class="section-label">Start here</div>
+    <section class="section" aria-labelledby="start-title">
+      <div class="section-heading">
+        <h2 id="start-title">Start Here</h2>
+        <p class="section-note">Begin with the main guide, then move into the latest article or the topic cluster below.</p>
+      </div>
 
       <div class="top-grid">
         <a class="panel feature-card" href="post1.html">
-          <div class="meta">Featured Guide · Pillar Page</div>
-          <h2>OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</h2>
+          <div class="meta">Featured guide</div>
+          <h3>OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</h3>
           <p>
             A broad, practical guide to the 15% global minimum tax, including why it was introduced, how the regime works, and the role of the IIR, UTPR, and QDMTT.
           </p>
-          <span class="cta">Read the guide →</span>
+          <span class="cta">Read the guide &rarr;</span>
         </a>
 
         <a class="panel latest-card" href="post9.html">
-          <div class="meta">Latest Article</div>
-          <h2>Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2026 Matters</h2>
-          <p>
-            Transitional simplification, tightening thresholds, and why the remaining window matters.
-          </p>
-          <span class="cta">Open article →</span>
+          <div class="meta">Latest article</div>
+          <h3>Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2026 Matters</h3>
+          <p>Transitional simplification, tightening thresholds, and why the remaining window matters.</p>
+          <span class="cta">Open article &rarr;</span>
         </a>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-label">Topic clusters</div>
+    <section class="section" aria-labelledby="clusters-title">
+      <div class="section-heading">
+        <h2 id="clusters-title">Topic Clusters</h2>
+        <p class="section-note">The archive is organized by subject so related articles reinforce each other instead of feeling like isolated posts.</p>
+      </div>
 
-      <div class="cluster-grid">
+      <div class="cluster-layout">
         <div class="panel cluster-card">
-          <div class="meta">Main Cluster</div>
+          <div class="meta">Main cluster</div>
           <h3>Pillar Two Fundamentals</h3>
-          <p>
-            Core concepts, charging rules, and the basic mechanics of the global minimum tax regime.
-          </p>
+          <p>Core concepts, charging rules, and the basic mechanics of the global minimum tax regime.</p>
 
           <a class="pillar-link" href="post1.html">
-            <span class="item-type">Pillar Page</span>
+            <span class="item-type">Pillar page</span>
             <strong>OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</strong>
             <span>Broad foundation article covering the purpose, mechanics, and core rules.</span>
           </a>
 
           <ul class="supporting-list">
-            <li><a href="post2.html"><span class="item-type">Cluster Article</span><strong>Income Inclusion Rule (IIR)</strong><span>How top-up tax is collected at parent level.</span></a></li>
-            <li><a href="post3.html"><span class="item-type">Cluster Article</span><strong>Undertaxed Profits Rule (UTPR)</strong><span>How residual top-up tax is collected.</span></a></li>
-            <li><a href="post4.html"><span class="item-type">Cluster Article</span><strong>Qualified Domestic Minimum Top-up Tax (QDMTT)</strong><span>How jurisdictions retain tax rights locally.</span></a></li>
-            <li><a href="post5.html"><span class="item-type">Cluster Article</span><strong>Top-Up Tax Explained</strong><span>How the 15% shortfall is calculated.</span></a></li>
-            <li><a href="post6.html"><span class="item-type">Cluster Article</span><strong>Effective Tax Rate (ETR)</strong><span>How low-tax outcomes are measured.</span></a></li>
-            <li><a href="post7.html"><span class="item-type">Cluster Article</span><strong>Substance-Based Income Exclusion (SBIE)</strong><span>Why not all profit is exposed.</span></a></li>
-            <li><a href="post8.html"><span class="item-type">Cluster Article</span><strong>Pillar Two Rule Order Explained</strong><span>How QDMTT, IIR, and UTPR interact.</span></a></li>
-            <li><a href="post9.html"><span class="item-type">Cluster Article</span><strong>Pillar Two Safe Harbours</strong><span>Transitional relief and why 2026 matters.</span></a></li>
+            <li><a href="post2.html"><span class="item-type">Cluster article</span><strong>Income Inclusion Rule (IIR)</strong><span>How top-up tax is collected at parent level.</span></a></li>
+            <li><a href="post3.html"><span class="item-type">Cluster article</span><strong>Undertaxed Profits Rule (UTPR)</strong><span>How residual top-up tax is collected.</span></a></li>
+            <li><a href="post4.html"><span class="item-type">Cluster article</span><strong>Qualified Domestic Minimum Top-up Tax (QDMTT)</strong><span>How jurisdictions retain tax rights locally.</span></a></li>
+            <li><a href="post5.html"><span class="item-type">Cluster article</span><strong>Top-Up Tax Explained</strong><span>How the 15% shortfall is calculated.</span></a></li>
+            <li><a href="post6.html"><span class="item-type">Cluster article</span><strong>Effective Tax Rate (ETR)</strong><span>How low-tax outcomes are measured.</span></a></li>
+            <li><a href="post7.html"><span class="item-type">Cluster article</span><strong>Substance-Based Income Exclusion (SBIE)</strong><span>Why not all profit is exposed.</span></a></li>
+            <li><a href="post8.html"><span class="item-type">Cluster article</span><strong>Pillar Two Rule Order Explained</strong><span>How QDMTT, IIR, and UTPR interact.</span></a></li>
+            <li><a href="post9.html"><span class="item-type">Cluster article</span><strong>Pillar Two Safe Harbours</strong><span>Transitional relief and why 2026 matters.</span></a></li>
           </ul>
         </div>
 
         <div class="panel cluster-card">
-          <div class="meta">Secondary Cluster</div>
+          <div class="meta">Secondary cluster</div>
           <h3>AI in Tax</h3>
-          <p>
-            Practical writing on how AI changes documentation, workflow, reasoning, and operating model design in tax work.
-          </p>
+          <p>Practical writing on how AI changes documentation, workflow, reasoning, and operating model design in tax work.</p>
 
           <ul class="mini-cluster-list">
-            <li><a href="#"><span class="item-type">Pillar Guide</span><strong>AI in Tax: A Practical Operating Model View</strong><span>Upcoming anchor article on where AI adds real value in tax and where it creates noise.</span></a></li>
-            <li><a href="#"><span class="item-type">Supporting Article</span><strong>Using AI for Requirement and Design Documentation</strong><span>Upcoming article on turning AI into a structured drafting partner.</span></a></li>
+            <li><a href="projects.html"><span class="item-type">Related work</span><strong>AI Use Cases for Tax Data and Workflow Acceleration</strong><span>A selected-work example of AI as a controlled productivity layer.</span></a></li>
+            <li><a href="about.html"><span class="item-type">Working lens</span><strong>How I think about tools and judgment</strong><span>A short profile note on keeping context and review discipline intact.</span></a></li>
           </ul>
 
-          <p class="future-note">More clusters will be added here as the archive expands.</p>
+          <p class="future-note">More AI-focused writing can be added here as the archive expands.</p>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-label">Recent writing</div>
+    <section class="section" aria-labelledby="recent-title">
+      <div class="section-heading">
+        <h2 id="recent-title">Recent Writing</h2>
+        <p class="section-note">A chronological entry point for readers who want to scan the full Pillar Two fundamentals series.</p>
+      </div>
 
       <div class="archive">
         <ul class="archive-list">
-          <li><a href="post9.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster Article · Pillar Two Fundamentals</span><span class="archive-title">Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2026 Matters</span><span>Bridge article from fundamentals into future data-readiness work.</span></div></a></li>
-          <li><a href="post8.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster Article · Pillar Two Fundamentals</span><span class="archive-title">Pillar Two Rule Order Explained: How QDMTT, IIR, and UTPR Interact</span><span>How taxing rights move across the rule order.</span></div></a></li>
-          <li><a href="post7.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster Article · Pillar Two Fundamentals</span><span class="archive-title">Substance-Based Income Exclusion (SBIE): Why Not All Profit Is Subject to Pillar Two</span><span>How routine returns reduce the exposed profit base.</span></div></a></li>
-          <li><a href="post6.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster Article · Pillar Two Fundamentals</span><span class="archive-title">Effective Tax Rate (ETR) Under Pillar Two: How Low-Tax Outcomes Are Measured</span><span>How jurisdictional ETR drives exposure analysis.</span></div></a></li>
-          <li><a href="post5.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster Article · Pillar Two Fundamentals</span><span class="archive-title">Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated</span><span>How the shortfall becomes an operational tax amount.</span></div></a></li>
-          <li><a href="post4.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster Article · Pillar Two Fundamentals</span><span class="archive-title">Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights</span><span>How local jurisdictions collect top-up tax first.</span></div></a></li>
-          <li><a href="post3.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster Article · Pillar Two Fundamentals</span><span class="archive-title">Undertaxed Profits Rule (UTPR): How Residual Pillar Two Top-Up Tax Is Collected</span><span>How residual top-up tax is allocated across jurisdictions.</span></div></a></li>
-          <li><a href="post2.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster Article · Pillar Two Fundamentals</span><span class="archive-title">Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</span><span>How the primary charging rule works at parent level.</span></div></a></li>
-          <li><a href="post1.html"><div class="archive-date">April 2026</div><div><span class="item-type">Pillar Page · Pillar Two Fundamentals</span><span class="archive-title">OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</span><span>Main hub for the Pillar Two Fundamentals cluster.</span></div></a></li>
+          <li><a href="post9.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2026 Matters</span><span>Bridge article from fundamentals into future data-readiness work.</span></div></a></li>
+          <li><a href="post8.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Pillar Two Rule Order Explained: How QDMTT, IIR, and UTPR Interact</span><span>How taxing rights move across the rule order.</span></div></a></li>
+          <li><a href="post7.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Substance-Based Income Exclusion (SBIE): Why Not All Profit Is Subject to Pillar Two</span><span>How routine returns reduce the exposed profit base.</span></div></a></li>
+          <li><a href="post6.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Effective Tax Rate (ETR) Under Pillar Two: How Low-Tax Outcomes Are Measured</span><span>How jurisdictional ETR drives exposure analysis.</span></div></a></li>
+          <li><a href="post5.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated</span><span>How the shortfall becomes an operational tax amount.</span></div></a></li>
+          <li><a href="post4.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights</span><span>How local jurisdictions collect top-up tax first.</span></div></a></li>
+          <li><a href="post3.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Undertaxed Profits Rule (UTPR): How Residual Pillar Two Top-Up Tax Is Collected</span><span>How residual top-up tax is allocated across jurisdictions.</span></div></a></li>
+          <li><a href="post2.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</span><span>How the primary charging rule works at parent level.</span></div></a></li>
+          <li><a href="post1.html"><div class="archive-date">April 2026</div><div><span class="item-type">Pillar page &middot; Pillar Two Fundamentals</span><span class="archive-title">OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</span><span>Main hub for the Pillar Two Fundamentals cluster.</span></div></a></li>
         </ul>
       </div>
     </section>
@@ -464,8 +492,10 @@
   <footer>
     <div class="footer-inner">
       <img src="logo3.png" alt="Aaron Kuo logo">
-      <span>© 2026 Aaron Kuo</span>
+      <span>&copy; 2026 Aaron Kuo</span>
     </div>
   </footer>
 </body>
 </html>
+
+

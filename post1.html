@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -112,7 +112,7 @@
       border-radius: 999px;
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.03em;
+      letter-spacing: 0;
       margin-right: 10px;
       margin-bottom: 16px;
     }
@@ -130,7 +130,7 @@
     }
 
     h1 {
-      font-size: clamp(34px, 5vw, 58px);
+      font-size: 52px;
       line-height: 1.02;
       letter-spacing: 0;
       margin: 0 0 16px;
@@ -318,7 +318,7 @@ h2 {
       margin-bottom: 14px;
       color: #2dd4bf;
       font-size: 13px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0;
       text-transform: uppercase;
     }
 
@@ -373,7 +373,7 @@ h2 {
       display: block;
       margin-bottom: 10px;
       font-size: 14px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0;
       text-transform: uppercase;
       color: var(--accent);
     }
@@ -421,6 +421,7 @@ h2 {
 
     @media (max-width: 560px) {
       .nav-inner { flex-direction: column; }
+      h1 { font-size: 36px; }
       p, li { font-size: 16px; }
       .intro { font-size: 17px; }
       .article-toc ol { columns: 1; }
@@ -513,7 +514,7 @@ h2 {
     <p>It applies to:</p>
     <ul>
       <li>Multinational groups</li>
-      <li>Annual revenue above €750 million</li>
+      <li>Annual revenue above EUR 750 million</li>
     </ul>
 
     <h2 id="why-was-pillar-two-introduced">Why Was Pillar Two Introduced?</h2>
@@ -560,7 +561,7 @@ h2 {
     <h3>1. Income Inclusion Rule (IIR)</h3>
     <p>The primary rule.</p>
     <p>
-      If a subsidiary is taxed below 15%, the parent company’s jurisdiction collects the difference.
+      If a subsidiary is taxed below 15%, the parent company's jurisdiction collects the difference.
     </p>
 
     <h3>2. Undertaxed Profits Rule (UTPR)</h3>
@@ -582,7 +583,7 @@ h2 {
 
     <div class="formula">
       <strong>Core Formula</strong>
-      <p>ETR = Taxes Paid ÷ Income</p>
+      <p>ETR = Taxes Paid divided by Income</p>
     </div>
 
     <p>
@@ -647,8 +648,10 @@ h2 {
   <footer>
     <div class="footer-inner">
       <img src="logo3.png" alt="Aaron Kuo logo">
-      <span>© 2026 Aaron Kuo</span>
+      <span>&copy; 2026 Aaron Kuo</span>
     </div>
   </footer>
 </body>
 </html>
+
+

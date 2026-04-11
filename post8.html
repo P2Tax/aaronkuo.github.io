@@ -1,1 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pillar Two Rule Order Explained: How QDMTT, IIR, and UTPR Interact | Aaron Kuo</title>
+  <meta name="description" content="Understand the Pillar Two rule order and how QDMTT, IIR, and UTPR determine which jurisdiction collects top-up tax." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      margin: 42px 0 14px;
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      margin: 28px 0 12px;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 18px;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Fundamentals</div>
+    <div class="series-tag">Part of: <a href="post1.html">OECD Pillar Two Explained</a></div>
+
+    <h1>Pillar Two Rule Order Explained: How QDMTT, IIR, and UTPR Interact</h1>
+
+    <p class="intro">
+      Pillar Two does not apply all rules at once. It follows a defined rule order that determines which jurisdiction has the right to bring top-up tax into charge and in what sequence.
+    </p>
+
+    <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
+
+    <h2>Introduction</h2>
+    <p>
+      The Pillar Two framework does not apply all rules at the same time.
+    </p>
+    <p>
+      Instead, it follows a defined rule order that determines which jurisdiction has the right to bring top-up tax into charge. That sequencing is essential to the design of the system. Without it, Pillar Two would create a higher risk of double taxation, overlap, or inconsistent outcomes.
+    </p>
+    <p>
+      At a high level, the rule order works as follows:
+    </p>
+    <ul>
+      <li>first, a Qualified Domestic Minimum Top-up Tax (QDMTT) may allow the source jurisdiction to collect</li>
+      <li>second, the Income Inclusion Rule (IIR) may apply at parent level</li>
+      <li>third, the Undertaxed Profits Rule (UTPR) acts as a backstop for any residual amount</li>
+    </ul>
+    <p>
+      Understanding this sequence is essential to understanding how Pillar Two operates in practice.
+    </p>
+
+    <h2>What the Rule Order Does</h2>
+    <p>
+      The rule order determines how top-up tax is allocated across jurisdictions once the amount has already been calculated.
+    </p>
+    <p>
+      In practical terms, it:
+    </p>
+    <ul>
+      <li>gives the source jurisdiction an opportunity to collect first through a qualified domestic regime</li>
+      <li>allocates any remaining amount upward through the parent chain</li>
+      <li>allows residual top-up tax to be collected elsewhere if the primary mechanisms do not apply</li>
+    </ul>
+    <p>
+      The objective is straightforward: the same amount should not be collected more than once, but it should also not remain uncollected.
+    </p>
+
+    <h2>How the Rule Order Works</h2>
+
+    <h3>1. Apply QDMTT at source</h3>
+    <p>
+      The first question is whether the jurisdiction where the low-taxed income arises has implemented a qualified domestic minimum top-up tax.
+    </p>
+    <p>
+      If it has, that jurisdiction may calculate and collect the domestic top-up tax locally from the relevant entities. A properly qualified domestic regime takes priority in the agreed ordering of the rules.
+    </p>
+
+    <h3>2. Apply the IIR at parent level</h3>
+    <p>
+      If top-up tax remains after the operation of any QDMTT, the next step is the IIR.
+    </p>
+    <p>
+      The IIR is the primary cross-border charging rule. It allows the relevant parent entity to bring into charge its allocable share of top-up tax in respect of low-taxed constituent entities.
+    </p>
+
+    <h3>3. Apply the UTPR as a backstop</h3>
+    <p>
+      If the amount is still not fully brought into charge, the UTPR applies as the final backstop.
+    </p>
+    <p>
+      Other implementing jurisdictions where the group operates may then be allocated a share of the residual top-up tax and collect it through domestic adjustments, such as denial of deductions or equivalent mechanisms.
+    </p>
+
+    <div class="formula">
+      <strong>Rule sequence</strong>
+      <p>QDMTT first, then IIR, then UTPR for any remaining amount.</p>
+    </div>
+
+    <h2>Simple Example</h2>
+    <p>
+      Assume a group has low-taxed income in a jurisdiction.
+    </p>
+    <p>
+      If that jurisdiction has a qualified domestic minimum top-up tax, it may collect the amount locally first.
+    </p>
+    <p>
+      If no qualified domestic regime applies, but the parent jurisdiction applies the IIR, the parent may collect the relevant amount.
+    </p>
+    <p>
+      If neither mechanism brings the amount fully into charge, the UTPR allows other implementing jurisdictions to collect the residual amount.
+    </p>
+    <p>
+      The key point is that the rule order determines where the amount is collected, not whether the amount exists in the first place.
+    </p>
+
+    <h2>Why the Rule Order Matters</h2>
+
+    <h3>It reduces overlap</h3>
+    <p>
+      The sequence is designed so that the same top-up tax amount is not brought into charge multiple times through competing rules.
+    </p>
+
+    <h3>It preserves jurisdictional priority</h3>
+    <p>
+      The source jurisdiction may collect first through a qualified domestic regime before the amount moves to parent or other jurisdictions.
+    </p>
+
+    <h3>It keeps the system complete</h3>
+    <p>
+      If one rule does not apply, another may still operate. That is what allows Pillar Two to function as a coordinated system rather than a single standalone tax rule.
+    </p>
+
+    <h2>Interaction with Earlier Concepts</h2>
+    <p>
+      The rule order operates after the core calculation mechanics are complete.
+    </p>
+    <p>
+      The sequence is broadly:
+    </p>
+    <ul>
+      <li>ETR is calculated</li>
+      <li>top-up tax percentage is determined</li>
+      <li>SBIE reduces the excess profit base</li>
+      <li>top-up tax amount is computed</li>
+      <li>rule order determines which jurisdiction brings that amount into charge</li>
+    </ul>
+    <p>
+      This distinction between calculation and collection is central to the Pillar Two framework.
+    </p>
+
+    <div class="note">
+      <strong>Why this matters in practice</strong>
+      <p>
+        The rule order is where Pillar Two becomes a jurisdictional allocation problem. Even when the calculation is clear, the compliance burden depends on understanding which country has the right to collect and in what sequence.
+      </p>
+    </div>
+
+    <h2>Practical Implications for Multinational Groups</h2>
+    <p>
+      The rule order affects where liabilities arise and who within the group needs to manage them.
+    </p>
+
+    <h3>Implementation mapping becomes necessary</h3>
+    <p>
+      Groups need to understand:
+    </p>
+    <ul>
+      <li>which jurisdictions have implemented a qualified domestic regime</li>
+      <li>which parent entities are within an IIR regime</li>
+      <li>which jurisdictions apply the UTPR</li>
+    </ul>
+    <p>
+      That determines where the liability may arise in practice.
+    </p>
+
+    <h3>Liability location can shift</h3>
+    <p>
+      The same underlying top-up tax amount may be collected in different jurisdictions depending on implementation and rule order.
+    </p>
+    <p>
+      That has direct implications for compliance ownership, tax provisioning, and governance.
+    </p>
+
+    <h3>Coordination becomes essential</h3>
+    <p>
+      Because several jurisdictions may potentially have a role within the rule order, groups need consistent data, clear control points, and a strong governance process to reduce the risk of overlap, misallocation, or filing inconsistency. OECD GIR materials also reinforce how much the administrative framework depends on clear identification of taxing rights under rule order.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      The Pillar Two rule order determines how top-up tax is brought into charge across jurisdictions.
+    </p>
+    <p>
+      It allocates taxing rights in a defined sequence, beginning with qualified domestic collection, then parent-level inclusion, and finally a backstop allocation mechanism.
+    </p>
+    <p>
+      For multinational groups, the implication is practical: understanding Pillar Two exposure requires not only calculating the top-up tax, but also understanding which jurisdiction has the right to collect it under the agreed rule order.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article sits within the <em>Pillar Two Fundamentals</em> cluster and links back to the parent pillar page.
+      </p>
+      <ul>
+        <li><a href="post1.html">OECD Pillar Two Explained</a></li>
+        <li><a href="post4.html">Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights</a></li>
+        <li><a href="post2.html">Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</a></li>
+        <li><a href="post3.html">Undertaxed Profits Rule (UTPR): How Residual Pillar Two Top-Up Tax Is Collected</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <img src="logo-v2.png" alt="Aaron Kuo logo">
+      <span>© 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>

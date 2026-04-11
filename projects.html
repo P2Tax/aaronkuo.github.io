@@ -27,7 +27,6 @@
     }
 
     a { text-decoration: none; color: inherit; }
-
     .nav {
       position: sticky;
       top: 0;
@@ -46,31 +45,54 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 78px;
+      min-height: 82px;
       gap: 24px;
     }
 
-    .site-brand {
-      display: inline-flex;
+    .brand-wrap {
+      display: flex;
       align-items: center;
       gap: 14px;
+      flex-shrink: 0;
       min-width: 0;
-      flex-shrink: 0;
     }
 
-    .site-logo {
-      width: auto;
-      height: 40px;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      line-height: 1;
+    }
+
+    .brand img {
       display: block;
-      flex-shrink: 0;
+      height: 40px;
+      width: auto;
+      max-width: none;
+      object-fit: contain;
     }
 
-    .site-brand-text {
-      color: var(--text);
-      font-size: 17px;
+    .brand-fallback {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: -0.03em;
-      line-height: 1;
+      color: var(--text);
+    }
+
+    .brand-mark {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
       white-space: nowrap;
     }
 
@@ -85,13 +107,13 @@
     .nav-links a {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1;
     }
 
     .nav-links a.active,
     .nav-links a:hover {
       color: var(--text);
     }
+
 
     .container {
       padding: 70px 0 80px;
@@ -139,27 +161,6 @@
       color: var(--muted);
       font-size: 14px;
     }
-
-    @media (max-width: 880px) {
-      .nav-inner {
-        align-items: flex-start;
-        padding: 16px 0;
-      }
-
-      .nav-links {
-        gap: 14px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .nav-inner {
-        flex-direction: column;
-      }
-
-      .site-logo {
-        height: 36px;
-      }
-    }
   </style>
 </head>
 
@@ -167,10 +168,13 @@
 
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="site-brand" aria-label="Aaron Kuo home">
-        <img src="logo3.png" alt="Aaron Kuo logo" class="site-logo">
-        <span class="site-brand-text">AK</span>
-      </a>
+      <div class="brand-wrap">
+        <a href="index.html" class="brand" aria-label="Aaron Kuo home">
+          <img src="logo-v2.png" alt="Aaron Kuo logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <span class="brand-fallback" style="display:none;">AK</span>
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
 
       <div class="nav-links">
         <a href="index.html">Home</a>

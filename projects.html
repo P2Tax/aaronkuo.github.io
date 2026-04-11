@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects | Aaron Kuo</title>
+  <title>Selected Work | Aaron Kuo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -14,6 +14,7 @@
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #60a5fa;
+      --accent-2: #2dd4bf;
       --max: 1040px;
     }
 
@@ -72,7 +73,7 @@
       font-size: 22px;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       display: none;
     }
 
@@ -98,32 +99,39 @@
     }
 
     h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
+      font-size: 56px;
+      line-height: 1;
+      letter-spacing: 0;
+      margin: 0 0 16px;
     }
 
     .sub {
       color: var(--muted);
-      margin-bottom: 30px;
+      max-width: 760px;
+      font-size: 17px;
+      line-height: 1.75;
+      margin: 0 0 16px;
     }
 
     .disclaimer {
       color: var(--muted);
       font-size: 14px;
-      margin: -12px 0 26px;
+      margin: 0 0 28px;
     }
 
     .tag-row,
-    .capabilities {
+    .capabilities,
+    .case-index,
+    .project-signals {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 28px;
     }
 
     .tag,
     .capability-tag,
-    .project-signal {
+    .project-signal,
+    .case-index a {
       display: inline-flex;
       align-items: center;
       border: 1px solid rgba(96, 165, 250, 0.18);
@@ -133,6 +141,37 @@
       background: rgba(96, 165, 250, 0.06);
       font-size: 13px;
       line-height: 1.2;
+    }
+
+    .tag-row {
+      margin-bottom: 28px;
+    }
+
+    .case-index-wrap {
+      border: 1px solid rgba(45, 212, 191, 0.18);
+      border-radius: 8px;
+      background: rgba(11, 18, 32, 0.58);
+      padding: 18px;
+      margin: 0 0 28px;
+    }
+
+    .case-index-label {
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+
+    .case-index a {
+      color: var(--muted);
+      border-color: rgba(148, 163, 184, 0.16);
+      background: rgba(148, 163, 184, 0.05);
+    }
+
+    .case-index a:hover {
+      color: var(--text);
+      border-color: rgba(45, 212, 191, 0.34);
     }
 
     .work-list {
@@ -148,12 +187,11 @@
       border-left: 3px solid rgba(45, 212, 191, 0.7);
       border-radius: 8px;
       padding: 22px 24px;
-      transition: border-color 0.2s ease, background 0.2s ease;
     }
 
     .project-card:hover {
       border-color: rgba(45, 212, 191, 0.34);
-      border-left-color: #2dd4bf;
+      border-left-color: var(--accent-2);
       background: rgba(13, 22, 36, 0.88);
     }
 
@@ -175,7 +213,7 @@
     }
 
     .project-index {
-      color: #2dd4bf;
+      color: var(--accent-2);
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0;
@@ -184,7 +222,7 @@
 
     .project-toggle {
       flex-shrink: 0;
-      color: #2dd4bf;
+      color: var(--accent-2);
       font-size: 13px;
       font-weight: 700;
     }
@@ -199,7 +237,7 @@
 
     .project-title {
       display: block;
-      max-width: 840px;
+      max-width: 860px;
       color: var(--text);
       font-size: 27px;
       font-weight: 700;
@@ -216,9 +254,6 @@
     }
 
     .project-signals {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -258,16 +293,21 @@
       margin: 22px 0 0;
     }
 
+    .capabilities {
+      margin: 0;
+    }
+
     .capability-tag {
       color: #bfdbfe;
       background: rgba(96, 165, 250, 0.06);
     }
 
     .section-title {
-      margin: 52px 0 16px;
+      margin: 56px 0 16px;
       font-size: 24px;
       color: var(--text);
     }
+
     footer {
       border-top: 1px solid var(--line);
     }
@@ -278,15 +318,24 @@
       font-size: 14px;
     }
 
-        @media (max-width: 560px) {
+    @media (max-width: 700px) {
+      .project-detail {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      h1 {
+        font-size: 40px;
+      }
+
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
       }
 
-      .project-topline,
-      .project-detail {
+      .project-topline {
         display: block;
       }
 
@@ -297,10 +346,6 @@
 
       .project-title {
         font-size: 23px;
-      }
-
-      .project-detail > div {
-        margin-bottom: 18px;
       }
     }
   </style>
@@ -338,49 +383,161 @@
       <span class="tag">Operating Model</span>
       <span class="tag">AI in Tax</span>
     </div>
+
+    <nav class="case-index-wrap" aria-label="Case index">
+      <p class="case-index-label">Case index</p>
+      <div class="case-index">
+        <a href="#case-01">01 Compliance Model</a>
+        <a href="#case-02">02 Data Readiness</a>
+        <a href="#case-03">03 GloBE Inputs</a>
+        <a href="#case-04">04 Tax Data Diagnostic</a>
+        <a href="#case-05">05 Technology Delivery</a>
+        <a href="#case-06">06 Function Alignment</a>
+        <a href="#case-07">07 Reporting Workflows</a>
+        <a href="#case-08">08 AI in Tax</a>
+      </div>
+    </nav>
+
     <div class="work-list">
-      <details class="project-card">
+      <details class="project-card" id="case-01">
         <summary>
-          <div class="project-topline">
-            <span class="project-index">Selected work 01</span>
-            <span class="project-toggle" aria-hidden="true"></span>
-          </div>
+          <div class="project-topline"><span class="project-index">Selected work 01</span><span class="project-toggle" aria-hidden="true"></span></div>
           <span class="project-title">Designing a Pillar Two Compliance Model Across 100+ Entities</span>
           <p class="project-hook">Turning complex Pillar Two requirements into a scalable compliance model across data, workflow, and reporting.</p>
-          <ul class="project-signals" aria-label="Project signals">
-            <li class="project-signal">Large multinational group</li>
-            <li class="project-signal">Pillar Two implementation</li>
-            <li class="project-signal">100+ entities</li>
-          </ul>
+          <ul class="project-signals" aria-label="Project signals"><li class="project-signal">Large multinational group</li><li class="project-signal">Pillar Two implementation</li><li class="project-signal">100+ entities</li></ul>
         </summary>
-
         <div class="project-detail">
-          <div>
-            <h3>Challenge</h3>
-            <p>Data sat across multiple sources, ownership was fragmented, and the compliance process needed to work at scale across jurisdictions.</p>
-          </div>
-          <div>
-            <h3>What I led</h3>
-            <p>Directed the implementation approach across requirements, data logic, workflow design, stakeholder coordination, covered tax, deferred tax, and ETR logic.</p>
-          </div>
-          <div>
-            <h3>Outcome</h3>
-            <p>Helped create a more usable compliance model with clearer inputs, stronger workflow discipline, and a practical path to scaled reporting.</p>
-          </div>
+          <div><h3>Challenge</h3><p>Data sat across multiple sources, ownership was fragmented, and the compliance process needed to work at scale across jurisdictions.</p></div>
+          <div><h3>What I led</h3><p>Directed the implementation approach across requirements, data logic, workflow design, stakeholder coordination, covered tax, deferred tax, and ETR logic.</p></div>
+          <div><h3>Outcome</h3><p>Helped create a more usable compliance model with clearer inputs, stronger workflow discipline, and a practical path to scaled reporting.</p></div>
         </div>
-
-        <div class="capabilities project-capabilities" aria-label="Project capabilities">
-          <span class="capability-tag">Pillar Two</span>
-          <span class="capability-tag">ETR Logic</span>
-          <span class="capability-tag">Tax Data</span>
-          <span class="capability-tag">Operating Model</span>
-        </div>
+        <div class="capabilities project-capabilities" aria-label="Project capabilities"><span class="capability-tag">Pillar Two</span><span class="capability-tag">ETR Logic</span><span class="capability-tag">Tax Data</span><span class="capability-tag">Operating Model</span></div>
       </details>
+
+      <details class="project-card" id="case-02">
+        <summary>
+          <div class="project-topline"><span class="project-index">Selected work 02</span><span class="project-toggle" aria-hidden="true"></span></div>
+          <span class="project-title">Building a Pillar Two Data Readiness Framework for a Multinational Group</span>
+          <p class="project-hook">Assessing whether finance and tax data could support calculations, safe harbour testing, and future filings.</p>
+          <ul class="project-signals" aria-label="Project signals"><li class="project-signal">Multinational group</li><li class="project-signal">Data readiness</li><li class="project-signal">Safe harbour testing</li></ul>
+        </summary>
+        <div class="project-detail">
+          <div><h3>Challenge</h3><p>Required inputs were spread across trial balances, consolidation data, tax reporting, and manual local adjustments, with uneven ownership and limited audit trail.</p></div>
+          <div><h3>What I led</h3><p>Structured the data assessment approach, defined priority data requirements, aligned source mapping, and framed the path from manual workarounds to a more sustainable model.</p></div>
+          <div><h3>Outcome</h3><p>Created a clearer view of readiness gaps, manual dependencies, and automation priorities for implementation planning.</p></div>
+        </div>
+        <div class="capabilities project-capabilities" aria-label="Project capabilities"><span class="capability-tag">Pillar Two</span><span class="capability-tag">Data Readiness</span><span class="capability-tag">Source Mapping</span><span class="capability-tag">Governance</span></div>
+      </details>
+
+      <details class="project-card" id="case-03">
+        <summary>
+          <div class="project-topline"><span class="project-index">Selected work 03</span><span class="project-toggle" aria-hidden="true"></span></div>
+          <span class="project-title">Translating Source Data into GloBE-Ready Calculation Inputs</span>
+          <p class="project-hook">Creating the adjustment and mapping layer needed to turn source-system data into usable GloBE inputs.</p>
+          <ul class="project-signals" aria-label="Project signals"><li class="project-signal">Finance and tax systems</li><li class="project-signal">GloBE calculations</li><li class="project-signal">Reporting logic</li></ul>
+        </summary>
+        <div class="project-detail">
+          <div><h3>Challenge</h3><p>Trial balance and consolidation data alone were not enough. The work required a practical adjustment layer, classification logic, and stronger traceability back to source.</p></div>
+          <div><h3>What I led</h3><p>Helped shape mapping logic, data treatment rules, and adjustment design across finance and tax inputs to make reporting outputs more reliable and repeatable.</p></div>
+          <div><h3>Outcome</h3><p>Improved the quality of calculation inputs and made the reporting process less dependent on inconsistent local interpretation.</p></div>
+        </div>
+        <div class="capabilities project-capabilities" aria-label="Project capabilities"><span class="capability-tag">GloBE</span><span class="capability-tag">Source Systems</span><span class="capability-tag">Data Mapping</span><span class="capability-tag">Adjustments</span></div>
+      </details>
+
+      <details class="project-card" id="case-04">
+        <summary>
+          <div class="project-topline"><span class="project-index">Selected work 04</span><span class="project-toggle" aria-hidden="true"></span></div>
+          <span class="project-title">Designing a Tax Data Diagnostic and Gap Assessment Approach</span>
+          <p class="project-hook">Separating theoretical data needs from practical readiness across systems, teams, and ownership models.</p>
+          <ul class="project-signals" aria-label="Project signals"><li class="project-signal">Tax data diagnostic</li><li class="project-signal">Readiness assessment</li><li class="project-signal">Transformation planning</li></ul>
+        </summary>
+        <div class="project-detail">
+          <div><h3>Challenge</h3><p>Data often existed in partial form, at the wrong level of granularity, or without a repeatable ownership and review process.</p></div>
+          <div><h3>What I led</h3><p>Designed assessment logic across data points, source systems, process ownership, and manual intervention areas to identify practical gaps and prioritise action.</p></div>
+          <div><h3>Outcome</h3><p>Provided a more realistic basis for tax transformation planning by separating theoretical requirements from operational readiness.</p></div>
+        </div>
+        <div class="capabilities project-capabilities" aria-label="Project capabilities"><span class="capability-tag">Tax Data</span><span class="capability-tag">Diagnostics</span><span class="capability-tag">Governance</span><span class="capability-tag">Process Design</span></div>
+      </details>
+
+      <details class="project-card" id="case-05">
+        <summary>
+          <div class="project-topline"><span class="project-index">Selected work 05</span><span class="project-toggle" aria-hidden="true"></span></div>
+          <span class="project-title">Structuring Tax Technology Delivery for Complex Reporting Requirements</span>
+          <p class="project-hook">Bridging tax requirements and technology execution so complex reporting could work in practice.</p>
+          <ul class="project-signals" aria-label="Project signals"><li class="project-signal">Multi-jurisdiction reporting</li><li class="project-signal">Technology delivery</li><li class="project-signal">Workflow design</li></ul>
+        </summary>
+        <div class="project-detail">
+          <div><h3>Challenge</h3><p>Technology implementation in tax often fails when process, ownership, and reporting design are unclear. Tool decisions alone do not solve operating problems.</p></div>
+          <div><h3>What I led</h3><p>Supported solution design across requirements, workflow structure, stakeholder coordination, and reporting logic, with a focus on making delivery usable in practice.</p></div>
+          <div><h3>Outcome</h3><p>Improved implementation clarity and helped bridge tax requirements with technology execution.</p></div>
+        </div>
+        <div class="capabilities project-capabilities" aria-label="Project capabilities"><span class="capability-tag">Tax Technology</span><span class="capability-tag">Reporting Systems</span><span class="capability-tag">Workflow Design</span><span class="capability-tag">Implementation</span></div>
+      </details>
+
+      <details class="project-card" id="case-06">
+        <summary>
+          <div class="project-topline"><span class="project-index">Selected work 06</span><span class="project-toggle" aria-hidden="true"></span></div>
+          <span class="project-title">Improving Cross-Functional Alignment Between Tax, Finance, and IT</span>
+          <p class="project-hook">Clarifying ownership across tax, finance, and technology teams where delivery depended on shared accountability.</p>
+          <ul class="project-signals" aria-label="Project signals"><li class="project-signal">Tax, finance, and IT</li><li class="project-signal">Governance</li><li class="project-signal">Delivery model</li></ul>
+        </summary>
+        <div class="project-detail">
+          <div><h3>Challenge</h3><p>Ownership often sat in the gaps between teams. Data, controls, and delivery responsibilities were fragmented, slowing execution and increasing ambiguity.</p></div>
+          <div><h3>What I led</h3><p>Helped define workstreams, clarify data and process ownership, and create a more structured delivery dialogue between functional teams.</p></div>
+          <div><h3>Outcome</h3><p>Improved cross-functional alignment and reduced confusion around who needed to provide, review, and govern key inputs.</p></div>
+        </div>
+        <div class="capabilities project-capabilities" aria-label="Project capabilities"><span class="capability-tag">Stakeholder Alignment</span><span class="capability-tag">Governance</span><span class="capability-tag">Process Ownership</span><span class="capability-tag">Delivery Model</span></div>
+      </details>
+
+      <details class="project-card" id="case-07">
+        <summary>
+          <div class="project-topline"><span class="project-index">Selected work 07</span><span class="project-toggle" aria-hidden="true"></span></div>
+          <span class="project-title">Designing Scalable Tax Reporting and Operating Model Workflows</span>
+          <p class="project-hook">Moving reporting activity from person-dependent execution toward repeatable workflow and control discipline.</p>
+          <ul class="project-signals" aria-label="Project signals"><li class="project-signal">Multinational groups</li><li class="project-signal">Tax reporting</li><li class="project-signal">Operating model</li></ul>
+        </summary>
+        <div class="project-detail">
+          <div><h3>Challenge</h3><p>Many tax processes still relied on fragmented spreadsheets, local workarounds, and person-dependent knowledge, making scale difficult.</p></div>
+          <div><h3>What I led</h3><p>Worked on operating model design, workflow structuring, and control thinking to support more repeatable and sustainable reporting processes.</p></div>
+          <div><h3>Outcome</h3><p>Helped move reporting activity from reactive execution toward a more structured operating model.</p></div>
+        </div>
+        <div class="capabilities project-capabilities" aria-label="Project capabilities"><span class="capability-tag">Operating Model</span><span class="capability-tag">Tax Reporting</span><span class="capability-tag">Controls</span><span class="capability-tag">Scalability</span></div>
+      </details>
+
+      <details class="project-card" id="case-08">
+        <summary>
+          <div class="project-topline"><span class="project-index">Selected work 08</span><span class="project-toggle" aria-hidden="true"></span></div>
+          <span class="project-title">Exploring AI Use Cases for Tax Data and Workflow Acceleration</span>
+          <p class="project-hook">Framing AI as a controlled productivity layer for tax work, not a substitute for judgment or governance.</p>
+          <ul class="project-signals" aria-label="Project signals"><li class="project-signal">AI in tax</li><li class="project-signal">Workflow support</li><li class="project-signal">Control-minded innovation</li></ul>
+        </summary>
+        <div class="project-detail">
+          <div><h3>Challenge</h3><p>The opportunity in AI is often overstated, while constraints around sensitive data, review discipline, and operating context are understated.</p></div>
+          <div><h3>What I led</h3><p>Focused on practical use cases, workflow fit, and realistic boundaries for AI support in tax-related work rather than generic innovation messaging.</p></div>
+          <div><h3>Outcome</h3><p>Helped frame AI as a controlled productivity layer within tax workflows, not a substitute for judgment or governance.</p></div>
+        </div>
+        <div class="capabilities project-capabilities" aria-label="Project capabilities"><span class="capability-tag">AI in Tax</span><span class="capability-tag">Workflow Design</span><span class="capability-tag">Documentation</span><span class="capability-tag">Controls</span></div>
+      </details>
+    </div>
+
+    <h2 class="section-title">Capabilities</h2>
+    <div class="capabilities" aria-label="Capabilities">
+      <span class="capability-tag">Pillar Two</span>
+      <span class="capability-tag">Tax Data</span>
+      <span class="capability-tag">Tax Technology</span>
+      <span class="capability-tag">Operating Model</span>
+      <span class="capability-tag">GloBE</span>
+      <span class="capability-tag">ETR Logic</span>
+      <span class="capability-tag">Source Systems</span>
+      <span class="capability-tag">Governance</span>
+      <span class="capability-tag">Stakeholder Coordination</span>
+      <span class="capability-tag">Workflow Design</span>
+      <span class="capability-tag">AI in Tax</span>
     </div>
   </main>
 
   <footer>
-    <div class="footer-inner">© 2026 Aaron Kuo</div>
+    <div class="footer-inner">&copy; 2026 Aaron Kuo</div>
   </footer>
 
 </body>

@@ -8,24 +8,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <style>
     :root {
       --bg: #020617;
       --panel: #0b1220;
-      --panel-strong: #0f172a;
       --line: #1e293b;
-      --line-soft: rgba(30, 41, 59, 0.72);
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #60a5fa;
       --accent-soft: rgba(96, 165, 250, 0.12);
       --max: 1040px;
-      --article-max: 760px;
+      --article-max: 820px;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -56,36 +52,32 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 78px;
+      min-height: 72px;
       gap: 20px;
     }
 
     .brand-wrap {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 18px;
       flex-shrink: 0;
     }
 
     .brand {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      line-height: 0;
     }
 
     .brand img {
-      height: 38px;
-      width: auto;
+      height: 28px;
       display: block;
     }
 
     .brand-mark {
-      font-size: 17px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      line-height: 1;
+      letter-spacing: -0.02em;
     }
 
     .nav-links {
@@ -98,7 +90,6 @@
     .nav-links a {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1;
     }
 
     .nav-links a.active,
@@ -109,21 +100,19 @@
     .article {
       width: min(var(--article-max), calc(100% - 32px));
       margin: 0 auto;
-      padding: 76px 0 96px;
+      padding: 72px 0 80px;
     }
 
     .topic-tag,
     .series-tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 32px;
-      padding: 0 12px;
+      display: inline-block;
+      padding: 7px 11px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.03em;
       margin-right: 10px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .topic-tag {
@@ -138,80 +127,68 @@
       color: var(--muted);
     }
 
-    .series-tag a {
-      color: var(--text);
-    }
-
     h1 {
-      font-size: clamp(38px, 5vw, 60px);
+      font-size: clamp(34px, 5vw, 58px);
       line-height: 1.02;
       letter-spacing: -0.05em;
-      margin: 0 0 18px;
-      text-wrap: balance;
+      margin: 0 0 16px;
     }
 
     .intro {
       color: var(--muted);
-      font-size: 19px;
-      line-height: 1.9;
-      margin: 0 0 26px;
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
     }
 
     .article-meta {
       color: var(--muted);
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 38px;
+      font-size: 14px;
+      margin-bottom: 28px;
     }
 
     h2 {
-      font-size: 30px;
-      line-height: 1.18;
-      letter-spacing: -0.035em;
-      margin: 56px 0 16px;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      margin: 42px 0 14px;
     }
 
     h3 {
-      font-size: 22px;
-      line-height: 1.28;
+      font-size: 21px;
       letter-spacing: -0.02em;
-      margin: 34px 0 12px;
+      margin: 28px 0 12px;
     }
 
     p, li {
       color: var(--text);
-      line-height: 1.95;
+      line-height: 1.9;
       font-size: 17px;
     }
 
     p { margin: 0 0 18px; }
 
     ul, ol {
-      padding-left: 24px;
-      margin: 0 0 22px;
+      padding-left: 22px;
+      margin: 0 0 18px;
     }
-
-    li { margin-bottom: 8px; }
 
     .formula,
     .note,
     .related {
-      background: linear-gradient(180deg, rgba(11,18,32,0.98), rgba(9,14,25,0.98));
-      border: 1px solid var(--line-soft);
-      border-radius: 22px;
-      padding: 24px 26px;
-      margin: 32px 0;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.16);
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin: 26px 0;
     }
 
     .formula strong,
     .note strong,
     .related strong {
       display: block;
-      margin-bottom: 12px;
-      font-size: 12px;
-      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
     }
@@ -224,24 +201,8 @@
       color: var(--muted);
     }
 
-    .note p + p,
-    .formula p + p,
-    .related p + p {
-      margin-top: 10px;
-    }
-
-    .related {
-      margin-top: 40px;
-      padding-top: 26px;
-    }
-
     .related ul {
-      margin-top: 14px;
-      padding-left: 20px;
-    }
-
-    .related li {
-      margin-bottom: 10px;
+      margin-top: 10px;
     }
 
     .related a {
@@ -264,35 +225,20 @@
 
     .footer-inner img {
       height: 18px;
-      width: auto;
       display: block;
     }
 
     @media (max-width: 880px) {
-      .nav-inner {
-        align-items: flex-start;
-        padding: 14px 0;
-        min-height: 0;
-      }
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
       .nav-links { gap: 14px; }
-      .article { padding-top: 60px; }
     }
 
     @media (max-width: 560px) {
       .nav-inner { flex-direction: column; }
-      .brand img { height: 34px; }
-      h2 { font-size: 27px; }
-      h3 { font-size: 21px; }
       p, li { font-size: 16px; }
       .intro { font-size: 17px; }
-      .formula,
-      .note,
-      .related {
-        padding: 20px 20px;
-      }
     }
   </style>
-
 </head>
 <body>
   <nav class="nav">
@@ -448,14 +394,12 @@
     </p>
 
     <div class="related">
-      <strong>Related articles</strong>
+      <strong>Part of This Series</strong>
       <p>
-        This is the pillar page for the <em>Pillar Two Fundamentals</em> cluster. Continue with the next supporting articles below.
+        This article is the pillar page for the <em>Pillar Two Fundamentals</em> topic cluster.
       </p>
       <ul>
-        <li><a href="post5.html">Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated</a></li>
-        <li><a href="post8.html">Pillar Two Rule Order Explained: How QDMTT, IIR, and UTPR Interact</a></li>
-        <li><a href="post9.html">Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2026 Matters</a></li>
+        <li><a href="#">Income Inclusion Rule (IIR)</a> <span style="color:#94a3b8;">(link to be added)</span></li>
       </ul>
     </div>
   </main>

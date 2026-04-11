@@ -30,10 +30,10 @@
     }
 
     a { text-decoration: none; color: inherit; }
+
     .nav {
       position: sticky;
       top: 0;
-      z-index: 20;
       backdrop-filter: blur(14px);
       background: rgba(2, 6, 23, 0.82);
       border-bottom: 1px solid rgba(30, 41, 59, 0.85);
@@ -48,75 +48,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 82px;
-      gap: 24px;
+      padding: 18px 0;
     }
 
-    .brand-wrap {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-shrink: 0;
-      min-width: 0;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      line-height: 1;
-    }
-
-    .brand img {
-      display: block;
-      height: 40px;
-      width: auto;
-      max-width: none;
-      object-fit: contain;
-    }
-
-    .brand-fallback {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 44px;
-      min-height: 44px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--text);
-    }
-
-    .brand-mark {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
-    }
+    .brand { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
 
     .nav-links {
       display: flex;
       gap: 22px;
-      align-items: center;
       flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
+    .nav-links a { color: var(--muted); font-size: 14px; }
     .nav-links a.active,
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
+    .nav-links a:hover { color: var(--text); }
 
     .container { padding: 70px 0 80px; }
 
@@ -170,30 +115,15 @@
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
-        min-height: auto;
         gap: 12px;
-        padding: 14px 0;
       }
-      .nav-links {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 12px 16px;
-      }
-      .brand img { height: 34px; }
     }
   </style>
 </head>
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand-wrap">
-        <a href="index.html" class="brand" aria-label="Aaron Kuo home">
-          <img src="logo-v2.png" alt="Aaron Kuo logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
-          <span class="brand-fallback" style="display:none;">AK</span>
-        </a>
-        <a href="index.html" class="brand-mark">AK</a>
-      </div>
-
+      <a href="index.html" class="brand">Aaron Kuo</a>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="thoughts.html">Thoughts</a>

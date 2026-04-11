@@ -1,1 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights | Aaron Kuo</title>
+  <meta name="description" content="Understand how the Qualified Domestic Minimum Top-up Tax (QDMTT) works and how jurisdictions collect Pillar Two top-up tax locally before others apply IIR or UTPR." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      margin: 42px 0 14px;
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      margin: 28px 0 12px;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 18px;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Fundamentals</div>
+    <div class="series-tag">Part of: <a href="post1.html">OECD Pillar Two Explained</a></div>
+
+    <h1>Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights</h1>
+
+    <p class="intro">
+      The Qualified Domestic Minimum Top-up Tax is the mechanism that allows jurisdictions to retain taxing rights under Pillar Two by collecting top-up tax locally before other countries apply the IIR or UTPR.
+    </p>
+
+    <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
+
+    <h2>Introduction</h2>
+    <p>
+      The Qualified Domestic Minimum Top-up Tax (QDMTT) is the mechanism that allows jurisdictions to retain taxing rights under Pillar Two.
+    </p>
+    <p>
+      Where income within a jurisdiction is taxed below 15%, the QDMTT allows that jurisdiction to collect the top-up tax itself before other countries apply the Income Inclusion Rule (IIR) or Undertaxed Profits Rule (UTPR).
+    </p>
+    <p>
+      This is a key design feature of Pillar Two. It ensures that the right to collect top-up tax sits first with the jurisdiction where the income arises.
+    </p>
+
+    <h2>What the QDMTT Does</h2>
+    <p>
+      The QDMTT operates as a domestic version of the Pillar Two top-up tax.
+    </p>
+    <p>
+      In practical terms, it:
+    </p>
+    <ul>
+      <li>tests local entities against the 15% minimum rate</li>
+      <li>calculates any top-up tax required</li>
+      <li>collects that amount within the jurisdiction</li>
+    </ul>
+    <p>
+      If properly designed, the QDMTT takes priority over other Pillar Two rules.
+    </p>
+    <p>
+      The effect is straightforward: the jurisdiction does not give up taxing rights to parent or foreign jurisdictions.
+    </p>
+
+    <h2>How the QDMTT Works</h2>
+
+    <h3>1. Implement a qualifying domestic regime</h3>
+    <p>
+      The jurisdiction must introduce domestic legislation that aligns with Pillar Two principles.
+    </p>
+    <p>
+      To be effective, the regime must be recognised as “qualified” under the framework.
+    </p>
+
+    <h3>2. Calculate the jurisdictional ETR</h3>
+    <p>
+      As with other Pillar Two rules, the effective tax rate is determined by comparing:
+    </p>
+    <ul>
+      <li>covered taxes</li>
+      <li>against</li>
+      <li>GloBE income or loss</li>
+    </ul>
+    <p>
+      This is done on a jurisdictional basis.
+    </p>
+
+    <h3>3. Identify any shortfall below 15%</h3>
+    <p>
+      If the jurisdictional ETR is below the minimum rate, a top-up tax requirement arises.
+    </p>
+
+    <h3>4. Compute the domestic top-up tax</h3>
+    <p>
+      The jurisdiction calculates the top-up tax using the same core principles as the global rules.
+    </p>
+    <p>
+      Adjustments such as the substance-based income exclusion are taken into account.
+    </p>
+
+    <div class="formula">
+      <strong>Core effect</strong>
+      <p>A qualified domestic regime allows the jurisdiction to compute and collect top-up tax locally before the same amount is picked up under foreign IIR or UTPR mechanisms.</p>
+    </div>
+
+    <h3>5. Collect the tax locally</h3>
+    <p>
+      The jurisdiction imposes and collects the top-up tax directly from the relevant entities.
+    </p>
+    <p>
+      Once collected, this amount is generally creditable against any IIR or UTPR exposure.
+    </p>
+
+    <h2>Simple Example</h2>
+    <p>
+      Assume a group operates in a jurisdiction with an effective tax rate of 10%.
+    </p>
+    <p>
+      If that jurisdiction has implemented a QDMTT, it can collect the 5% shortfall locally.
+    </p>
+    <p>
+      In that case, the parent jurisdiction does not apply the IIR to the same income, and other jurisdictions do not apply the UTPR.
+    </p>
+    <p>
+      The practical consequence is clear: the tax is collected where the activity takes place.
+    </p>
+
+    <h2>Why the QDMTT Matters</h2>
+
+    <h3>It preserves local taxing rights</h3>
+    <p>
+      Jurisdictions do not need to rely on foreign countries to collect top-up tax on income generated within their borders.
+    </p>
+
+    <h3>It reduces cross-border complexity</h3>
+    <p>
+      If top-up tax is collected locally, there is less need for allocation through IIR or UTPR mechanisms.
+    </p>
+
+    <h3>It aligns incentives for adoption</h3>
+    <p>
+      Jurisdictions are encouraged to implement Pillar Two rules to avoid losing taxing rights to others.
+    </p>
+
+    <div class="note">
+      <strong>Why this matters in practice</strong>
+      <p>
+        The QDMTT changes the question from who can collect the tax to who collects it first. For groups, that means local regimes can become just as important operationally as the parent-level rules.
+      </p>
+    </div>
+
+    <h2>Practical Implications for Multinational Groups</h2>
+    <p>
+      The QDMTT changes how exposure is distributed across jurisdictions.
+    </p>
+
+    <h3>Local compliance obligations increase</h3>
+    <p>
+      Groups must comply with domestic top-up tax regimes in multiple jurisdictions, not just at parent level.
+    </p>
+
+    <h3>Interaction with global rules must be managed</h3>
+    <p>
+      Tax teams need to track how QDMTT amounts interact with:
+    </p>
+    <ul>
+      <li>IIR calculations</li>
+      <li>UTPR allocations</li>
+    </ul>
+    <p>
+      Incorrect treatment can lead to double taxation or missed credits.
+    </p>
+
+    <h3>Data consistency remains critical</h3>
+    <p>
+      Even where tax is collected locally, the calculation still depends on consistent GloBE data across the group.
+    </p>
+    <p>
+      Misalignment between local and global calculations can create risk.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      The Qualified Domestic Minimum Top-up Tax is the mechanism that allows jurisdictions to retain control over Pillar Two outcomes.
+    </p>
+    <p>
+      It ensures that top-up tax is collected locally where possible, rather than being ceded to parent or foreign jurisdictions.
+    </p>
+    <p>
+      For multinational groups, the implication is practical: Pillar Two is not only a group-level exercise. It requires coordinated compliance across every jurisdiction that chooses to exercise its taxing rights.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article sits within the <em>Pillar Two Fundamentals</em> cluster and links back to the parent pillar page.
+      </p>
+      <ul>
+        <li><a href="post1.html">OECD Pillar Two Explained</a></li>
+        <li><a href="post2.html">Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</a></li>
+        <li><a href="post3.html">Undertaxed Profits Rule (UTPR): How Residual Pillar Two Top-Up Tax Is Collected</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <img src="logo-v2.png" alt="Aaron Kuo logo">
+      <span>© 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -107,27 +107,118 @@
       margin-bottom: 30px;
     }
 
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 16px;
-      transition: all 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(96,165,250,0.4);
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-    }
-
-    .card p {
-      margin: 0;
+    .disclaimer {
       color: var(--muted);
+      font-size: 14px;
+      margin: -12px 0 26px;
+    }
+
+    .tag-row,
+    .capabilities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .tag,
+    .capability-tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      border-radius: 8px;
+      padding: 7px 10px;
+      color: #bfdbfe;
+      background: rgba(96, 165, 250, 0.08);
+      font-size: 13px;
+      line-height: 1.2;
+    }
+
+    .project-card {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 18px;
+    }
+
+    .project-card summary {
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .project-card summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .project-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text);
+    }
+
+    .project-toggle {
+      flex-shrink: 0;
+      color: #2dd4bf;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 7px;
+    }
+
+    details[open] .project-toggle::before {
+      content: "Hide details";
+    }
+
+    details:not([open]) .project-toggle::before {
+      content: "View details";
+    }
+
+    .project-meta {
+      color: #bfdbfe;
+      font-size: 14px;
+      margin: 0 0 14px;
+    }
+
+    .project-summary,
+    .project-detail p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .project-detail {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .project-detail h3 {
+      margin: 0 0 8px;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .project-capabilities {
+      margin-top: 22px;
+    }
+
+    .section-title {
+      margin: 52px 0 16px;
+      font-size: 24px;
+      color: var(--text);
     }
 
     footer {
@@ -145,6 +236,19 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
+      }
+
+      .project-heading,
+      .project-detail {
+        display: block;
+      }
+
+      .project-toggle {
+        margin-top: 12px;
+      }
+
+      .project-detail > div {
+        margin-bottom: 18px;
       }
     }
   </style>
@@ -171,24 +275,53 @@
   </nav>
 
   <main class="container">
-    <h1>Projects</h1>
-    <p class="sub">Selected work across tax, data, and systems.</p>
+    <h1>Selected Work</h1>
+    <p class="sub">Examples of tax technology, Pillar Two, data, and operating model work across large multinational groups.</p>
+    <p class="disclaimer">Client names and confidential details are intentionally abstracted.</p>
 
-    <div class="card">
-      <h3>Pillar Two Data Framework</h3>
-      <p>Design of data structures, mappings, and processes to support global minimum tax reporting.</p>
+    <div class="tag-row" aria-label="Selected work topics">
+      <span class="tag">Pillar Two</span>
+      <span class="tag">Tax Data</span>
+      <span class="tag">Tax Technology</span>
+      <span class="tag">Operating Model</span>
+      <span class="tag">AI in Tax</span>
     </div>
 
-    <div class="card">
-      <h3>Tax Automation Workflows</h3>
-      <p>Building repeatable processes across finance and tax systems to reduce manual intervention.</p>
-    </div>
+    <details class="project-card">
+      <summary>
+        <div class="project-heading">
+          <span class="project-title">Designing a Pillar Two Compliance Model Across 100+ Entities</span>
+          <span class="project-toggle" aria-hidden="true"></span>
+        </div>
+        <p class="project-meta">Large multinational group · Pillar Two implementation · 100+ entities</p>
+        <p class="project-summary">Led the design and delivery of an end-to-end Pillar Two implementation, turning complex rule requirements into a workable compliance model across data, process, and reporting.</p>
+      </summary>
 
-    <div class="card">
-      <h3>AI-assisted Documentation</h3>
-      <p>Using AI to accelerate requirement gathering, documentation, and system design thinking.</p>
-    </div>
+      <div class="project-detail">
+        <div>
+          <h3>Challenge</h3>
+          <p>The core issue was not technical interpretation alone. Data sat across multiple sources, ownership was fragmented, and the compliance process needed to work at scale across jurisdictions.</p>
+        </div>
+        <div>
+          <h3>What I led</h3>
+          <p>Directed the implementation approach across requirements, data logic, workflow design, and stakeholder coordination, including covered tax, deferred tax, ETR logic, and the broader operating structure.</p>
+        </div>
+        <div>
+          <h3>Outcome</h3>
+          <p>Helped create a more usable compliance model with clearer inputs, stronger workflow discipline, and a practical path to scaled Pillar Two reporting.</p>
+        </div>
+      </div>
 
+      <div class="capabilities project-capabilities" aria-label="Project capabilities">
+        <span class="capability-tag">Pillar Two</span>
+        <span class="capability-tag">Tax Data</span>
+        <span class="capability-tag">ETR Logic</span>
+        <span class="capability-tag">Covered Tax</span>
+        <span class="capability-tag">Deferred Tax</span>
+        <span class="capability-tag">Operating Model</span>
+        <span class="capability-tag">Tax Technology Implementation</span>
+      </div>
+    </details>
   </main>
 
   <footer>

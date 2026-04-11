@@ -1,1 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected | Aaron Kuo</title>
+  <meta name="description" content="Understand how the Income Inclusion Rule (IIR) works under Pillar Two and how top-up tax on low-taxed income is collected at the parent level." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      margin: 42px 0 14px;
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      margin: 28px 0 12px;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 18px;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Fundamentals</div>
+    <div class="series-tag">Part of: <a href="post1.html">OECD Pillar Two Explained</a></div>
+
+    <h1>Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</h1>
+
+    <p class="intro">
+      The Income Inclusion Rule is the core charging mechanism of Pillar Two. It is the rule that turns the global minimum tax into something enforceable by bringing low-taxed income into charge at parent level.
+    </p>
+
+    <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
+
+    <h2>Introduction</h2>
+    <p>
+      The Income Inclusion Rule (IIR) is the core charging mechanism of OECD Pillar Two.
+    </p>
+    <p>
+      It is the rule that makes the global minimum tax enforceable. Where income within a multinational group is taxed below 15%, the shortfall is brought into charge at the parent level.
+    </p>
+    <p>
+      That is the central shift under Pillar Two. The tax outcome is no longer determined only by where profits are booked. It is tested at group level and, where necessary, corrected through top-up tax.
+    </p>
+
+    <h2>What the IIR Does</h2>
+    <p>
+      The IIR requires a parent entity, typically the Ultimate Parent Entity (UPE), to pay top-up tax on low-taxed income arising in subsidiaries.
+    </p>
+    <p>
+      In practical terms, the rule:
+    </p>
+    <ul>
+      <li>tests income on a jurisdictional basis against the 15% minimum rate</li>
+      <li>identifies any shortfall</li>
+      <li>brings that shortfall into charge at the parent level</li>
+    </ul>
+    <p>
+      The effect is straightforward: low-tax outcomes within the group do not remain untouched.
+    </p>
+
+    <h2>How the IIR Works</h2>
+
+    <h3>1. Calculate the jurisdictional ETR</h3>
+    <p>
+      Under Pillar Two, the effective tax rate (ETR) is tested on a jurisdictional basis by comparing covered taxes against GloBE income or loss for that jurisdiction.
+    </p>
+    <p>
+      This is not an entity-by-entity test.
+    </p>
+
+    <h3>2. Identify whether the jurisdiction is below 15%</h3>
+    <p>
+      If the jurisdictional ETR is below 15%, there is potential top-up tax exposure.
+    </p>
+
+    <h3>3. Compute the top-up tax percentage</h3>
+    <p>
+      The top-up tax percentage is broadly the difference between the 15% minimum rate and the jurisdictional ETR.
+    </p>
+    <p>
+      If the ETR is 10%, the starting shortfall is 5%.
+    </p>
+
+    <div class="formula">
+      <strong>Core logic</strong>
+      <p>Top-up tax percentage = 15% minimum rate − jurisdictional ETR</p>
+    </div>
+
+    <h3>4. Apply the calculation to excess profit</h3>
+    <p>
+      The top-up tax is not applied to all profit without adjustment.
+    </p>
+    <p>
+      The substance-based income exclusion reduces the amount exposed based on eligible payroll costs and tangible assets.
+    </p>
+
+    <h3>5. Allocate the charge to the parent</h3>
+    <p>
+      Once calculated, the relevant parent entity applies the IIR and includes its allocable share of the top-up tax.
+    </p>
+    <p>
+      This is the core design of the rule: low-taxed income is pulled upward into the ownership chain.
+    </p>
+
+    <h2>Simple Example</h2>
+    <p>
+      Assume a group has operations in a jurisdiction with a 10% ETR.
+    </p>
+    <p>
+      If top-up tax remains after applying the substance-based income exclusion, the 5% shortfall is collected through the IIR at the parent level.
+    </p>
+    <p>
+      The practical point is more important than the arithmetic: the location of the profit no longer determines the final tax outcome.
+    </p>
+
+    <h2>Why the IIR Matters</h2>
+
+    <h3>It reduces the benefit of low-tax structures</h3>
+    <p>
+      If profits are taxed below the minimum rate, the gap can be collected elsewhere in the group.
+    </p>
+
+    <h3>It gives priority to parent jurisdictions</h3>
+    <p>
+      The IIR is the primary charging rule in the Pillar Two framework.
+    </p>
+
+    <h3>It connects directly to the other rules</h3>
+    <p>
+      If the IIR does not apply, the Undertaxed Profits Rule (UTPR) may operate as a backstop. A Qualified Domestic Minimum Top-up Tax (QDMTT) may also allow the local jurisdiction to collect top-up tax first.
+    </p>
+
+    <div class="note">
+      <strong>Why this matters in practice</strong>
+      <p>
+        The IIR changes Pillar Two from a theoretical minimum tax into an operating rule with real collection consequences. For multinational groups, that shifts attention away from isolated legal entities and toward group-wide data, governance, and visibility.
+      </p>
+    </div>
+
+    <h2>Practical Implications for Multinational Groups</h2>
+    <p>
+      The IIR is not just a technical rule. It creates operating model consequences.
+    </p>
+
+    <h3>Data quality becomes critical</h3>
+    <p>
+      Groups need reliable jurisdictional data for ETR, covered taxes, and GloBE income calculations.
+    </p>
+    <p>
+      This increases pressure on financial reporting, tax reporting, and source-system alignment.
+    </p>
+
+    <h3>Central oversight becomes more important</h3>
+    <p>
+      Tax teams need visibility over:
+    </p>
+    <ul>
+      <li>which jurisdictions fall below 15%</li>
+      <li>where top-up tax is arising</li>
+      <li>which entity is expected to pick up the charge</li>
+    </ul>
+
+    <h3>Legacy planning becomes less effective</h3>
+    <p>
+      Structures built around low-tax outcomes are harder to sustain when the shortfall can be collected at parent level.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      The Income Inclusion Rule is the mechanism that makes Pillar Two work in practice.
+    </p>
+    <p>
+      It ensures that low-taxed income within a multinational group does not remain below the global minimum rate without consequence.
+    </p>
+    <p>
+      For multinational groups, the message is clear: tax outcomes now need to be monitored at group level, not just where profits are booked.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article sits within the <em>Pillar Two Fundamentals</em> cluster and links back to the parent pillar page.
+      </p>
+      <ul>
+        <li><a href="post1.html">OECD Pillar Two Explained</a></li>
+        <li><a href="thoughts.html">Undertaxed Profits Rule (UTPR)</a></li>
+        <li><a href="thoughts.html">Qualified Domestic Minimum Top-up Tax (QDMTT)</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <img src="logo-v2.png" alt="Aaron Kuo logo">
+      <span>© 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>

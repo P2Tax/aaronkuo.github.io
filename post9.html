@@ -78,7 +78,7 @@
       font-size: 22px;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       display: none;
     }
 
@@ -132,7 +132,7 @@
     h1 {
       font-size: clamp(34px, 5vw, 58px);
       line-height: 1.02;
-      letter-spacing: -0.05em;
+      letter-spacing: 0;
       margin: 0 0 16px;
     }
 
@@ -151,14 +151,66 @@
 
     h2 {
       font-size: 28px;
-      letter-spacing: -0.03em;
-      margin: 42px 0 14px;
+      letter-spacing: 0;
+      margin: 54px 0 18px;
+      padding-left: 14px;
+      border-left: 3px solid #2dd4bf;
+      color: #f8fafc;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 1px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #2dd4bf, rgba(250, 204, 21, 0.68), transparent);
     }
 
     h3 {
       font-size: 21px;
-      letter-spacing: -0.02em;
-      margin: 28px 0 12px;
+      letter-spacing: 0;
+      margin: 32px 0 12px;
+      color: #bfdbfe;
+    }
+
+    .article-toc {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(8, 13, 23, 0.82));
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 30px 0 40px;
+    }
+
+    .article-toc strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #2dd4bf;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .article-toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 2;
+      column-gap: 34px;
+    }
+
+    .article-toc li {
+      break-inside: avoid;
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .article-toc a {
+      color: var(--text);
+    }
+
+    .article-toc a:hover {
+      color: #2dd4bf;
     }
 
     p, li {
@@ -179,7 +231,7 @@
     .related {
       background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: 8px;
       padding: 22px 24px;
       margin: 26px 0;
     }
@@ -240,6 +292,7 @@
       .nav-inner { flex-direction: column; }
       p, li { font-size: 16px; }
       .intro { font-size: 17px; }
+      .article-toc ol { columns: 1; }
     }
   </style>
 </head>
@@ -275,7 +328,23 @@
 
     <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
 
-    <h2>Introduction</h2>
+    <nav class="article-toc" aria-label="In this article">
+      <strong>In this article</strong>
+      <ol>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#what-the-safe-harbours-do">What the Safe Harbours Do</a></li>
+        <li><a href="#which-safe-harbour-matters-most-here">Which Safe Harbour Matters Most Here</a></li>
+        <li><a href="#how-the-transitional-cbcr-safe-harbour-works">How the Transitional CbCR Safe Harbour Works</a></li>
+        <li><a href="#why-the-2026-timeline-matters">Why the 2026 Timeline Matters</a></li>
+        <li><a href="#what-changes-when-transitional-relief-falls-away">What Changes When Transitional Relief Falls Away</a></li>
+        <li><a href="#do-not-confuse-this-with-other-transition-relief">Do Not Confuse This with Other Transition Relief</a></li>
+        <li><a href="#practical-implications-for-multinational-groups">Practical Implications for Multinational Groups</a></li>
+        <li><a href="#bridge-to-the-next-stage-data-and-compliance">Bridge to the Next Stage: Data and Compliance</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="introduction">Introduction</h2>
     <p>
       Pillar Two safe harbours are designed to simplify the early years of implementation.
     </p>
@@ -292,7 +361,7 @@
       That creates a practical message: safe harbours are a bridge, not the end state.
     </p>
 
-    <h2>What the Safe Harbours Do</h2>
+    <h2 id="what-the-safe-harbours-do">What the Safe Harbours Do</h2>
     <p>
       Safe harbours provide a simplified way to determine whether a jurisdiction can be treated as low risk for Pillar Two purposes without performing the full GloBE computation.
     </p>
@@ -308,7 +377,7 @@
       The objective is not to change the long-term Pillar Two outcome. It is to reduce the cost and complexity of getting there in the transition period.
     </p>
 
-    <h2>Which Safe Harbour Matters Most Here</h2>
+    <h2 id="which-safe-harbour-matters-most-here">Which Safe Harbour Matters Most Here</h2>
     <p>
       Pillar Two includes more than one safe harbour concept. But for most groups, the most relevant current one is the Transitional CbCR Safe Harbour.
     </p>
@@ -339,7 +408,7 @@
       A jurisdiction may qualify if profit before income tax is equal to or less than the Substance-based Income Exclusion amount for that jurisdiction.
     </p>
 
-    <h2>How the Transitional CbCR Safe Harbour Works</h2>
+    <h2 id="how-the-transitional-cbcr-safe-harbour-works">How the Transitional CbCR Safe Harbour Works</h2>
     <p>
       The Transitional CbCR Safe Harbour operates by reference to simplified jurisdictional data rather than full GloBE calculations.
     </p>
@@ -356,7 +425,7 @@
       This is useful relief, but it is not permanent.
     </p>
 
-    <h2>Why the 2026 Timeline Matters</h2>
+    <h2 id="why-the-2026-timeline-matters">Why the 2026 Timeline Matters</h2>
     <p>
       This is the part that matters commercially.
     </p>
@@ -380,7 +449,7 @@
       <p>For many calendar-year groups, 2026 is the last key Fiscal Year beginning within the Transitional CbCR Safe Harbour entry window.</p>
     </div>
 
-    <h2>What Changes When Transitional Relief Falls Away</h2>
+    <h2 id="what-changes-when-transitional-relief-falls-away">What Changes When Transitional Relief Falls Away</h2>
     <p>
       Once the transitional CbCR relief is no longer available, the operating burden shifts materially.
     </p>
@@ -397,7 +466,7 @@
       That is a major step up from relying mainly on simplified CbCR-based metrics.
     </p>
 
-    <h2>Do Not Confuse This with Other Transition Relief</h2>
+    <h2 id="do-not-confuse-this-with-other-transition-relief">Do Not Confuse This with Other Transition Relief</h2>
     <p>
       One reason this topic is easy to write loosely is that there are several different transition concepts in the Pillar Two framework.
     </p>
@@ -419,7 +488,7 @@
       </p>
     </div>
 
-    <h2>Practical Implications for Multinational Groups</h2>
+    <h2 id="practical-implications-for-multinational-groups">Practical Implications for Multinational Groups</h2>
     <p>
       Safe harbours reduce immediate pressure, but they also create a hard transition point.
     </p>
@@ -454,7 +523,7 @@
       The real question becomes whether the group can produce a defensible, repeatable Pillar Two calculation across all relevant jurisdictions once transitional relief is gone.
     </p>
 
-    <h2>Bridge to the Next Stage: Data and Compliance</h2>
+    <h2 id="bridge-to-the-next-stage-data-and-compliance">Bridge to the Next Stage: Data and Compliance</h2>
     <p>
       Safe harbours are not the end state of Pillar Two.
     </p>
@@ -469,7 +538,7 @@
       That is why this article is a natural bridge to the next pillar in your site: data readiness, assessment frameworks, and Pillar Two compliance operating models.
     </p>
 
-    <h2>Conclusion</h2>
+    <h2 id="conclusion">Conclusion</h2>
     <p>
       Pillar Two safe harbours provide useful short-term simplification, but they do not remove the need for full compliance.
     </p>

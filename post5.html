@@ -78,7 +78,7 @@
       font-size: 22px;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       display: none;
     }
 
@@ -132,7 +132,7 @@
     h1 {
       font-size: clamp(34px, 5vw, 58px);
       line-height: 1.02;
-      letter-spacing: -0.05em;
+      letter-spacing: 0;
       margin: 0 0 16px;
     }
 
@@ -151,14 +151,66 @@
 
     h2 {
       font-size: 28px;
-      letter-spacing: -0.03em;
-      margin: 42px 0 14px;
+      letter-spacing: 0;
+      margin: 54px 0 18px;
+      padding-left: 14px;
+      border-left: 3px solid #2dd4bf;
+      color: #f8fafc;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 1px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #2dd4bf, rgba(250, 204, 21, 0.68), transparent);
     }
 
     h3 {
       font-size: 21px;
-      letter-spacing: -0.02em;
-      margin: 28px 0 12px;
+      letter-spacing: 0;
+      margin: 32px 0 12px;
+      color: #bfdbfe;
+    }
+
+    .article-toc {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(8, 13, 23, 0.82));
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 30px 0 40px;
+    }
+
+    .article-toc strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #2dd4bf;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .article-toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 2;
+      column-gap: 34px;
+    }
+
+    .article-toc li {
+      break-inside: avoid;
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .article-toc a {
+      color: var(--text);
+    }
+
+    .article-toc a:hover {
+      color: #2dd4bf;
     }
 
     p, li {
@@ -179,7 +231,7 @@
     .related {
       background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: 8px;
       padding: 22px 24px;
       margin: 26px 0;
     }
@@ -240,6 +292,7 @@
       .nav-inner { flex-direction: column; }
       p, li { font-size: 16px; }
       .intro { font-size: 17px; }
+      .article-toc ol { columns: 1; }
     }
   </style>
 </head>
@@ -275,7 +328,21 @@
 
     <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
 
-    <h2>Introduction</h2>
+    <nav class="article-toc" aria-label="In this article">
+      <strong>In this article</strong>
+      <ol>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#what-top-up-tax-represents">What Top-Up Tax Represents</a></li>
+        <li><a href="#how-top-up-tax-is-calculated">How Top-Up Tax Is Calculated</a></li>
+        <li><a href="#simple-example">Simple Example</a></li>
+        <li><a href="#where-top-up-tax-is-collected">Where Top-Up Tax Is Collected</a></li>
+        <li><a href="#why-top-up-tax-matters">Why Top-Up Tax Matters</a></li>
+        <li><a href="#practical-implications-for-multinational-groups">Practical Implications for Multinational Groups</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="introduction">Introduction</h2>
     <p>
       Top-up tax is the central calculation outcome of OECD Pillar Two.
     </p>
@@ -286,7 +353,7 @@
       At a high level, the concept is simple. If the jurisdictional effective tax rate is below 15%, a shortfall may arise. The technical challenge lies in how that shortfall is measured.
     </p>
 
-    <h2>What Top-Up Tax Represents</h2>
+    <h2 id="what-top-up-tax-represents">What Top-Up Tax Represents</h2>
     <p>
       Top-up tax is the additional amount required to bring the tax on excess profits in a jurisdiction up to the 15% minimum rate. Under the GloBE architecture, this is determined using a standardised calculation based on GloBE income, adjusted covered taxes, and the jurisdictional effective tax rate.
     </p>
@@ -299,7 +366,7 @@
       <li>produces an amount that is then brought into charge under the Pillar Two rule order</li>
     </ul>
 
-    <h2>How Top-Up Tax Is Calculated</h2>
+    <h2 id="how-top-up-tax-is-calculated">How Top-Up Tax Is Calculated</h2>
 
     <h3>1. Determine GloBE income or loss</h3>
     <p>
@@ -336,7 +403,7 @@
       The remaining excess profit is multiplied by the top-up tax percentage. That produces the top-up tax for the jurisdiction.
     </p>
 
-    <h2>Simple Example</h2>
+    <h2 id="simple-example">Simple Example</h2>
     <p>
       Assume a jurisdiction has:
     </p>
@@ -354,7 +421,7 @@
       The mechanics are straightforward. The real complexity usually sits in the underlying adjustments to income, taxes, and exclusions.
     </p>
 
-    <h2>Where Top-Up Tax Is Collected</h2>
+    <h2 id="where-top-up-tax-is-collected">Where Top-Up Tax Is Collected</h2>
     <p>
       The top-up tax calculation does not by itself determine who collects the amount.
     </p>
@@ -370,7 +437,7 @@
       This distinction matters. Calculation and collection are related, but they are not the same step in the Pillar Two framework.
     </p>
 
-    <h2>Why Top-Up Tax Matters</h2>
+    <h2 id="why-top-up-tax-matters">Why Top-Up Tax Matters</h2>
 
     <h3>It turns the minimum tax into a measurable amount</h3>
     <p>
@@ -394,7 +461,7 @@
       </p>
     </div>
 
-    <h2>Practical Implications for Multinational Groups</h2>
+    <h2 id="practical-implications-for-multinational-groups">Practical Implications for Multinational Groups</h2>
     <p>
       Top-up tax is a calculation layered onto existing tax systems, but it creates new operating demands.
     </p>
@@ -414,7 +481,7 @@
       Groups increasingly need to anticipate where top-up tax may arise, whether a domestic minimum tax changes the answer, and how any residual amount may be collected.
     </p>
 
-    <h2>Conclusion</h2>
+    <h2 id="conclusion">Conclusion</h2>
     <p>
       Top-up tax is the calculation that turns the Pillar Two minimum tax into an operational result.
     </p>

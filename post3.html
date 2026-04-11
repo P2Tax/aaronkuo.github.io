@@ -78,7 +78,7 @@
       font-size: 22px;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       display: none;
     }
 
@@ -132,7 +132,7 @@
     h1 {
       font-size: clamp(34px, 5vw, 58px);
       line-height: 1.02;
-      letter-spacing: -0.05em;
+      letter-spacing: 0;
       margin: 0 0 16px;
     }
 
@@ -151,14 +151,66 @@
 
     h2 {
       font-size: 28px;
-      letter-spacing: -0.03em;
-      margin: 42px 0 14px;
+      letter-spacing: 0;
+      margin: 54px 0 18px;
+      padding-left: 14px;
+      border-left: 3px solid #2dd4bf;
+      color: #f8fafc;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 1px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #2dd4bf, rgba(250, 204, 21, 0.68), transparent);
     }
 
     h3 {
       font-size: 21px;
-      letter-spacing: -0.02em;
-      margin: 28px 0 12px;
+      letter-spacing: 0;
+      margin: 32px 0 12px;
+      color: #bfdbfe;
+    }
+
+    .article-toc {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(8, 13, 23, 0.82));
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 30px 0 40px;
+    }
+
+    .article-toc strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #2dd4bf;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .article-toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 2;
+      column-gap: 34px;
+    }
+
+    .article-toc li {
+      break-inside: avoid;
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .article-toc a {
+      color: var(--text);
+    }
+
+    .article-toc a:hover {
+      color: #2dd4bf;
     }
 
     p, li {
@@ -179,7 +231,7 @@
     .related {
       background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: 8px;
       padding: 22px 24px;
       margin: 26px 0;
     }
@@ -240,6 +292,7 @@
       .nav-inner { flex-direction: column; }
       p, li { font-size: 16px; }
       .intro { font-size: 17px; }
+      .article-toc ol { columns: 1; }
     }
   </style>
 </head>
@@ -275,7 +328,20 @@
 
     <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
 
-    <h2>Introduction</h2>
+    <nav class="article-toc" aria-label="In this article">
+      <strong>In this article</strong>
+      <ol>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#what-the-utpr-does">What the UTPR Does</a></li>
+        <li><a href="#how-the-utpr-works">How the UTPR Works</a></li>
+        <li><a href="#simple-example">Simple Example</a></li>
+        <li><a href="#why-the-utpr-matters">Why the UTPR Matters</a></li>
+        <li><a href="#practical-implications-for-multinational-groups">Practical Implications for Multinational Groups</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="introduction">Introduction</h2>
     <p>
       The Undertaxed Profits Rule (UTPR) is the backstop mechanism of OECD Pillar Two.
     </p>
@@ -286,7 +352,7 @@
       That is what makes it important. The UTPR ensures that low-taxed income does not fall outside the Pillar Two system simply because the primary charging rule did not apply.
     </p>
 
-    <h2>What the UTPR Does</h2>
+    <h2 id="what-the-utpr-does">What the UTPR Does</h2>
     <p>
       The UTPR applies to top-up tax that remains uncollected after the operation of other Pillar Two rules.
     </p>
@@ -302,7 +368,7 @@
       Unlike the IIR, which charges tax upward through the ownership chain, the UTPR reallocates collection rights across the group’s operating footprint.
     </p>
 
-    <h2>How the UTPR Works</h2>
+    <h2 id="how-the-utpr-works">How the UTPR Works</h2>
 
     <h3>1. Determine the residual top-up tax</h3>
     <p>
@@ -352,7 +418,7 @@
       The result is additional local tax payable.
     </p>
 
-    <h2>Simple Example</h2>
+    <h2 id="simple-example">Simple Example</h2>
     <p>
       Assume a group has low-taxed income in a jurisdiction, but no QDMTT applies locally and the parent jurisdiction does not impose IIR.
     </p>
@@ -363,7 +429,7 @@
       The practical consequence is clear: where the primary collection mechanisms do not apply, the Pillar Two system still provides a way to collect the residual amount.
     </p>
 
-    <h2>Why the UTPR Matters</h2>
+    <h2 id="why-the-utpr-matters">Why the UTPR Matters</h2>
 
     <h3>It closes the remaining gap</h3>
     <p>
@@ -387,7 +453,7 @@
       </p>
     </div>
 
-    <h2>Practical Implications for Multinational Groups</h2>
+    <h2 id="practical-implications-for-multinational-groups">Practical Implications for Multinational Groups</h2>
     <p>
       The UTPR adds another layer of complexity to Pillar Two implementation.
     </p>
@@ -413,7 +479,7 @@
       Because the rule depends on consistent data and implementation across multiple countries, groups face a greater risk of misalignment, disputes, and inconsistent outcomes if governance is weak.
     </p>
 
-    <h2>Conclusion</h2>
+    <h2 id="conclusion">Conclusion</h2>
     <p>
       The Undertaxed Profits Rule is the backstop that prevents residual Pillar Two top-up tax from escaping collection.
     </p>

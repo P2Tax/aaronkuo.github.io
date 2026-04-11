@@ -1,80 +1,73 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
   <title id="title">Pillar Two global minimum tax visual</title>
-  <desc id="desc">A dark blue infographic showing a 15 percent global minimum tax floor and the three rules QDMTT, IIR, and UTPR.</desc>
+  <desc id="desc">A clean infographic showing a 15 percent minimum tax floor, a top-up tax gap, and the QDMTT, IIR, and UTPR rule sequence.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#020617"/>
-      <stop offset="0.52" stop-color="#07111f"/>
-      <stop offset="1" stop-color="#0b1220"/>
+      <stop offset="0" stop-color="#071014"/>
+      <stop offset="0.58" stop-color="#0c151b"/>
+      <stop offset="1" stop-color="#111827"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#60a5fa"/>
-      <stop offset="1" stop-color="#22d3ee"/>
+    <linearGradient id="floor" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#a3e635"/>
     </linearGradient>
-    <filter id="softGlow" x="-25%" y="-25%" width="150%" height="150%">
-      <feGaussianBlur stdDeviation="18" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.23 0 0 0 0 0.58 0 0 0 0 1 0 0 0 0.35 0"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    <linearGradient id="gap" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#facc15"/>
+    </linearGradient>
     <style>
-      .label { font-family: Inter, Arial, sans-serif; fill: #e2e8f0; font-weight: 800; letter-spacing: -0.03em; }
-      .muted { font-family: Inter, Arial, sans-serif; fill: #94a3b8; font-weight: 500; }
-      .small { font-size: 24px; }
-      .tiny { font-size: 18px; }
-      .rule { font-size: 34px; }
-      .line { stroke: rgba(148, 163, 184, 0.28); stroke-width: 2; fill: none; }
-      .accent-line { stroke: url(#accent); stroke-width: 5; stroke-linecap: round; fill: none; }
+      .title { font-family: Inter, Arial, sans-serif; fill: #f8fafc; font-weight: 800; letter-spacing: 0; }
+      .label { font-family: Inter, Arial, sans-serif; fill: #e2e8f0; font-weight: 700; }
+      .muted { font-family: Inter, Arial, sans-serif; fill: #a8b3bf; font-weight: 500; }
+      .small { font-size: 20px; }
+      .tiny { font-size: 16px; }
+      .card { fill: rgba(15, 23, 42, 0.72); stroke: rgba(226, 232, 240, 0.16); stroke-width: 1.5; }
+      .grid { stroke: rgba(226, 232, 240, 0.08); stroke-width: 1; }
+      .arrow { stroke: #a8b3bf; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
     </style>
   </defs>
 
   <rect width="1200" height="675" fill="url(#bg)"/>
-  <circle cx="945" cy="128" r="210" fill="#60a5fa" opacity="0.08" filter="url(#softGlow)"/>
-  <circle cx="250" cy="560" r="220" fill="#22d3ee" opacity="0.06" filter="url(#softGlow)"/>
+  <path d="M74 223H1126M74 299H1126M74 375H1126" class="grid"/>
+  <path d="M235 188V438M425 188V438M615 188V438M805 188V438M995 188V438" class="grid"/>
 
-  <text x="72" y="94" class="muted tiny" letter-spacing="0.14em">PILLAR TWO FUNDAMENTALS</text>
-  <text x="72" y="155" class="label" font-size="54">Global minimum tax</text>
-  <text x="72" y="203" class="muted small">A 15% floor, measured by jurisdiction, with top-up tax collected through ordered rules.</text>
+  <text x="72" y="84" class="muted tiny" letter-spacing="0">PILLAR TWO FUNDAMENTALS</text>
+  <text x="72" y="143" class="title" font-size="52">Global minimum tax</text>
+  <text x="72" y="187" class="muted small">A jurisdictional ETR test creates a top-up tax when the rate falls below 15%.</text>
 
-  <g transform="translate(76 292)">
-    <rect x="0" y="0" width="1048" height="126" rx="18" fill="rgba(11, 18, 32, 0.94)" stroke="rgba(96, 165, 250, 0.28)"/>
-    <line x1="50" y1="80" x2="998" y2="80" class="accent-line"/>
-    <text x="50" y="52" class="label" font-size="46">15%</text>
-    <text x="139" y="52" class="muted small">minimum effective tax rate</text>
-    <text x="50" y="111" class="muted tiny">If a jurisdictional ETR falls below the floor, the difference becomes top-up tax.</text>
+  <g transform="translate(86 242)">
+    <rect x="0" y="0" width="1028" height="176" rx="8" fill="rgba(2, 6, 23, 0.58)" stroke="rgba(226, 232, 240, 0.14)"/>
+    <text x="42" y="61" class="label" font-size="34">ETR test</text>
+    <text x="42" y="103" class="muted small">If actual tax is below the floor, the gap is collected as top-up tax.</text>
+
+    <line x1="430" y1="119" x2="938" y2="119" stroke="rgba(226, 232, 240, 0.22)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="430" y1="119" x2="660" y2="119" stroke="url(#gap)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="660" y1="119" x2="938" y2="119" stroke="url(#floor)" stroke-width="18" stroke-linecap="round"/>
+    <text x="430" y="82" class="muted tiny">Low-tax gap</text>
+    <text x="642" y="82" class="label" font-size="28">15% floor</text>
+    <text x="815" y="82" class="muted tiny">No top-up</text>
   </g>
 
-  <g transform="translate(76 478)">
-    <rect x="0" y="0" width="304" height="126" rx="18" fill="rgba(15, 23, 42, 0.92)" stroke="rgba(148, 163, 184, 0.22)"/>
-    <text x="26" y="46" class="label rule">QDMTT</text>
-    <text x="26" y="80" class="muted tiny">Local jurisdiction collects first</text>
-    <text x="26" y="106" class="muted tiny">when domestic rule qualifies.</text>
+  <g transform="translate(86 494)">
+    <rect class="card" x="0" y="0" width="300" height="110" rx="8"/>
+    <text x="28" y="45" class="label" font-size="34">QDMTT</text>
+    <text x="28" y="80" class="muted tiny">Local first</text>
   </g>
 
-  <g transform="translate(448 478)">
-    <rect x="0" y="0" width="304" height="126" rx="18" fill="rgba(15, 23, 42, 0.92)" stroke="rgba(96, 165, 250, 0.30)"/>
-    <text x="26" y="46" class="label rule">IIR</text>
-    <text x="26" y="80" class="muted tiny">Parent jurisdiction collects</text>
-    <text x="26" y="106" class="muted tiny">remaining top-up tax.</text>
+  <g transform="translate(450 494)">
+    <rect class="card" x="0" y="0" width="300" height="110" rx="8"/>
+    <text x="28" y="45" class="label" font-size="34">IIR</text>
+    <text x="28" y="80" class="muted tiny">Parent rule</text>
   </g>
 
-  <g transform="translate(820 478)">
-    <rect x="0" y="0" width="304" height="126" rx="18" fill="rgba(15, 23, 42, 0.92)" stroke="rgba(34, 211, 238, 0.28)"/>
-    <text x="26" y="46" class="label rule">UTPR</text>
-    <text x="26" y="80" class="muted tiny">Backup rule allocates tax</text>
-    <text x="26" y="106" class="muted tiny">where IIR does not apply.</text>
+  <g transform="translate(814 494)">
+    <rect class="card" x="0" y="0" width="300" height="110" rx="8"/>
+    <text x="28" y="45" class="label" font-size="34">UTPR</text>
+    <text x="28" y="80" class="muted tiny">Backstop</text>
   </g>
 
-  <path d="M380 541H448" class="line"/>
-  <path d="M752 541H820" class="line"/>
-  <path d="M424 531l24 10-24 10" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M796 531l24 10-24 10" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <g transform="translate(818 126)">
-    <rect x="0" y="0" width="306" height="94" rx="18" fill="rgba(96, 165, 250, 0.10)" stroke="rgba(96, 165, 250, 0.32)"/>
-    <text x="24" y="40" class="label" font-size="28">ETR below 15%</text>
-    <text x="24" y="70" class="muted tiny">Top-up tax is triggered</text>
-  </g>
+  <path d="M386 549H450" class="arrow"/>
+  <path d="M750 549H814" class="arrow"/>
+  <path d="M430 539l20 10-20 10" class="arrow"/>
+  <path d="M794 539l20 10-20 10" class="arrow"/>
 </svg>

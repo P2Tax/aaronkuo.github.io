@@ -78,7 +78,7 @@
       font-size: 22px;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       display: none;
     }
 
@@ -132,7 +132,7 @@
     h1 {
       font-size: clamp(34px, 5vw, 58px);
       line-height: 1.02;
-      letter-spacing: -0.05em;
+      letter-spacing: 0;
       margin: 0 0 16px;
     }
 
@@ -157,20 +157,72 @@
       width: 100%;
       display: block;
       border: 1px solid rgba(96, 165, 250, 0.24);
-      border-radius: 20px;
+      border-radius: 8px;
       box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
     }
 
     h2 {
       font-size: 28px;
-      letter-spacing: -0.03em;
-      margin: 42px 0 14px;
+      letter-spacing: 0;
+      margin: 54px 0 18px;
+      padding-left: 14px;
+      border-left: 3px solid #2dd4bf;
+      color: #f8fafc;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 1px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #2dd4bf, rgba(250, 204, 21, 0.68), transparent);
     }
 
     h3 {
       font-size: 21px;
-      letter-spacing: -0.02em;
-      margin: 28px 0 12px;
+      letter-spacing: 0;
+      margin: 32px 0 12px;
+      color: #bfdbfe;
+    }
+
+    .article-toc {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(8, 13, 23, 0.82));
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 30px 0 40px;
+    }
+
+    .article-toc strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #2dd4bf;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .article-toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 2;
+      column-gap: 34px;
+    }
+
+    .article-toc li {
+      break-inside: avoid;
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .article-toc a {
+      color: var(--text);
+    }
+
+    .article-toc a:hover {
+      color: #2dd4bf;
     }
 
     p, li {
@@ -191,7 +243,7 @@
     .related {
       background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: 8px;
       padding: 22px 24px;
       margin: 26px 0;
     }
@@ -252,6 +304,7 @@
       .nav-inner { flex-direction: column; }
       p, li { font-size: 16px; }
       .intro { font-size: 17px; }
+      .article-toc ol { columns: 1; }
     }
   </style>
 </head>
@@ -294,7 +347,21 @@
       <img src="assets/post1-pillar-two-visual.svg" alt="Pillar Two visual showing a 15% global minimum tax floor and the QDMTT, IIR, and UTPR collection rules">
     </figure>
 
-    <h2>What Is OECD Pillar Two?</h2>
+    <nav class="article-toc" aria-label="In this article">
+      <strong>In this article</strong>
+      <ol>
+        <li><a href="#what-is-oecd-pillar-two">What Is OECD Pillar Two?</a></li>
+        <li><a href="#why-was-pillar-two-introduced">Why Was Pillar Two Introduced?</a></li>
+        <li><a href="#how-the-global-minimum-tax-works">How the Global Minimum Tax Works</a></li>
+        <li><a href="#the-three-core-rules-of-pillar-two">The Three Core Rules of Pillar Two</a></li>
+        <li><a href="#effective-tax-rate-etr">Effective Tax Rate (ETR)</a></li>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#why-pillar-two-matters">Why Pillar Two Matters</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="what-is-oecd-pillar-two">What Is OECD Pillar Two?</h2>
     <p>
       OECD Pillar Two is part of the broader BEPS 2.0 initiative. Its objective is to reduce tax avoidance
       by establishing a minimum effective tax rate of 15%.
@@ -305,7 +372,7 @@
       <li>Annual revenue above €750 million</li>
     </ul>
 
-    <h2>Why Was Pillar Two Introduced?</h2>
+    <h2 id="why-was-pillar-two-introduced">Why Was Pillar Two Introduced?</h2>
     <p>
       The traditional international tax system struggled to keep up with the structure of modern multinational groups.
     </p>
@@ -325,7 +392,7 @@
       <li>Stabilize global tax competition</li>
     </ul>
 
-    <h2>How the Global Minimum Tax Works</h2>
+    <h2 id="how-the-global-minimum-tax-works">How the Global Minimum Tax Works</h2>
     <p>At a high level, the system works as follows:</p>
     <ol>
       <li>Calculate the Effective Tax Rate (ETR) for each jurisdiction</li>
@@ -334,7 +401,7 @@
       <li>Allocate that tax using global rules</li>
     </ol>
 
-    <h2>The Three Core Rules of Pillar Two</h2>
+    <h2 id="the-three-core-rules-of-pillar-two">The Three Core Rules of Pillar Two</h2>
 
     <h3>1. Income Inclusion Rule (IIR)</h3>
     <p>The primary rule.</p>
@@ -354,7 +421,7 @@
       Countries can collect the top-up tax domestically before others do.
     </p>
 
-    <h2>Effective Tax Rate (ETR)</h2>
+    <h2 id="effective-tax-rate-etr">Effective Tax Rate (ETR)</h2>
     <p>
       The Effective Tax Rate determines whether additional tax is required.
     </p>
@@ -368,7 +435,7 @@
       If the ETR is below 15%, a top-up tax is triggered.
     </p>
 
-    <h2>Example</h2>
+    <h2 id="example">Example</h2>
     <p>
       A subsidiary is taxed at 10% in a jurisdiction where the minimum rate is 15%.
     </p>
@@ -380,7 +447,7 @@
       <li>The local jurisdiction (QDMTT)</li>
     </ul>
 
-    <h2>Why Pillar Two Matters</h2>
+    <h2 id="why-pillar-two-matters">Why Pillar Two Matters</h2>
 
     <h3>Reduced Incentive for Profit Shifting</h3>
     <p>
@@ -406,7 +473,7 @@
       </p>
     </div>
 
-    <h2>Conclusion</h2>
+    <h2 id="conclusion">Conclusion</h2>
     <p>
       OECD Pillar Two establishes a global tax floor. It does not eliminate tax planning, but it fundamentally changes
       how multinational groups approach tax strategy.

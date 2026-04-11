@@ -252,7 +252,7 @@
       line-height: 1.5;
     }
 
-    .visual-step {
+    .visual-card .visual-step {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -264,10 +264,11 @@
       color: #071014;
       font-size: 13px;
       font-weight: 800;
+      line-height: 1;
     }
 
-    .visual-card:nth-child(2) .visual-step { background: #facc15; }
-    .visual-card:nth-child(3) .visual-step { background: #60a5fa; }
+    .visual-card:nth-child(2) .visual-step { background: #facc15; color: #071014; }
+    .visual-card:nth-child(3) .visual-step { background: #60a5fa; color: #071014; }
 
     @media (max-width: 680px) {
       .concept-visual { padding: 20px; }
@@ -278,6 +279,7 @@
       .concept-visual h3 { font-size: 24px; }
       .visual-big-number { font-size: 44px; }
     }
+
 h2 {
       font-size: 28px;
       letter-spacing: 0;

@@ -149,6 +149,138 @@
       margin-bottom: 28px;
     }
 
+    .concept-visual {
+      margin: 34px 0 40px;
+      padding: 26px;
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(7, 16, 20, 0.96), rgba(17, 24, 39, 0.96));
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+    }
+
+    .visual-kicker {
+      color: #2dd4bf;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .concept-visual h3 {
+      margin: 0 0 8px;
+      color: #f8fafc;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .visual-caption {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 22px;
+    }
+
+    .visual-panel,
+    .visual-card {
+      border: 1px solid rgba(226, 232, 240, 0.16);
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    .visual-floor {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 20px;
+      align-items: center;
+      padding: 22px;
+    }
+
+    .visual-big-number {
+      color: #f8fafc;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-rate-track {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f59e0b 0 38%, #2dd4bf 38% 100%);
+      margin-bottom: 12px;
+    }
+
+    .visual-rate-labels,
+    .visual-flow,
+    .visual-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .visual-rate-labels {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .visual-flow {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .visual-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visual-card {
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .visual-card strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 24px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .visual-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .visual-card .visual-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: #2dd4bf;
+      color: #071014;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-card:nth-child(2) .visual-step { background: #facc15; color: #071014; }
+    .visual-card:nth-child(3) .visual-step { background: #60a5fa; color: #071014; }
+
+    @media (max-width: 680px) {
+      .concept-visual { padding: 20px; }
+      .visual-floor,
+      .visual-flow,
+      .visual-grid,
+      .visual-rate-labels { grid-template-columns: 1fr; }
+      .concept-visual h3 { font-size: 24px; }
+      .visual-big-number { font-size: 44px; }
+    }
+
     h2 {
       font-size: 28px;
       letter-spacing: 0;
@@ -341,6 +473,17 @@
       </ol>
     </nav>
 
+    <section class="concept-visual" aria-label="QDMTT local collection visual">
+      <div class="visual-kicker">Qualified domestic minimum top-up tax</div>
+      <h3>Local collection comes first</h3>
+      <p class="visual-caption">A qualifying domestic rule lets the source jurisdiction collect the top-up tax before foreign mechanisms apply.</p>
+      <div class="visual-flow">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Local ETR gap</strong><span>The jurisdiction is below 15%.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>QDMTT applies</strong><span>Domestic tax is computed.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Foreign charge reduced</strong><span>IIR or UTPR has less to collect.</span></div>
+      </div>
+    </section>
+
     <h2 id="introduction">Introduction</h2>
     <p>
       The Qualified Domestic Minimum Top-up Tax (QDMTT) is the mechanism that allows jurisdictions to retain taxing rights under Pillar Two.
@@ -372,6 +515,16 @@
     </p>
 
     <h2 id="how-the-qdmtt-works">How the QDMTT Works</h2>
+    <section class="concept-visual" aria-label="QDMTT qualification visual">
+      <div class="visual-kicker">Qualification path</div>
+      <h3>Domestic rule, global effect</h3>
+      <p class="visual-caption">The domestic minimum tax must align with the framework to take priority in the rule order.</p>
+      <div class="visual-flow">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Qualifying regime</strong><span>Domestic law is implemented.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>ETR test</strong><span>The local shortfall is measured.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Local payment</strong><span>The jurisdiction keeps taxing rights.</span></div>
+      </div>
+    </section>
 
     <h3>1. Implement a qualifying domestic regime</h3>
     <p>
@@ -459,6 +612,17 @@
     </div>
 
     <h2 id="practical-implications-for-multinational-groups">Practical Implications for Multinational Groups</h2>
+    <section class="concept-visual" aria-label="QDMTT local compliance visual">
+      <div class="visual-kicker">Local compliance</div>
+      <h3>Domestic rules become operational</h3>
+      <p class="visual-caption">Groups need local and global calculations to line up so the same top-up tax is not duplicated or missed.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><strong>Local filings</strong><span>Domestic obligations increase.</span></div>
+        <div class="visual-card"><strong>Credit tracking</strong><span>Amounts must interact with IIR and UTPR.</span></div>
+        <div class="visual-card"><strong>Data consistency</strong><span>Local and group data must reconcile.</span></div>
+        <div class="visual-card"><strong>Governance</strong><span>Ownership is shared across teams.</span></div>
+      </div>
+    </section>
     <p>
       The QDMTT changes how exposure is distributed across jurisdictions.
     </p>

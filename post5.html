@@ -149,6 +149,138 @@
       margin-bottom: 28px;
     }
 
+    .concept-visual {
+      margin: 34px 0 40px;
+      padding: 26px;
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(7, 16, 20, 0.96), rgba(17, 24, 39, 0.96));
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+    }
+
+    .visual-kicker {
+      color: #2dd4bf;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .concept-visual h3 {
+      margin: 0 0 8px;
+      color: #f8fafc;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .visual-caption {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 22px;
+    }
+
+    .visual-panel,
+    .visual-card {
+      border: 1px solid rgba(226, 232, 240, 0.16);
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    .visual-floor {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 20px;
+      align-items: center;
+      padding: 22px;
+    }
+
+    .visual-big-number {
+      color: #f8fafc;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-rate-track {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f59e0b 0 38%, #2dd4bf 38% 100%);
+      margin-bottom: 12px;
+    }
+
+    .visual-rate-labels,
+    .visual-flow,
+    .visual-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .visual-rate-labels {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .visual-flow {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .visual-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visual-card {
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .visual-card strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 24px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .visual-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .visual-card .visual-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: #2dd4bf;
+      color: #071014;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-card:nth-child(2) .visual-step { background: #facc15; color: #071014; }
+    .visual-card:nth-child(3) .visual-step { background: #60a5fa; color: #071014; }
+
+    @media (max-width: 680px) {
+      .concept-visual { padding: 20px; }
+      .visual-floor,
+      .visual-flow,
+      .visual-grid,
+      .visual-rate-labels { grid-template-columns: 1fr; }
+      .concept-visual h3 { font-size: 24px; }
+      .visual-big-number { font-size: 44px; }
+    }
+
     h2 {
       font-size: 28px;
       letter-spacing: 0;
@@ -342,6 +474,26 @@
       </ol>
     </nav>
 
+    <section class="concept-visual" aria-label="Top-up tax gap visual">
+      <div class="visual-kicker">Top-up tax</div>
+      <h3>The shortfall becomes measurable</h3>
+      <p class="visual-caption">Top-up tax converts a low effective tax rate into an amount that can be collected under the rule order.</p>
+      <div class="visual-panel visual-floor">
+        <div>
+          <div class="visual-big-number">5%</div>
+          <p class="visual-caption">example shortfall when ETR is 10%</p>
+        </div>
+        <div>
+          <div class="visual-rate-track" aria-hidden="true"></div>
+          <div class="visual-rate-labels">
+            <span>10% ETR</span>
+            <span>5% gap</span>
+            <span>15% floor</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <h2 id="introduction">Introduction</h2>
     <p>
       Top-up tax is the central calculation outcome of OECD Pillar Two.
@@ -367,6 +519,17 @@
     </ul>
 
     <h2 id="how-top-up-tax-is-calculated">How Top-Up Tax Is Calculated</h2>
+    <section class="concept-visual" aria-label="Top-up tax calculation chain visual">
+      <div class="visual-kicker">Calculation chain</div>
+      <h3>From data to top-up tax</h3>
+      <p class="visual-caption">The result depends on consistent income, tax, exclusion, and rule-order data.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><strong>GloBE income</strong><span>Standardised profit base.</span></div>
+        <div class="visual-card"><strong>Covered taxes</strong><span>Adjusted tax amount.</span></div>
+        <div class="visual-card"><strong>Shortfall</strong><span>15% minus jurisdictional ETR.</span></div>
+        <div class="visual-card"><strong>Excess profit</strong><span>Amount exposed after exclusions.</span></div>
+      </div>
+    </section>
 
     <h3>1. Determine GloBE income or loss</h3>
     <p>
@@ -422,6 +585,16 @@
     </p>
 
     <h2 id="where-top-up-tax-is-collected">Where Top-Up Tax Is Collected</h2>
+    <section class="concept-visual" aria-label="Top-up tax collection visual">
+      <div class="visual-kicker">Collection route</div>
+      <h3>Calculation is not collection</h3>
+      <p class="visual-caption">Once calculated, the top-up tax follows the rule order to determine which jurisdiction collects it.</p>
+      <div class="visual-flow">
+        <div class="visual-card"><span class="visual-step">1</span><strong>QDMTT</strong><span>Local jurisdiction first.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>IIR</strong><span>Parent jurisdiction next.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>UTPR</strong><span>Residual backstop.</span></div>
+      </div>
+    </section>
     <p>
       The top-up tax calculation does not by itself determine who collects the amount.
     </p>

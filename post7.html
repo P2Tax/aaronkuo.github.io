@@ -149,6 +149,138 @@
       margin-bottom: 28px;
     }
 
+    .concept-visual {
+      margin: 34px 0 40px;
+      padding: 26px;
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(7, 16, 20, 0.96), rgba(17, 24, 39, 0.96));
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+    }
+
+    .visual-kicker {
+      color: #2dd4bf;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .concept-visual h3 {
+      margin: 0 0 8px;
+      color: #f8fafc;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .visual-caption {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 22px;
+    }
+
+    .visual-panel,
+    .visual-card {
+      border: 1px solid rgba(226, 232, 240, 0.16);
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    .visual-floor {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 20px;
+      align-items: center;
+      padding: 22px;
+    }
+
+    .visual-big-number {
+      color: #f8fafc;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-rate-track {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f59e0b 0 38%, #2dd4bf 38% 100%);
+      margin-bottom: 12px;
+    }
+
+    .visual-rate-labels,
+    .visual-flow,
+    .visual-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .visual-rate-labels {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .visual-flow {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .visual-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visual-card {
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .visual-card strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 24px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .visual-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .visual-card .visual-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: #2dd4bf;
+      color: #071014;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-card:nth-child(2) .visual-step { background: #facc15; color: #071014; }
+    .visual-card:nth-child(3) .visual-step { background: #60a5fa; color: #071014; }
+
+    @media (max-width: 680px) {
+      .concept-visual { padding: 20px; }
+      .visual-floor,
+      .visual-flow,
+      .visual-grid,
+      .visual-rate-labels { grid-template-columns: 1fr; }
+      .concept-visual h3 { font-size: 24px; }
+      .visual-big-number { font-size: 44px; }
+    }
+
     h2 {
       font-size: 28px;
       letter-spacing: 0;
@@ -342,6 +474,17 @@
       </ol>
     </nav>
 
+    <section class="concept-visual" aria-label="SBIE base reduction visual">
+      <div class="visual-kicker">Substance-based income exclusion</div>
+      <h3>Not all profit is exposed</h3>
+      <p class="visual-caption">SBIE reduces the profit base before the top-up tax percentage is applied.</p>
+      <div class="visual-flow">
+        <div class="visual-card"><span class="visual-step">1</span><strong>GloBE income</strong><span>Start with jurisdictional profit.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Substance return</strong><span>Payroll and tangible assets reduce exposure.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Excess profit</strong><span>Remaining amount is tested.</span></div>
+      </div>
+    </section>
+
     <h2 id="introduction">Introduction</h2>
     <p>
       The Substance-Based Income Exclusion (SBIE) is a key adjustment within the OECD Pillar Two framework.
@@ -367,6 +510,17 @@
     </p>
 
     <h2 id="how-the-sbie-works">How the SBIE Works</h2>
+    <section class="concept-visual" aria-label="SBIE components visual">
+      <div class="visual-kicker">Substance inputs</div>
+      <h3>Two components drive the exclusion</h3>
+      <p class="visual-caption">The exclusion reflects real local activity through people and tangible assets.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><strong>Eligible payroll</strong><span>Routine return for local people costs.</span></div>
+        <div class="visual-card"><strong>Tangible assets</strong><span>Routine return for local asset base.</span></div>
+        <div class="visual-card"><strong>Exclusion percentage</strong><span>Applied to eligible components.</span></div>
+        <div class="visual-card"><strong>Reduced base</strong><span>Excess profit is narrowed.</span></div>
+      </div>
+    </section>
 
     <h3>1. Identify eligible substance components</h3>
     <p>
@@ -446,6 +600,16 @@
     </p>
 
     <h2 id="interaction-with-etr-and-top-up-tax">Interaction with ETR and Top-Up Tax</h2>
+    <section class="concept-visual" aria-label="SBIE sequence visual">
+      <div class="visual-kicker">Sequence</div>
+      <h3>ETR first, SBIE second</h3>
+      <p class="visual-caption">SBIE does not change the ETR itself. It changes the amount of profit exposed to top-up tax.</p>
+      <div class="visual-flow">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Calculate ETR</strong><span>Determine if a shortfall exists.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Reduce base</strong><span>Apply SBIE to excess profit.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Apply shortfall</strong><span>Compute top-up tax amount.</span></div>
+      </div>
+    </section>
     <p>
       The SBIE does not affect the jurisdictional ETR calculation.
     </p>

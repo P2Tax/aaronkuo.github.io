@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thoughts | Aaron Kuo</title>
-  <meta name="description" content="Writing on tax, technology, AI, and operating models." />
+  <meta name="description" content="Structured writing on Pillar Two, tax technology, and AI." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,10 +16,12 @@
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
       --max: 1040px;
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: "Inter", Arial, sans-serif;
@@ -34,6 +36,7 @@
     .nav {
       position: sticky;
       top: 0;
+      z-index: 20;
       backdrop-filter: blur(14px);
       background: rgba(2, 6, 23, 0.82);
       border-bottom: 1px solid rgba(30, 41, 59, 0.85);
@@ -48,18 +51,38 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
     }
 
     .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
       font-weight: 700;
-      font-size: 18px;
+      color: var(--text);
       letter-spacing: -0.02em;
     }
 
     .nav-links {
       display: flex;
       gap: 22px;
+      align-items: center;
       flex-wrap: wrap;
     }
 
@@ -74,7 +97,7 @@
     }
 
     .hero {
-      padding: 70px 0 30px;
+      padding: 70px 0 24px;
     }
 
     h1 {
@@ -87,8 +110,16 @@
       color: var(--muted);
       font-size: 17px;
       line-height: 1.8;
-      max-width: 700px;
-      margin: 0 0 26px;
+      max-width: 760px;
+      margin: 0 0 34px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin: 22px 0 14px;
     }
 
     .post {
@@ -139,21 +170,36 @@
       padding: 24px 0 40px;
       color: var(--muted);
       font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 18px;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
     }
 
     @media (max-width: 560px) {
-      .nav-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
+      .nav-inner { flex-direction: column; }
     }
   </style>
 </head>
 <body onpageshow="window.scrollTo(0,0);">
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="brand">Aaron Kuo</a>
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="thoughts.html" class="active">Thoughts</a>
@@ -168,22 +214,38 @@
     <section class="hero">
       <h1>Thoughts</h1>
       <p class="sub">
-        Writing on tax, technology, AI, and the operating model questions that sit behind compliance work.
+        A structured archive of writing on Pillar Two, tax technology, data, and AI. Over time this will
+        develop into connected topic clusters rather than a simple chronological blog.
       </p>
-    </section>
 
-    <a class="post" href="post1.html">
-      <div class="meta">April 2026 · Article</div>
-      <h2>Why Pillar Two Changes Everything (Beyond Tax)</h2>
-      <p>
-        A practical perspective on why Pillar Two is not just a technical tax reform, but a structural shift
-        in data, systems, governance, and execution.
-      </p>
-    </a>
+      <div class="section-label">Featured pillar pages</div>
+
+      <a class="post" href="post1.html">
+        <div class="meta">Pillar Page · Pillar Two Fundamentals</div>
+        <h2>OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</h2>
+        <p>
+          A broad, practical guide to the 15% global minimum tax, including why it was introduced,
+          how the regime works, and the role of the IIR, UTPR, and QDMTT.
+        </p>
+      </a>
+
+      <div class="section-label">Supporting cluster articles</div>
+
+      <a class="post" href="#" style="opacity:0.72; cursor:default;">
+        <div class="meta">Coming Soon · Cluster Article</div>
+        <h2>Income Inclusion Rule (IIR)</h2>
+        <p>
+          A narrower article focused on the primary charging rule and how top-up tax is collected at parent level.
+        </p>
+      </a>
+    </section>
   </main>
 
   <footer>
-    <div class="footer-inner">© 2026 Aaron Kuo</div>
+    <div class="footer-inner">
+      <img src="logo-v2.png" alt="Aaron Kuo logo">
+      <span>© 2026 Aaron Kuo</span>
+    </div>
   </footer>
 </body>
 </html>

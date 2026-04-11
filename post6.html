@@ -1,1 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Effective Tax Rate (ETR) Under Pillar Two: How Low-Tax Outcomes Are Measured | Aaron Kuo</title>
+  <meta name="description" content="Understand how the effective tax rate (ETR) is calculated under Pillar Two and how it determines whether top-up tax may arise." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      margin: 42px 0 14px;
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      margin: 28px 0 12px;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 18px;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Fundamentals</div>
+    <div class="series-tag">Part of: <a href="post1.html">OECD Pillar Two Explained</a></div>
+
+    <h1>Effective Tax Rate (ETR) Under Pillar Two: How Low-Tax Outcomes Are Measured</h1>
+
+    <p class="intro">
+      The Effective Tax Rate is the central measurement test under Pillar Two. It determines whether a jurisdiction falls below the 15% minimum rate and whether a top-up tax calculation may be required.
+    </p>
+
+    <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
+
+    <h2>Introduction</h2>
+    <p>
+      The Effective Tax Rate (ETR) is the central measurement test under OECD Pillar Two.
+    </p>
+    <p>
+      It determines whether a jurisdiction falls below the 15% minimum rate and therefore whether a top-up tax calculation may be required. The collection of that amount is then determined through the Pillar Two rule order.
+    </p>
+    <p>
+      At a high level, the framework is simple. Each jurisdiction is tested against a 15% minimum rate. If the jurisdictional ETR falls below that level, a shortfall may arise.
+    </p>
+    <p>
+      The technical challenge lies in how that rate is measured.
+    </p>
+
+    <h2>What the ETR Represents</h2>
+    <p>
+      Under Pillar Two, the ETR is a jurisdictional measure of tax relative to income.
+    </p>
+    <p>
+      It is not based on statutory tax rates. It is calculated using a standardised framework built on:
+    </p>
+    <ul>
+      <li>GloBE income or loss</li>
+      <li>adjusted covered taxes</li>
+    </ul>
+    <p>
+      In practical terms, the ETR:
+    </p>
+    <ul>
+      <li>compares taxes and income on a common basis</li>
+      <li>determines whether a jurisdiction is below the minimum rate</li>
+      <li>provides the starting point for top-up tax calculations</li>
+    </ul>
+    <p>
+      The ETR is therefore the gateway to the broader Pillar Two framework.
+    </p>
+
+    <h2>How the ETR Is Calculated</h2>
+
+    <h3>1. Determine GloBE income or loss</h3>
+    <p>
+      The starting point is financial accounting income, adjusted under the GloBE Rules.
+    </p>
+    <p>
+      These adjustments are intended to create a more consistent measure of income across jurisdictions.
+    </p>
+
+    <h3>2. Determine adjusted covered taxes</h3>
+    <p>
+      Covered taxes include current taxes and certain deferred tax amounts, subject to specific adjustments under the rules.
+    </p>
+    <p>
+      These amounts are aligned to the same jurisdictional income base used for the ETR calculation.
+    </p>
+
+    <h3>3. Calculate the jurisdictional ETR</h3>
+    <p>
+      The ETR is calculated as:
+    </p>
+
+    <div class="formula">
+      <strong>Core formula</strong>
+      <p>Adjusted covered taxes ÷ net GloBE income</p>
+    </div>
+
+    <p>
+      This is done on a jurisdictional basis, not entity by entity. That is one of the defining design features of Pillar Two.
+    </p>
+
+    <h3>4. Compare against the 15% minimum</h3>
+    <p>
+      If the resulting ETR is below 15%, the jurisdiction may give rise to top-up tax.
+    </p>
+    <p>
+      If the ETR is at or above 15%, the jurisdiction will generally not give rise to top-up tax under the core computation.
+    </p>
+
+    <h2>Simple Example</h2>
+    <p>
+      Assume a jurisdiction has:
+    </p>
+    <ul>
+      <li>GloBE income of 100</li>
+      <li>adjusted covered taxes of 12</li>
+    </ul>
+    <p>
+      The jurisdictional ETR is 12%.
+    </p>
+    <p>
+      This creates a 3% shortfall relative to the 15% minimum rate.
+    </p>
+    <p>
+      That shortfall then feeds into the top-up tax calculation.
+    </p>
+
+    <h2>Why the Jurisdictional Approach Matters</h2>
+    <p>
+      A defining feature of Pillar Two is that the ETR is calculated at jurisdiction level.
+    </p>
+    <p>
+      This has several consequences:
+    </p>
+    <ul>
+      <li>profits and taxes are aggregated within each jurisdiction</li>
+      <li>high-tax outcomes in one country do not simply offset low-tax outcomes in another</li>
+      <li>the focus shifts from entity-level positions to jurisdictional results</li>
+    </ul>
+    <p>
+      This design is central to how the GloBE Rules limit cross-border blending.
+    </p>
+
+    <h2>What Drives ETR Outcomes</h2>
+    <p>
+      The Pillar Two ETR is not simply a reflection of the local statutory rate.
+    </p>
+    <p>
+      It is affected by how income and taxes are measured under the GloBE framework, including:
+    </p>
+    <ul>
+      <li>adjustments to accounting income</li>
+      <li>treatment of deferred taxes</li>
+      <li>timing differences between accounting and tax</li>
+      <li>treatment of credits and incentives</li>
+    </ul>
+    <p>
+      As a result, the Pillar Two ETR can differ materially from the headline tax rate in a jurisdiction.
+    </p>
+
+    <h2>Relationship to Top-Up Tax</h2>
+    <p>
+      The ETR determines whether top-up tax needs to be computed.
+    </p>
+    <p>
+      If the ETR is below 15%:
+    </p>
+    <ul>
+      <li>the shortfall becomes the top-up tax percentage</li>
+      <li>that percentage is applied to excess profit</li>
+      <li>the resulting amount is then collected under the applicable rule order</li>
+    </ul>
+    <p>
+      If the ETR does not fall below the minimum rate, there is generally no top-up tax amount to allocate.
+    </p>
+    <p>
+      The ETR calculation is therefore the critical first step in determining exposure.
+    </p>
+
+    <div class="note">
+      <strong>Why this matters in practice</strong>
+      <p>
+        The ETR is not just a rate. It is the trigger point for the rest of Pillar Two. For groups, that means small differences in data, adjustments, or jurisdictional mapping can change whether an exposure exists at all.
+      </p>
+    </div>
+
+    <h2>Practical Implications for Multinational Groups</h2>
+    <p>
+      The ETR calculation introduces new operational demands.
+    </p>
+
+    <h3>Reporting discipline becomes more important</h3>
+    <p>
+      Groups need reliable inputs for:
+    </p>
+    <ul>
+      <li>GloBE income</li>
+      <li>covered taxes</li>
+      <li>jurisdictional aggregation</li>
+    </ul>
+    <p>
+      Weak data quality directly affects the ETR result.
+    </p>
+
+    <h3>Reconciliation pressure increases</h3>
+    <p>
+      Traditional tax reporting does not by itself determine the Pillar Two outcome.
+    </p>
+    <p>
+      Groups need to understand how accounting figures translate into GloBE income, how taxes are adjusted, and where those results differ from existing tax reporting processes. OECD implementation and GIR materials reinforce the scale of the reporting and data burden.
+    </p>
+
+    <h3>Monitoring becomes ongoing</h3>
+    <p>
+      The ETR is not a one-off calculation.
+    </p>
+    <p>
+      Groups need to monitor how it moves across jurisdictions as profits change, tax positions evolve, and local Pillar Two rules are implemented.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      The Effective Tax Rate is the measurement tool that underpins Pillar Two.
+    </p>
+    <p>
+      It determines whether a jurisdiction falls below the minimum rate and provides the basis for calculating any resulting top-up tax.
+    </p>
+    <p>
+      For multinational groups, the implication is practical: understanding Pillar Two exposure starts with understanding how the jurisdictional ETR is calculated under the GloBE framework.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article sits within the <em>Pillar Two Fundamentals</em> cluster and links back to the parent pillar page.
+      </p>
+      <ul>
+        <li><a href="post1.html">OECD Pillar Two Explained</a></li>
+        <li><a href="post5.html">Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated</a></li>
+        <li><a href="post2.html">Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</a></li>
+        <li><a href="post4.html">Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <img src="logo-v2.png" alt="Aaron Kuo logo">
+      <span>© 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>

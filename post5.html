@@ -1,1 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated | Aaron Kuo</title>
+  <meta name="description" content="Understand how top-up tax is calculated under Pillar Two and how the 15% global minimum tax is measured on a jurisdictional basis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 28px;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      margin: 42px 0 14px;
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      margin: 28px 0 12px;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 18px;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo-v2.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Fundamentals</div>
+    <div class="series-tag">Part of: <a href="post1.html">OECD Pillar Two Explained</a></div>
+
+    <h1>Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated</h1>
+
+    <p class="intro">
+      Top-up tax is the core calculation outcome of Pillar Two. It measures the shortfall between a jurisdiction’s effective tax rate and the 15% minimum, then turns that shortfall into an operational amount that may be collected under the rule order.
+    </p>
+
+    <div class="article-meta">Cluster article · Pillar Two Fundamentals</div>
+
+    <h2>Introduction</h2>
+    <p>
+      Top-up tax is the central calculation outcome of OECD Pillar Two.
+    </p>
+    <p>
+      The GloBE Rules are designed to identify when profits in a jurisdiction are taxed below the 15% minimum rate and to compute the additional amount required to bring the effective tax rate up to that level. The mechanisms for collecting that amount then operate through the Qualified Domestic Minimum Top-up Tax (QDMTT), the Income Inclusion Rule (IIR), or the Undertaxed Profits Rule (UTPR), depending on rule order.
+    </p>
+    <p>
+      At a high level, the concept is simple. If the jurisdictional effective tax rate is below 15%, a shortfall may arise. The technical challenge lies in how that shortfall is measured.
+    </p>
+
+    <h2>What Top-Up Tax Represents</h2>
+    <p>
+      Top-up tax is the additional amount required to bring the tax on excess profits in a jurisdiction up to the 15% minimum rate. Under the GloBE architecture, this is determined using a standardised calculation based on GloBE income, adjusted covered taxes, and the jurisdictional effective tax rate.
+    </p>
+    <p>
+      In practical terms, it:
+    </p>
+    <ul>
+      <li>measures the gap between the jurisdictional ETR and the minimum rate</li>
+      <li>applies that gap to the relevant profit base</li>
+      <li>produces an amount that is then brought into charge under the Pillar Two rule order</li>
+    </ul>
+
+    <h2>How Top-Up Tax Is Calculated</h2>
+
+    <h3>1. Determine GloBE income or loss</h3>
+    <p>
+      The starting point is financial accounting income, adjusted under the GloBE Rules to arrive at a standardised measure of income for Pillar Two purposes.
+    </p>
+
+    <h3>2. Determine adjusted covered taxes</h3>
+    <p>
+      Covered taxes include current taxes and certain deferred tax amounts, subject to the adjustments required under the rules. These taxes are aligned to the same jurisdictional income base.
+    </p>
+
+    <h3>3. Calculate the jurisdictional ETR</h3>
+    <p>
+      The effective tax rate is calculated on a jurisdictional basis by comparing adjusted covered taxes with net GloBE income for that jurisdiction. This is one of the defining features of Pillar Two. It is not an entity-by-entity rate test.
+    </p>
+
+    <h3>4. Compute the top-up tax percentage</h3>
+    <p>
+      If the jurisdictional ETR is below 15%, the shortfall becomes the top-up tax percentage.
+    </p>
+
+    <div class="formula">
+      <strong>Core formula</strong>
+      <p>Top-up tax percentage = 15% − jurisdictional ETR</p>
+    </div>
+
+    <h3>5. Apply the substance-based income exclusion</h3>
+    <p>
+      The top-up tax does not apply to all profit without adjustment. The substance-based income exclusion reduces the amount exposed by reference to eligible payroll costs and tangible assets.
+    </p>
+
+    <h3>6. Calculate the top-up tax amount</h3>
+    <p>
+      The remaining excess profit is multiplied by the top-up tax percentage. That produces the top-up tax for the jurisdiction.
+    </p>
+
+    <h2>Simple Example</h2>
+    <p>
+      Assume a jurisdiction has:
+    </p>
+    <ul>
+      <li>GloBE income of 100</li>
+      <li>adjusted covered taxes of 10</li>
+    </ul>
+    <p>
+      The jurisdictional ETR is 10%. That creates a 5% shortfall against the 15% minimum rate.
+    </p>
+    <p>
+      If excess profit remains after applying the substance-based income exclusion, that amount is subject to a 5% top-up tax.
+    </p>
+    <p>
+      The mechanics are straightforward. The real complexity usually sits in the underlying adjustments to income, taxes, and exclusions.
+    </p>
+
+    <h2>Where Top-Up Tax Is Collected</h2>
+    <p>
+      The top-up tax calculation does not by itself determine who collects the amount.
+    </p>
+    <p>
+      That depends on the agreed rule order:
+    </p>
+    <ul>
+      <li>a QDMTT may allow the local jurisdiction to collect first</li>
+      <li>the IIR may apply at parent level</li>
+      <li>the UTPR may allocate any residual amount across other implementing jurisdictions</li>
+    </ul>
+    <p>
+      This distinction matters. Calculation and collection are related, but they are not the same step in the Pillar Two framework.
+    </p>
+
+    <h2>Why Top-Up Tax Matters</h2>
+
+    <h3>It turns the minimum tax into a measurable amount</h3>
+    <p>
+      Pillar Two is not just about rule labels. The system only works if the shortfall can be computed consistently.
+    </p>
+
+    <h3>It standardises the measurement of low-tax outcomes</h3>
+    <p>
+      The use of GloBE income and adjusted covered taxes creates a common framework for testing whether a jurisdiction is below the minimum rate.
+    </p>
+
+    <h3>It shifts attention from headline tax rates to effective outcomes</h3>
+    <p>
+      The question is no longer just what the statutory rate says. The more important question is how the jurisdictional ETR is computed under the GloBE Rules.
+    </p>
+
+    <div class="note">
+      <strong>Why this matters in practice</strong>
+      <p>
+        Top-up tax is where Pillar Two stops being conceptual and becomes measurable. For groups, that means the quality of the underlying data and adjustment logic often matters more than the simplicity of the headline example.
+      </p>
+    </div>
+
+    <h2>Practical Implications for Multinational Groups</h2>
+    <p>
+      Top-up tax is a calculation layered onto existing tax systems, but it creates new operating demands.
+    </p>
+
+    <h3>Data alignment becomes critical</h3>
+    <p>
+      Groups need consistent financial data, tax data, and adjustment logic across jurisdictions in order to produce a reliable Pillar Two result. OECD implementation material and GIR guidance both reinforce the reporting and data demands that follow from the GloBE architecture.
+    </p>
+
+    <h3>Calculation discipline becomes more important</h3>
+    <p>
+      The interaction between GloBE income, covered taxes, exclusions, and rule order means the result depends on consistent application, not rough approximations.
+    </p>
+
+    <h3>Forecasting becomes a governance issue</h3>
+    <p>
+      Groups increasingly need to anticipate where top-up tax may arise, whether a domestic minimum tax changes the answer, and how any residual amount may be collected.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      Top-up tax is the calculation that turns the Pillar Two minimum tax into an operational result.
+    </p>
+    <p>
+      It measures the gap between the jurisdictional effective tax rate and the 15% minimum, applies that gap to the relevant profit base, and creates the amount that may then be collected under QDMTT, IIR, or UTPR.
+    </p>
+    <p>
+      For multinational groups, the implication is practical: Pillar Two is no longer mainly about local headline rates. It is about how those rates translate into a jurisdictional effective tax outcome under a common rule set.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article sits within the <em>Pillar Two Fundamentals</em> cluster and links back to the parent pillar page.
+      </p>
+      <ul>
+        <li><a href="post1.html">OECD Pillar Two Explained</a></li>
+        <li><a href="post2.html">Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</a></li>
+        <li><a href="post3.html">Undertaxed Profits Rule (UTPR): How Residual Pillar Two Top-Up Tax Is Collected</a></li>
+        <li><a href="post4.html">Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <img src="logo-v2.png" alt="Aaron Kuo logo">
+      <span>© 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>

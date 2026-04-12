@@ -1,0 +1,875 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What a Pillar Two Data Assessment Should Actually Cover | Aaron Kuo</title>
+  <meta name="description" content="What a practical Pillar Two data assessment should cover, from source mapping and definitions to adjustments, ownership, evidence, and repeatability." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0;
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: 52px;
+      line-height: 1.02;
+      letter-spacing: 0;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .concept-visual {
+      margin: 34px 0 40px;
+      padding: 26px;
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(7, 16, 20, 0.96), rgba(17, 24, 39, 0.96));
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+    }
+
+    .visual-kicker {
+      color: #2dd4bf;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .concept-visual h3 {
+      margin: 0 0 8px;
+      color: #f8fafc;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .visual-caption {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 22px;
+    }
+
+    .visual-panel,
+    .visual-card {
+      border: 1px solid rgba(226, 232, 240, 0.16);
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    .visual-floor {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 20px;
+      align-items: center;
+      padding: 22px;
+    }
+
+    .visual-big-number {
+      color: #f8fafc;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-rate-track {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f59e0b 0 38%, #2dd4bf 38% 100%);
+      margin-bottom: 12px;
+    }
+
+    .visual-rate-labels,
+    .visual-flow,
+    .visual-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .visual-rate-labels {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .visual-flow {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .visual-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visual-card {
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .visual-card strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 24px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .visual-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .visual-card .visual-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: #2dd4bf;
+      color: #071014;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-card:nth-child(2) .visual-step { background: #facc15; color: #071014; }
+    .visual-card:nth-child(3) .visual-step { background: #60a5fa; color: #071014; }
+
+    @media (max-width: 680px) {
+      .concept-visual { padding: 20px; }
+      .visual-floor,
+      .visual-flow,
+      .visual-grid,
+      .visual-rate-labels { grid-template-columns: 1fr; }
+      .concept-visual h3 { font-size: 24px; }
+      .visual-big-number { font-size: 44px; }
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: 0;
+      margin: 54px 0 18px;
+      padding-left: 14px;
+      border-left: 3px solid #2dd4bf;
+      color: #f8fafc;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 1px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #2dd4bf, rgba(250, 204, 21, 0.68), transparent);
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: 0;
+      margin: 32px 0 12px;
+      color: #bfdbfe;
+    }
+
+    .article-toc {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(8, 13, 23, 0.82));
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 30px 0 40px;
+    }
+
+    .article-toc strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #2dd4bf;
+      font-size: 13px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .article-toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 2;
+      column-gap: 34px;
+    }
+
+    .article-toc li {
+      break-inside: avoid;
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .article-toc a {
+      color: var(--text);
+    }
+
+    .article-toc a:hover {
+      color: #2dd4bf;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      h1 { font-size: 36px; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+      .article-toc ol { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo3.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Data Readiness</div>
+    <div class="series-tag">Part of: <a href="post11.html">Pillar Two Data Readiness</a></div>
+
+    <h1>What a Pillar Two Data Assessment Should Actually Cover</h1>
+
+    <p class="intro">
+      A Pillar Two data assessment is often treated as a high-level mapping exercise. In practice, that is not enough. A useful assessment tests whether the organisation can produce GloBE inputs in a consistent, supportable, and repeatable way.
+    </p>
+
+    <div class="article-meta">Cluster article &middot; Pillar Two Data Readiness</div>
+
+    <nav class="article-toc" aria-label="In this article">
+      <strong>In this article</strong>
+      <ol>
+        <li><a href="#what-the-assessment-is-trying-to-answer">What the Assessment Is Trying to Answer</a></li>
+        <li><a href="#the-core-areas-the-assessment-should-cover">The Core Areas the Assessment Should Cover</a></li>
+        <li><a href="#what-a-practical-assessment-methodology-looks-like">What a Practical Assessment Methodology Looks Like</a></li>
+        <li><a href="#what-an-incomplete-assessment-looks-like">What an Incomplete Assessment Looks Like</a></li>
+        <li><a href="#what-a-complete-assessment-enables">What a Complete Assessment Enables</a></li>
+        <li><a href="#link-to-the-next-layer">Link to the Next Layer</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ol>
+    </nav>
+
+    <section class="concept-visual" aria-label="Pillar Two data assessment scope visual">
+      <div class="visual-kicker">Assessment scope</div>
+      <h3>From system list to operating test</h3>
+      <p class="visual-caption">A useful assessment tests whether the data can be produced, adjusted, owned, and evidenced under reporting conditions.</p>
+      <div class="visual-flow">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Find</strong><span>Where the source data actually sits.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Test</strong><span>Whether definitions and adjustments are usable.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Operate</strong><span>Whether the process can repeat with evidence.</span></div>
+      </div>
+    </section>
+
+    <p>
+      A Pillar Two data assessment is often treated as a high-level mapping exercise.
+    </p>
+    <p>
+      In practice, that is not enough.
+    </p>
+    <p>
+      The purpose of the assessment is not simply to identify where data exists. It is to determine whether the organisation can produce the inputs required for GloBE calculations in a consistent, supportable, and repeatable way.
+    </p>
+    <p>
+      That means going beyond system lists and into how data is created, adjusted, governed, and evidenced across jurisdictions.
+    </p>
+    <p>
+      A good assessment does not just answer whether the data exists.
+    </p>
+    <p>
+      It answers whether the data can actually support Pillar Two reporting in practice.
+    </p>
+
+    <h2 id="what-the-assessment-is-trying-to-answer">What the Assessment Is Trying to Answer</h2>
+    <p>
+      At a minimum, a Pillar Two data assessment should answer four practical questions:
+    </p>
+    <ul>
+      <li>where the required data sits</li>
+      <li>how that data is produced</li>
+      <li>what adjustments are required before it becomes GloBE-ready</li>
+      <li>who is responsible for each step</li>
+    </ul>
+    <p>
+      If any of these remain unclear, the assessment is incomplete.
+    </p>
+    <p>
+      In practice, the assessment should also test a fifth question:
+    </p>
+    <ul>
+      <li>whether the process can be repeated under reporting timelines with a workable audit trail</li>
+    </ul>
+    <p>
+      That is the difference between a useful assessment and a theoretical one.
+    </p>
+
+    <h2 id="the-core-areas-the-assessment-should-cover">The Core Areas the Assessment Should Cover</h2>
+    <p>
+      A structured Pillar Two data assessment should cover five areas.
+    </p>
+
+    <h3>1. Source data and system mapping</h3>
+    <p>
+      The first step is to identify where relevant data originates.
+    </p>
+    <p>
+      This typically includes:
+    </p>
+    <ul>
+      <li>consolidation systems</li>
+      <li>local general ledgers</li>
+      <li>tax reporting tools</li>
+      <li>statutory accounts</li>
+      <li>manual workpapers and local files</li>
+    </ul>
+    <p>
+      The point is not just to list systems. It is to understand:
+    </p>
+    <ul>
+      <li>which source is the source of record</li>
+      <li>which sources are supplementary</li>
+      <li>where data is extracted from</li>
+      <li>where aggregation takes place</li>
+      <li>where data is already transformed before tax teams see it</li>
+    </ul>
+    <p>
+      This creates the baseline view of how jurisdictional data is actually constructed.
+    </p>
+    <p>
+      A weak assessment stops at "these are the systems involved."
+    </p>
+    <p>
+      A stronger one asks:
+    </p>
+    <ul>
+      <li>which system actually drives the number</li>
+      <li>whether that source is stable</li>
+      <li>whether the extraction is repeatable</li>
+      <li>whether there is dependence on local manual intervention</li>
+    </ul>
+
+    <h3>2. Data definitions and alignment</h3>
+    <p>
+      Pillar Two does not use data exactly as it appears in standard financial reporting.
+    </p>
+    <p>
+      The assessment therefore needs to identify:
+    </p>
+    <ul>
+      <li>how accounting income maps to GloBE income</li>
+      <li>how tax expense maps to covered taxes</li>
+      <li>where definitions diverge across jurisdictions</li>
+      <li>where group methodology needs to override local treatment</li>
+    </ul>
+    <p>
+      This is where many implementation issues start to appear.
+    </p>
+    <p>
+      Two jurisdictions may use similar source systems and still produce data that behaves differently because:
+    </p>
+    <ul>
+      <li>accounting policy application differs</li>
+      <li>tax reporting conventions differ</li>
+      <li>local interpretation differs</li>
+      <li>the same label means different things in practice</li>
+    </ul>
+    <p>
+      A proper assessment should therefore test not only whether a number exists, but whether it means the same thing across the group.
+    </p>
+
+    <section class="concept-visual" aria-label="Pillar Two assessment coverage visual">
+      <div class="visual-kicker">Five coverage areas</div>
+      <h3>What the assessment should actually cover</h3>
+      <p class="visual-caption">The assessment has to move from sources into definitions, adjustments, quality, and ownership.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Sources</strong><span>Systems, files, and source-of-record decisions.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Definitions</strong><span>How accounting and tax data map to GloBE concepts.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Adjustments</strong><span>What changes before inputs become GloBE-ready.</span></div>
+        <div class="visual-card"><strong>Quality</strong><span>Granularity, completeness, availability, and timing.</span></div>
+        <div class="visual-card"><strong>Ownership</strong><span>Who extracts, validates, reviews, and signs off.</span></div>
+      </div>
+    </section>
+
+    <h3>3. Adjustment requirements</h3>
+    <p>
+      This is usually where the real implementation pressure begins.
+    </p>
+    <p>
+      Moving from accounting data to GloBE-ready inputs requires an adjustment layer. The assessment should identify:
+    </p>
+    <ul>
+      <li>which adjustments are needed</li>
+      <li>where those adjustments are currently performed</li>
+      <li>whether they are system-driven or manual</li>
+      <li>whether they are standardised across jurisdictions</li>
+      <li>whether they can be traced and reviewed later</li>
+    </ul>
+    <p>
+      Typical areas include:
+    </p>
+    <ul>
+      <li>deferred tax adjustments</li>
+      <li>reclassifications</li>
+      <li>alignment of local accounting treatments</li>
+      <li>intra-group positions</li>
+      <li>other manual overlays needed to move from accounting outputs to Pillar Two inputs</li>
+    </ul>
+    <p>
+      This matters because an organisation may appear data-ready at the source level, but still be heavily dependent on uncontrolled adjustment logic.
+    </p>
+    <p>
+      That is not a stable reporting process.
+    </p>
+
+    <h3>4. Data quality, granularity, and availability</h3>
+    <p>
+      The existence of data does not mean the data is usable.
+    </p>
+    <p>
+      The assessment should evaluate:
+    </p>
+    <ul>
+      <li>whether the required data is available at the right level of granularity</li>
+      <li>whether it is complete across jurisdictions</li>
+      <li>whether it is consistent period to period</li>
+      <li>whether it can be produced within reporting timelines</li>
+      <li>whether it can be tied back to a reliable supporting source</li>
+    </ul>
+    <p>
+      This is often where false confidence gets exposed.
+    </p>
+    <p>
+      A group may be able to produce a number for modelling purposes, but still struggle to:
+    </p>
+    <ul>
+      <li>reproduce it consistently</li>
+      <li>break it down to the required level</li>
+      <li>support it under review</li>
+      <li>deliver it on time</li>
+    </ul>
+    <p>
+      Data that exists but cannot be produced reliably does not support a repeatable Pillar Two process.
+    </p>
+
+    <h3>5. Ownership and process mapping</h3>
+    <p>
+      A Pillar Two data assessment is not complete without process ownership.
+    </p>
+    <p>
+      For each major component, it should be clear:
+    </p>
+    <ul>
+      <li>who extracts the data</li>
+      <li>who performs the adjustments</li>
+      <li>who validates the output</li>
+      <li>who reviews exceptions</li>
+      <li>who signs off at group level</li>
+    </ul>
+    <p>
+      This is especially important because Pillar Two usually cuts across tax, finance, consolidation, and sometimes IT.
+    </p>
+    <p>
+      If ownership is vague, the process becomes fragile very quickly.
+    </p>
+    <p>
+      In practice, this is where delays, duplication, and inconsistent treatment often start.
+    </p>
+    <p>
+      The assessment should not just record names. It should map the operating process:
+    </p>
+    <ul>
+      <li>what happens</li>
+      <li>in what sequence</li>
+      <li>by whom</li>
+      <li>using what source</li>
+      <li>with what evidence</li>
+    </ul>
+    <p>
+      That is what turns a data assessment into something useful for implementation planning.
+    </p>
+
+    <h2 id="what-a-practical-assessment-methodology-looks-like">What a Practical Assessment Methodology Looks Like</h2>
+    <p>
+      A practical Pillar Two data assessment should not try to solve everything in one pass.
+    </p>
+    <p>
+      A better approach is to assess each major data area across a small number of dimensions.
+    </p>
+    <p>
+      For each input or adjustment area, ask:
+    </p>
+
+    <section class="concept-visual" aria-label="Pillar Two assessment methodology visual">
+      <div class="visual-kicker">Methodology</div>
+      <h3>Assess each input through the same lens</h3>
+      <p class="visual-caption">A consistent lens helps separate stable data from manual dependency and local interpretation.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Source</strong><span>Where does the number come from?</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Definition</strong><span>What does it represent?</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Transformation</strong><span>What happens before it becomes GloBE-ready?</span></div>
+        <div class="visual-card"><strong>Owner</strong><span>Who produces and validates it?</span></div>
+        <div class="visual-card"><strong>Evidence</strong><span>How would the group support it later?</span></div>
+      </div>
+    </section>
+
+    <h3>Source</h3>
+    <p>Where does the number come from?</p>
+
+    <h3>Definition</h3>
+    <p>What exactly does it represent, and is that definition consistent across jurisdictions?</p>
+
+    <h3>Transformation</h3>
+    <p>What happens to the number before it becomes GloBE-ready?</p>
+
+    <h3>Owner</h3>
+    <p>Who is responsible for producing and validating it?</p>
+
+    <h3>Evidence</h3>
+    <p>How would the group support it later?</p>
+
+    <p>
+      This is usually a better methodology than trying to start with an overly detailed data-point inventory alone.
+    </p>
+    <p>
+      The point is to identify where the process is stable, where it is manual, and where it is dependent on local interpretation.
+    </p>
+    <p>
+      That gives the organisation a much more realistic basis for prioritising remediation.
+    </p>
+
+    <h2 id="what-an-incomplete-assessment-looks-like">What an Incomplete Assessment Looks Like</h2>
+    <p>
+      In practice, many early assessments fall short in predictable ways.
+    </p>
+    <p>
+      Common patterns include:
+    </p>
+    <ul>
+      <li>high-level system inventories without real data flow mapping</li>
+      <li>assumptions that accounting data can be used without further adjustment</li>
+      <li>limited visibility over local processes</li>
+      <li>no distinction between system data and manual overlays</li>
+      <li>unclear ownership across functions</li>
+      <li>no view of whether the process can be repeated under reporting timelines</li>
+    </ul>
+    <p>
+      These issues do not always appear immediately.
+    </p>
+    <p>
+      They tend to become visible later, when the organisation attempts to run a full calculation and discovers that key parts of the process rely on local memory, spreadsheets, or inconsistent assumptions.
+    </p>
+
+    <h2 id="what-a-complete-assessment-enables">What a Complete Assessment Enables</h2>
+    <p>
+      A well-executed Pillar Two data assessment provides a much clearer view of:
+    </p>
+    <ul>
+      <li>which data can be used as-is</li>
+      <li>where definitions are inconsistent</li>
+      <li>where adjustments are required</li>
+      <li>where system limitations exist</li>
+      <li>where manual processes need to be controlled</li>
+      <li>where ownership needs to be clarified</li>
+    </ul>
+    <p>
+      That allows the organisation to:
+    </p>
+    <ul>
+      <li>prioritise remediation logically</li>
+      <li>separate short-term workarounds from long-term design</li>
+      <li>build a more realistic implementation plan</li>
+      <li>reduce rework later in the process</li>
+    </ul>
+    <p>
+      A strong assessment does not eliminate complexity.
+    </p>
+    <p>
+      But it does make the complexity visible early enough to manage properly.
+    </p>
+
+    <h2 id="link-to-the-next-layer">Link to the Next Layer</h2>
+    <p>
+      Once the assessment is complete, the next question is not simply what data exists.
+    </p>
+    <p>
+      It becomes:
+    </p>
+    <ul>
+      <li>how does the data move through the organisation</li>
+      <li>where is it transformed</li>
+      <li>where does aggregation happen</li>
+      <li>how are jurisdictional outputs actually built</li>
+    </ul>
+    <p>
+      That is the next layer of analysis.
+    </p>
+    <p>
+      It is the reason source systems and data flows need to be examined separately, rather than treated as a footnote to the assessment.
+    </p>
+
+    <h2 id="conclusion">Conclusion</h2>
+    <p>
+      A Pillar Two data assessment is not a checklist exercise.
+    </p>
+    <p>
+      It is a practical review of whether the organisation can produce the data required for GloBE calculations in a consistent and controlled way.
+    </p>
+    <p>
+      For multinational groups, the implication is straightforward: if the assessment stays too high-level, the real implementation risks will surface later, when they are harder and more expensive to fix.
+    </p>
+    <p>
+      A useful assessment does not just confirm where data sits.
+    </p>
+    <p>
+      It shows whether the organisation can actually operate Pillar Two on top of it.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article sits within the <em>Pillar Two Data Readiness</em> cluster and follows the parent pillar page.
+      </p>
+      <ul>
+        <li><a href="post11.html">Pillar Two Data Readiness: How to Get Your Data, Systems, and Controls Ready for GloBE</a></li>
+        <li><a href="post10.html">Why Pillar Two Is a Data Problem Before It Is a Calculation Problem</a></li>
+        <li><a href="thoughts.html">Back to the Thoughts index</a></li>
+      </ul>
+    </div>
+  </main>  <footer>
+    <div class="footer-inner">
+      <img src="logo3.png" alt="Aaron Kuo logo">
+      <span>&copy; 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+

@@ -197,7 +197,6 @@
     }
 
     .feature-card h3,
-    .latest-card h3,
     .cluster-card h3 {
       margin: 0 0 12px;
       letter-spacing: 0;
@@ -206,11 +205,9 @@
     }
 
     .feature-card p,
-    .latest-card p,
     .cluster-card p,
     .archive-list a span,
-    .supporting-list a span,
-    .future-note {
+    .supporting-list a span {
       color: var(--muted);
       line-height: 1.7;
       font-size: 14px;
@@ -290,12 +287,6 @@
       align-items: start;
       border: 1px solid transparent;
       border-radius: 8px;
-    }
-
-.future-note {
-      margin: 16px 0 0;
-      padding-top: 14px;
-      border-top: 1px solid rgba(148, 163, 184, 0.18);
     }
 
     footer {
@@ -384,10 +375,10 @@
     <section class="section" aria-labelledby="start-title">
       <div class="section-heading">
         <h2 id="start-title">Start Here</h2>
-        <p class="section-note">Begin with the main guide, then move into the latest article or the topic cluster below.</p>
+        <p class="section-note">Begin with the main guide for the Pillar Two fundamentals series.</p>
       </div>
 
-      <div class="top-grid">
+      <div class="top-grid start-grid">
         <a class="panel feature-card" href="post1.html">
           <div class="meta">Featured guide</div>
           <h3>OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</h3>
@@ -395,13 +386,6 @@
             A broad, practical guide to the 15% global minimum tax, including why it was introduced, how the regime works, and the role of the IIR, UTPR, and QDMTT.
           </p>
           <span class="cta">Read the guide &rarr;</span>
-        </a>
-
-        <a class="panel latest-card" href="post9.html">
-          <div class="meta">Latest article</div>
-          <h3>Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2027 Matters</h3>
-          <p>Transitional simplification, tightening thresholds, and why the remaining window matters.</p>
-          <span class="cta">Open article &rarr;</span>
         </a>
       </div>
     </section>
@@ -434,19 +418,6 @@
             <li><a href="post8.html"><span class="item-type">Cluster article</span><strong>Pillar Two Rule Order Explained</strong><span>How QDMTT, IIR, and UTPR interact.</span></a></li>
             <li><a href="post9.html"><span class="item-type">Cluster article</span><strong>Pillar Two Safe Harbours</strong><span>Transitional relief and why 2027 matters now.</span></a></li>
           </ul>
-        </div>
-
-        <div class="panel cluster-card">
-          <div class="meta">Secondary cluster</div>
-          <h3>AI in Tax</h3>
-          <p>Practical writing on how AI changes documentation, workflow, reasoning, and operating model design in tax work.</p>
-
-          <ul class="mini-cluster-list">
-            <li><a href="projects.html"><span class="item-type">Related work</span><strong>AI Use Cases for Tax Data and Workflow Acceleration</strong><span>A selected-work example of AI as a controlled productivity layer.</span></a></li>
-            <li><a href="about.html"><span class="item-type">Working lens</span><strong>How I think about tools and judgment</strong><span>A short profile note on keeping context and review discipline intact.</span></a></li>
-          </ul>
-
-          <p class="future-note">More AI-focused writing can be added here as the archive expands.</p>
         </div>
       </div>
     </section>
@@ -481,6 +452,9 @@
   </footer>
 </body>
 </html>
+
+
+
 
 
 

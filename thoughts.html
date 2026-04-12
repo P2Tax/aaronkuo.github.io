@@ -145,10 +145,7 @@
     }
 
     .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 18px;
+      max-width: 720px;
       margin-bottom: 18px;
     }
 
@@ -162,8 +159,8 @@
     .section-note {
       color: var(--muted);
       line-height: 1.7;
-      max-width: 520px;
-      margin: 0;
+      max-width: 640px;
+      margin: 10px 0 0;
       font-size: 14px;
     }
 
@@ -287,21 +284,15 @@
 
     .archive-list a {
       display: grid;
-      grid-template-columns: 112px 1fr;
-      gap: 18px;
+      grid-template-columns: 1fr;
+      gap: 8px;
       padding: 15px 0;
       align-items: start;
       border: 1px solid transparent;
       border-radius: 8px;
     }
 
-    .archive-date {
-      color: var(--muted);
-      font-size: 13px;
-      padding-top: 2px;
-    }
-
-    .future-note {
+.future-note {
       margin: 16px 0 0;
       padding-top: 14px;
       border-top: 1px solid rgba(148, 163, 184, 0.18);
@@ -334,13 +325,6 @@
         grid-template-columns: 1fr;
       }
 
-      .section-heading {
-        display: block;
-      }
-
-      .section-note {
-        margin-top: 10px;
-      }
     }
 
     @media (max-width: 640px) {
@@ -415,7 +399,7 @@
 
         <a class="panel latest-card" href="post9.html">
           <div class="meta">Latest article</div>
-          <h3>Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2026 Matters</h3>
+          <h3>Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2027 Matters</h3>
           <p>Transitional simplification, tightening thresholds, and why the remaining window matters.</p>
           <span class="cta">Open article &rarr;</span>
         </a>
@@ -448,7 +432,7 @@
             <li><a href="post6.html"><span class="item-type">Cluster article</span><strong>Effective Tax Rate (ETR)</strong><span>How low-tax outcomes are measured.</span></a></li>
             <li><a href="post7.html"><span class="item-type">Cluster article</span><strong>Substance-Based Income Exclusion (SBIE)</strong><span>Why not all profit is exposed.</span></a></li>
             <li><a href="post8.html"><span class="item-type">Cluster article</span><strong>Pillar Two Rule Order Explained</strong><span>How QDMTT, IIR, and UTPR interact.</span></a></li>
-            <li><a href="post9.html"><span class="item-type">Cluster article</span><strong>Pillar Two Safe Harbours</strong><span>Transitional relief and why 2026 matters.</span></a></li>
+            <li><a href="post9.html"><span class="item-type">Cluster article</span><strong>Pillar Two Safe Harbours</strong><span>Transitional relief and why 2027 matters now.</span></a></li>
           </ul>
         </div>
 
@@ -469,21 +453,21 @@
 
     <section class="section" aria-labelledby="recent-title">
       <div class="section-heading">
-        <h2 id="recent-title">Recent Writing</h2>
-        <p class="section-note">A chronological entry point for readers who want to scan the full Pillar Two fundamentals series.</p>
+        <h2 id="recent-title">Full Article Index</h2>
+        <p class="section-note">A date-free index for scanning the full Pillar Two fundamentals series by topic.</p>
       </div>
 
       <div class="archive">
         <ul class="archive-list">
-          <li><a href="post9.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2026 Matters</span><span>Bridge article from fundamentals into future data-readiness work.</span></div></a></li>
-          <li><a href="post8.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Pillar Two Rule Order Explained: How QDMTT, IIR, and UTPR Interact</span><span>How taxing rights move across the rule order.</span></div></a></li>
-          <li><a href="post7.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Substance-Based Income Exclusion (SBIE): Why Not All Profit Is Subject to Pillar Two</span><span>How routine returns reduce the exposed profit base.</span></div></a></li>
-          <li><a href="post6.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Effective Tax Rate (ETR) Under Pillar Two: How Low-Tax Outcomes Are Measured</span><span>How jurisdictional ETR drives exposure analysis.</span></div></a></li>
-          <li><a href="post5.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated</span><span>How the shortfall becomes an operational tax amount.</span></div></a></li>
-          <li><a href="post4.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights</span><span>How local jurisdictions collect top-up tax first.</span></div></a></li>
-          <li><a href="post3.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Undertaxed Profits Rule (UTPR): How Residual Pillar Two Top-Up Tax Is Collected</span><span>How residual top-up tax is allocated across jurisdictions.</span></div></a></li>
-          <li><a href="post2.html"><div class="archive-date">April 2026</div><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</span><span>How the primary charging rule works at parent level.</span></div></a></li>
-          <li><a href="post1.html"><div class="archive-date">April 2026</div><div><span class="item-type">Pillar page &middot; Pillar Two Fundamentals</span><span class="archive-title">OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</span><span>Main hub for the Pillar Two Fundamentals cluster.</span></div></a></li>
+          <li><a href="post9.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2027 Matters</span><span>Bridge article from fundamentals into future data-readiness work.</span></div></a></li>
+          <li><a href="post8.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Pillar Two Rule Order Explained: How QDMTT, IIR, and UTPR Interact</span><span>How taxing rights move across the rule order.</span></div></a></li>
+          <li><a href="post7.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Substance-Based Income Exclusion (SBIE): Why Not All Profit Is Subject to Pillar Two</span><span>How routine returns reduce the exposed profit base.</span></div></a></li>
+          <li><a href="post6.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Effective Tax Rate (ETR) Under Pillar Two: How Low-Tax Outcomes Are Measured</span><span>How jurisdictional ETR drives exposure analysis.</span></div></a></li>
+          <li><a href="post5.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Top-Up Tax Explained: How the Pillar Two 15% Minimum Is Calculated</span><span>How the shortfall becomes an operational tax amount.</span></div></a></li>
+          <li><a href="post4.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Qualified Domestic Minimum Top-up Tax (QDMTT): How Jurisdictions Retain Pillar Two Tax Rights</span><span>How local jurisdictions collect top-up tax first.</span></div></a></li>
+          <li><a href="post3.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Undertaxed Profits Rule (UTPR): How Residual Pillar Two Top-Up Tax Is Collected</span><span>How residual top-up tax is allocated across jurisdictions.</span></div></a></li>
+          <li><a href="post2.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Income Inclusion Rule (IIR): How Pillar Two Top-Up Tax Is Collected</span><span>How the primary charging rule works at parent level.</span></div></a></li>
+          <li><a href="post1.html"><div><span class="item-type">Pillar page &middot; Pillar Two Fundamentals</span><span class="archive-title">OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</span><span>Main hub for the Pillar Two Fundamentals cluster.</span></div></a></li>
         </ul>
       </div>
     </section>
@@ -497,5 +481,9 @@
   </footer>
 </body>
 </html>
+
+
+
+
 
 

@@ -169,6 +169,9 @@
       grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
       gap: 16px;
     }
+    .start-grid {
+      grid-template-columns: minmax(0, 760px);
+    }
 
     .panel,
     .archive {
@@ -181,6 +184,19 @@
     .panel:hover,
     .archive-list a:hover {
       border-color: rgba(96, 165, 250, 0.42);
+    }
+    .cluster-card.data-readiness {
+      border-color: rgba(94, 234, 212, 0.32);
+      background: rgba(7, 22, 28, 0.72);
+    }
+
+    .cluster-card.data-readiness .meta,
+    .cluster-card.data-readiness .item-type {
+      color: #67e8f9;
+    }
+
+    .cluster-card.data-readiness .pillar-link {
+      border-top-color: rgba(94, 234, 212, 0.24);
     }
 
     .meta,
@@ -223,7 +239,7 @@
 
     .cluster-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr);
+      grid-template-columns: 1fr;
       gap: 16px;
       align-items: start;
     }
@@ -398,7 +414,7 @@
 
       <div class="cluster-layout">
         <div class="panel cluster-card">
-          <div class="meta">Main cluster</div>
+          <div class="meta">Cluster</div>
           <h3>Pillar Two Fundamentals</h3>
           <p>Core concepts, charging rules, and the basic mechanics of the global minimum tax regime.</p>
 
@@ -419,6 +435,17 @@
             <li><a href="post9.html"><span class="item-type">Cluster article</span><strong>Pillar Two Safe Harbours</strong><span>Transitional relief and why 2027 matters now.</span></a></li>
           </ul>
         </div>
+        <div class="panel cluster-card data-readiness">
+          <div class="meta">New cluster</div>
+          <h3>Pillar Two Data Readiness</h3>
+          <p>Practical writing on the data, systems, controls, and operating model work needed to make GloBE reporting repeatable.</p>
+
+          <a class="pillar-link" href="post10.html">
+            <span class="item-type">First cluster article</span>
+            <strong>Why Pillar Two Is a Data Problem Before It Is a Calculation Problem</strong>
+            <span>Why the hardest implementation work often sits in source data, ownership, adjustment logic, and evidence.</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -430,6 +457,7 @@
 
       <div class="archive">
         <ul class="archive-list">
+          <li><a href="post10.html"><div><span class="item-type">Cluster article &middot; Pillar Two Data Readiness</span><span class="archive-title">Why Pillar Two Is a Data Problem Before It Is a Calculation Problem</span><span>How data, ownership, adjustment logic, and evidence shape Pillar Two implementation.</span></div></a></li>
           <li><a href="post9.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Pillar Two Safe Harbours: Transitional Relief, Tightening Tests, and Why 2027 Matters</span><span>Bridge article from fundamentals into future data-readiness work.</span></div></a></li>
           <li><a href="post8.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Pillar Two Rule Order Explained: How QDMTT, IIR, and UTPR Interact</span><span>How taxing rights move across the rule order.</span></div></a></li>
           <li><a href="post7.html"><div><span class="item-type">Cluster article &middot; Pillar Two Fundamentals</span><span class="archive-title">Substance-Based Income Exclusion (SBIE): Why Not All Profit Is Subject to Pillar Two</span><span>How routine returns reduce the exposed profit base.</span></div></a></li>
@@ -452,6 +480,13 @@
   </footer>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 

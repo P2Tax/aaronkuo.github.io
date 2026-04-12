@@ -1,0 +1,899 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pillar Two Data Readiness: How to Get Your Data, Systems, and Controls Ready for GloBE | Aaron Kuo</title>
+  <meta name="description" content="A practical introduction to Pillar Two data readiness, covering GloBE inputs, systems, controls, governance, adjustment logic, and repeatable reporting processes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0;
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: 52px;
+      line-height: 1.02;
+      letter-spacing: 0;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .concept-visual {
+      margin: 34px 0 40px;
+      padding: 26px;
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(7, 16, 20, 0.96), rgba(17, 24, 39, 0.96));
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+    }
+
+    .visual-kicker {
+      color: #2dd4bf;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .concept-visual h3 {
+      margin: 0 0 8px;
+      color: #f8fafc;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .visual-caption {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 22px;
+    }
+
+    .visual-panel,
+    .visual-card {
+      border: 1px solid rgba(226, 232, 240, 0.16);
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    .visual-floor {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 20px;
+      align-items: center;
+      padding: 22px;
+    }
+
+    .visual-big-number {
+      color: #f8fafc;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-rate-track {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f59e0b 0 38%, #2dd4bf 38% 100%);
+      margin-bottom: 12px;
+    }
+
+    .visual-rate-labels,
+    .visual-flow,
+    .visual-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .visual-rate-labels {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .visual-flow {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .visual-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visual-card {
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .visual-card strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 24px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .visual-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .visual-card .visual-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: #2dd4bf;
+      color: #071014;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-card:nth-child(2) .visual-step { background: #facc15; color: #071014; }
+    .visual-card:nth-child(3) .visual-step { background: #60a5fa; color: #071014; }
+
+    @media (max-width: 680px) {
+      .concept-visual { padding: 20px; }
+      .visual-floor,
+      .visual-flow,
+      .visual-grid,
+      .visual-rate-labels { grid-template-columns: 1fr; }
+      .concept-visual h3 { font-size: 24px; }
+      .visual-big-number { font-size: 44px; }
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: 0;
+      margin: 54px 0 18px;
+      padding-left: 14px;
+      border-left: 3px solid #2dd4bf;
+      color: #f8fafc;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 1px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #2dd4bf, rgba(250, 204, 21, 0.68), transparent);
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: 0;
+      margin: 32px 0 12px;
+      color: #bfdbfe;
+    }
+
+    .article-toc {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(8, 13, 23, 0.82));
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 30px 0 40px;
+    }
+
+    .article-toc strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #2dd4bf;
+      font-size: 13px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .article-toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 2;
+      column-gap: 34px;
+    }
+
+    .article-toc li {
+      break-inside: avoid;
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .article-toc a {
+      color: var(--text);
+    }
+
+    .article-toc a:hover {
+      color: #2dd4bf;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      h1 { font-size: 36px; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+      .article-toc ol { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo3.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Data Readiness</div>
+    <div class="series-tag">Pillar Page</div>
+
+    <h1>Pillar Two Data Readiness: How to Get Your Data, Systems, and Controls Ready for GloBE</h1>
+
+    <p class="intro">
+      Pillar Two implementation is often approached as a calculation exercise. In practice, data readiness is the bridge between understanding the rules and being able to operate them across jurisdictions, reporting periods, and control environments.
+    </p>
+
+    <div class="article-meta">Pillar page &middot; Pillar Two Data Readiness</div>
+
+    <nav class="article-toc" aria-label="In this article">
+      <strong>In this article</strong>
+      <ol>
+        <li><a href="#what-data-readiness-means-under-pillar-two">What Data Readiness Means Under Pillar Two</a></li>
+        <li><a href="#why-data-readiness-becomes-the-constraint">Why Data Readiness Becomes the Constraint</a></li>
+        <li><a href="#the-core-components-of-pillar-two-data-readiness">The Core Components of Pillar Two Data Readiness</a></li>
+        <li><a href="#a-practical-way-to-think-about-readiness">A Practical Way to Think About Readiness</a></li>
+        <li><a href="#how-these-components-interact">How These Components Interact</a></li>
+        <li><a href="#what-data-readiness-looks-like-in-practice">What Data Readiness Looks Like in Practice</a></li>
+        <li><a href="#common-gaps-in-early-implementation">Common Gaps in Early Implementation</a></li>
+        <li><a href="#what-this-means-for-implementation-planning">What This Means for Implementation Planning</a></li>
+        <li><a href="#related-topics-in-this-cluster">Related Topics in This Cluster</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ol>
+    </nav>
+
+    <section class="concept-visual" aria-label="Pillar Two data readiness pillar visual">
+      <div class="visual-kicker">Data readiness</div>
+      <h3>The operating foundation beneath the calculation</h3>
+      <p class="visual-caption">The calculation only works when the organisation can produce GloBE-ready inputs consistently, with ownership and evidence.</p>
+      <div class="visual-flow">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Inputs</strong><span>GloBE income, adjusted covered taxes, and jurisdictional data.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Controls</strong><span>Adjustment logic, review steps, and ownership.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Reporting</strong><span>Repeatable outputs that can be explained and supported.</span></div>
+      </div>
+    </section>
+
+    <p>
+      Pillar Two implementation is often approached as a calculation exercise.
+    </p>
+    <p>
+      In practice, that is not where the main effort sits.
+    </p>
+    <p>
+      The calculation logic matters, but it only works once the organisation can produce the underlying inputs in a consistent, supportable, and repeatable way. Without that, even a technically correct model becomes difficult to apply in practice.
+    </p>
+    <p>
+      That is why data readiness is the real starting point for Pillar Two implementation.
+    </p>
+    <p>
+      It is the bridge between understanding the rules and being able to operate them across jurisdictions, reporting periods, and control environments.
+    </p>
+
+    <h2 id="what-data-readiness-means-under-pillar-two">What Data Readiness Means Under Pillar Two</h2>
+    <p>
+      Data readiness is not a single workstream or a one-off deliverable.
+    </p>
+    <p>
+      Under Pillar Two, it is the organisation's ability to produce the inputs required for GloBE calculations in a way that is:
+    </p>
+    <ul>
+      <li>consistent across jurisdictions</li>
+      <li>traceable and supportable</li>
+      <li>repeatable across reporting periods</li>
+      <li>sufficiently governed to withstand review</li>
+    </ul>
+    <p>
+      In practical terms, that means being able to produce:
+    </p>
+    <ul>
+      <li>GloBE income on a jurisdictional basis</li>
+      <li>adjusted covered taxes</li>
+      <li>jurisdictional ETR calculations</li>
+      <li>supporting documentation that explains how the outputs were derived</li>
+    </ul>
+    <p>
+      The objective is not only to produce numbers. It is to produce numbers that can be explained, reconciled, and defended.
+    </p>
+    <p>
+      That distinction matters. OECD GIR guidance points in the same direction: the challenge is not only reporting data, but having accounting systems and processes that can support the required calculations, identify relevant adjustments, and maintain contemporaneous supporting information.
+    </p>
+
+    <h2 id="why-data-readiness-becomes-the-constraint">Why Data Readiness Becomes the Constraint</h2>
+    <p>
+      The Pillar Two framework assumes that required data can be assembled into a consistent jurisdictional model.
+    </p>
+    <p>
+      In most organisations, that assumption does not hold at the start.
+    </p>
+    <p>
+      The relevant inputs are usually:
+    </p>
+    <ul>
+      <li>distributed across multiple systems</li>
+      <li>produced for different reporting purposes</li>
+      <li>owned by different teams</li>
+      <li>not aligned to GloBE definitions</li>
+      <li>dependent on manual adjustments outside core systems</li>
+    </ul>
+    <p>
+      As a result, the real implementation effort sits in aligning, adjusting, validating, and governing the data.
+    </p>
+    <p>
+      This is why projects often appear straightforward at the design stage, then slow down once the discussion moves from rules to delivery.
+    </p>
+    <p>
+      The formula is not usually the first thing that breaks.
+    </p>
+    <p>
+      The data layer is.
+    </p>
+
+    <h2 id="the-core-components-of-pillar-two-data-readiness">The Core Components of Pillar Two Data Readiness</h2>
+    <p>
+      In practice, Pillar Two data readiness can be broken into four interdependent areas.
+    </p>
+
+    <section class="concept-visual" aria-label="Pillar Two data readiness components visual">
+      <div class="visual-kicker">Readiness components</div>
+      <h3>Four areas have to work together</h3>
+      <p class="visual-caption">A calculation model becomes usable only when assessment, systems, adjustments, and governance connect.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Data assessment</strong><span>What exists, where it sits, and whether it is usable.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Systems and flows</strong><span>How data moves from local records to reporting outputs.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Adjustment framework</strong><span>How accounting data becomes GloBE-ready.</span></div>
+        <div class="visual-card"><strong>Governance</strong><span>Who owns, reviews, escalates, and signs off.</span></div>
+      </div>
+    </section>
+
+    <h3>1. Data assessment</h3>
+    <p>
+      The starting point is understanding what data exists, where it sits, and whether it is usable.
+    </p>
+    <p>
+      This includes:
+    </p>
+    <ul>
+      <li>identifying relevant source systems and files</li>
+      <li>mapping data fields to GloBE requirements</li>
+      <li>assessing quality, completeness, and consistency</li>
+      <li>distinguishing between system-produced data and manual workarounds</li>
+    </ul>
+    <p>
+      A good assessment is not a theoretical list of data points. It is a practical test of whether the group can actually produce the required inputs under reporting conditions.
+    </p>
+
+    <h3>2. Source systems and data flows</h3>
+    <p>
+      Once the data is identified, the next question is how it moves.
+    </p>
+    <p>
+      This means understanding:
+    </p>
+    <ul>
+      <li>how data flows from local books and systems into consolidation</li>
+      <li>where aggregation happens</li>
+      <li>where transformations occur</li>
+      <li>where tax-specific adjustments sit outside standard reporting processes</li>
+    </ul>
+    <p>
+      The point is not only to map systems. It is to understand how jurisdictional Pillar Two data is actually constructed.
+    </p>
+
+    <h3>3. Adjustment framework</h3>
+    <p>
+      Pillar Two calculations do not operate on raw accounting data alone.
+    </p>
+    <p>
+      They require an adjustment layer.
+    </p>
+    <p>
+      That layer needs to be:
+    </p>
+    <ul>
+      <li>defined consistently</li>
+      <li>applied in a controlled way</li>
+      <li>documented clearly</li>
+      <li>capable of being reviewed later</li>
+    </ul>
+    <p>
+      Without a structured adjustment framework, the process becomes too dependent on local interpretation and spreadsheet-based overlays.
+    </p>
+    <p>
+      That may work for early analysis, but it is not a strong foundation for repeatable reporting.
+    </p>
+
+    <h3>4. Governance and ownership</h3>
+    <p>
+      Data readiness is not only a technical issue. It is an organisational one.
+    </p>
+    <p>
+      Groups need clarity on:
+    </p>
+    <ul>
+      <li>who provides the data</li>
+      <li>who performs the adjustments</li>
+      <li>who reviews the outputs</li>
+      <li>who owns the methodology</li>
+      <li>how issues are escalated and resolved</li>
+    </ul>
+    <p>
+      Without clear ownership, the process becomes slow, inconsistent, and difficult to control.
+    </p>
+
+    <h2 id="a-practical-way-to-think-about-readiness">A Practical Way to Think About Readiness</h2>
+    <p>
+      A useful Pillar Two readiness assessment should test more than whether data exists.
+    </p>
+    <p>
+      It should test whether the group can repeatedly produce defensible GloBE data.
+    </p>
+    <p>
+      In practical terms, that means asking five questions.
+    </p>
+
+    <h3>Source</h3>
+    <p>
+      Where does each critical input actually come from?
+    </p>
+    <p>
+      Not at a high level, but in working terms: which system, report, file, or local process produces the number?
+    </p>
+
+    <h3>Granularity</h3>
+    <p>
+      Does the data exist at the level Pillar Two requires?
+    </p>
+    <p>
+      Some groups can produce high-level jurisdictional data, but struggle when adjustments need to be traced to individual entities, permanent establishments, or specific tax positions.
+    </p>
+
+    <h3>Ownership</h3>
+    <p>
+      Who is responsible for providing, validating, and signing off on the data?
+    </p>
+    <p>
+      If ownership sits vaguely between tax, finance, and IT, the process usually becomes unstable.
+    </p>
+
+    <h3>Adjustment logic</h3>
+    <p>
+      What needs to happen before the number becomes GloBE-ready?
+    </p>
+    <p>
+      This is often where the real implementation pressure sits: deferred tax treatments, reclassifications, local accounting differences, and other manual overlays.
+    </p>
+
+    <h3>Evidence</h3>
+    <p>
+      How will the result be explained and supported later?
+    </p>
+    <p>
+      A Pillar Two process is not ready because one model can be completed once. It is ready when the organisation can show how the result was built, reviewed, and supported under real reporting conditions.
+    </p>
+    <p>
+      This is why a strong data assessment is closer to an operational stress test than a data inventory exercise.
+    </p>
+    <p>
+      Its purpose is not just to confirm that data exists. Its purpose is to show where the process will break, where manual dependency is too high, and where control design or automation effort should focus.
+    </p>
+
+    <h2 id="how-these-components-interact">How These Components Interact</h2>
+    <p>
+      These components are interdependent.
+    </p>
+    <ul>
+      <li>data assessment shows what exists and what is missing</li>
+      <li>system mapping shows how the data is constructed</li>
+      <li>adjustment design shows what needs to happen before the numbers become usable</li>
+      <li>governance determines whether the process can be repeated consistently</li>
+    </ul>
+    <p>
+      If one of these is weak, the overall process becomes unstable.
+    </p>
+    <p>
+      This is why Pillar Two should not be treated as a purely technical calculation workstream. The calculation sits on top of a broader operating model.
+    </p>
+
+    <section class="concept-visual" aria-label="Pillar Two data readiness interaction visual">
+      <div class="visual-kicker">Operating model</div>
+      <h3>Readiness is a connected system</h3>
+      <p class="visual-caption">Weakness in one layer usually shows up later as rework, manual dependency, or control risk.</p>
+      <div class="visual-flow">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Assess</strong><span>Identify gaps and manual dependencies.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Design</strong><span>Define adjustment logic and ownership.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Operate</strong><span>Produce defensible outputs repeatedly.</span></div>
+      </div>
+    </section>
+
+    <h2 id="what-data-readiness-looks-like-in-practice">What Data Readiness Looks Like in Practice</h2>
+    <p>
+      A data-ready organisation is not necessarily one with a perfect system landscape.
+    </p>
+    <p>
+      It is one that can:
+    </p>
+    <ul>
+      <li>produce jurisdictional data consistently</li>
+      <li>reconcile differences between systems and reports</li>
+      <li>apply adjustments in a controlled way</li>
+      <li>explain how outputs were derived</li>
+      <li>maintain a workable audit trail</li>
+      <li>repeat the process across periods without rebuilding it from scratch</li>
+    </ul>
+    <p>
+      This can be achieved through different architectures.
+    </p>
+    <p>
+      The common feature is not the tool.
+    </p>
+    <p>
+      It is control.
+    </p>
+
+    <h2 id="common-gaps-in-early-implementation">Common Gaps in Early Implementation</h2>
+    <p>
+      In early-stage Pillar Two projects, the same gaps appear repeatedly.
+    </p>
+
+    <h3>Incomplete data mapping</h3>
+    <p>
+      Groups may identify high-level data sources, but not fully map how those sources connect to GloBE requirements.
+    </p>
+    <p>
+      That creates false confidence early on.
+    </p>
+
+    <h3>Over-reliance on manual processes</h3>
+    <p>
+      Initial calculations often depend on spreadsheets, local files, and ad hoc workarounds.
+    </p>
+    <p>
+      These can support early modelling, but they do not scale well.
+    </p>
+
+    <h3>Undefined ownership</h3>
+    <p>
+      Responsibility for data, adjustments, and validation is often not clearly assigned.
+    </p>
+    <p>
+      This creates delay, duplication, and inconsistent treatment.
+    </p>
+
+    <h3>Limited auditability</h3>
+    <p>
+      Where calculations rely on multiple sources and manual interventions, it becomes difficult to explain how the final result was derived.
+    </p>
+    <p>
+      This is where implementation risk becomes visible.
+    </p>
+
+    <h2 id="what-this-means-for-implementation-planning">What This Means for Implementation Planning</h2>
+    <p>
+      Data readiness changes how Pillar Two projects should be sequenced.
+    </p>
+    <p>
+      A practical implementation approach usually needs to focus:
+    </p>
+    <ul>
+      <li>first, on understanding and stabilising the data</li>
+      <li>second, on defining the adjustment and governance framework</li>
+      <li>third, on designing the calculation process on top of that foundation</li>
+    </ul>
+    <p>
+      That order matters.
+    </p>
+    <p>
+      If the calculation model is designed before the data foundation is understood, rework is almost inevitable.
+    </p>
+    <p>
+      The rules may be fixed, but implementation timelines are often driven by:
+    </p>
+    <ul>
+      <li>data sourcing</li>
+      <li>ownership clarification</li>
+      <li>adjustment design</li>
+      <li>control development</li>
+      <li>documentation effort</li>
+    </ul>
+    <p>
+      In other words, timelines are often driven more by data than by tax theory.
+    </p>
+
+    <h2 id="related-topics-in-this-cluster">Related Topics in This Cluster</h2>
+    <p>
+      This pillar sets the structure for the next layer of analysis.
+    </p>
+    <p>
+      Each component needs deeper treatment:
+    </p>
+    <ul>
+      <li><a href="post10.html">Why Pillar Two Is a Data Problem Before It Is a Calculation Problem</a></li>
+      <li>What a Pillar Two Data Assessment Should Actually Cover</li>
+      <li>Source Systems for Pillar Two: Why Trial Balance Alone Is Not Enough</li>
+      <li>Manual Adjustments, Local Workarounds, and the Hidden Cost of Pillar Two Compliance</li>
+      <li>Who Owns Pillar Two Data? Finance, Tax, IT, or No One</li>
+      <li>From Data Assessment to Operating Model: What Good Looks Like</li>
+    </ul>
+    <p>
+      These are not disconnected topics.
+    </p>
+    <p>
+      They are all parts of the same operating problem.
+    </p>
+
+    <h2 id="conclusion">Conclusion</h2>
+    <p>
+      Pillar Two data readiness is the foundation of implementation.
+    </p>
+    <p>
+      It determines whether the organisation can move from understanding the rules to applying them consistently and under control.
+    </p>
+    <p>
+      For multinational groups, the implication is practical: the success of Pillar Two implementation depends less on the visible calculation itself and more on the organisation's ability to source, adjust, govern, and evidence the data that drives it.
+    </p>
+    <p>
+      That is why data readiness is not a side topic.
+    </p>
+    <p>
+      It is the operating foundation on which the rest of Pillar Two depends.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article is the parent page for the <em>Pillar Two Data Readiness</em> cluster.
+      </p>
+      <ul>
+        <li><a href="thoughts.html">Back to the Thoughts index</a></li>
+        <li><a href="post10.html">Why Pillar Two Is a Data Problem Before It Is a Calculation Problem</a></li>
+        <li><a href="post1.html">OECD Pillar Two Explained: The Ultimate Guide to Global Minimum Tax</a></li>
+      </ul>
+    </div>
+  </main>  <footer>
+    <div class="footer-inner">
+      <img src="logo3.png" alt="Aaron Kuo logo">
+      <span>&copy; 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+
+

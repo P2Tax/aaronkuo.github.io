@@ -1,0 +1,903 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Source Systems for Pillar Two: Why Trial Balance Alone Is Not Enough | Aaron Kuo</title>
+  <meta name="description" content="Why Pillar Two data readiness requires a multi-source approach beyond trial balance extraction, including tax systems, consolidation data, local reporting, workpapers, reconciliation, and controls." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0;
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: 52px;
+      line-height: 1.02;
+      letter-spacing: 0;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .concept-visual {
+      margin: 34px 0 40px;
+      padding: 26px;
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(7, 16, 20, 0.96), rgba(17, 24, 39, 0.96));
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+    }
+
+    .visual-kicker {
+      color: #2dd4bf;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .concept-visual h3 {
+      margin: 0 0 8px;
+      color: #f8fafc;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .visual-caption {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 22px;
+    }
+
+    .visual-panel,
+    .visual-card {
+      border: 1px solid rgba(226, 232, 240, 0.16);
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    .visual-floor {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 20px;
+      align-items: center;
+      padding: 22px;
+    }
+
+    .visual-big-number {
+      color: #f8fafc;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-rate-track {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f59e0b 0 38%, #2dd4bf 38% 100%);
+      margin-bottom: 12px;
+    }
+
+    .visual-rate-labels,
+    .visual-flow,
+    .visual-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .visual-rate-labels {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .visual-flow {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .visual-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visual-card {
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .visual-card strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 24px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .visual-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .visual-card .visual-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: #2dd4bf;
+      color: #071014;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-card:nth-child(2) .visual-step { background: #facc15; color: #071014; }
+    .visual-card:nth-child(3) .visual-step { background: #60a5fa; color: #071014; }
+
+    @media (max-width: 680px) {
+      .concept-visual { padding: 20px; }
+      .visual-floor,
+      .visual-flow,
+      .visual-grid,
+      .visual-rate-labels { grid-template-columns: 1fr; }
+      .concept-visual h3 { font-size: 24px; }
+      .visual-big-number { font-size: 44px; }
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: 0;
+      margin: 54px 0 18px;
+      padding-left: 14px;
+      border-left: 3px solid #2dd4bf;
+      color: #f8fafc;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 1px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #2dd4bf, rgba(250, 204, 21, 0.68), transparent);
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: 0;
+      margin: 32px 0 12px;
+      color: #bfdbfe;
+    }
+
+    .article-toc {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(8, 13, 23, 0.82));
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 30px 0 40px;
+    }
+
+    .article-toc strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #2dd4bf;
+      font-size: 13px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .article-toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 2;
+      column-gap: 34px;
+    }
+
+    .article-toc li {
+      break-inside: avoid;
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .article-toc a {
+      color: var(--text);
+    }
+
+    .article-toc a:hover {
+      color: #2dd4bf;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      h1 { font-size: 36px; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+      .article-toc ol { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo3.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Data Readiness</div>
+    <div class="series-tag">Part of: <a href="post11.html">Pillar Two Data Readiness</a></div>
+
+    <h1>Source Systems for Pillar Two: Why Trial Balance Alone Is Not Enough</h1>
+
+    <p class="intro">
+      The trial balance is a useful starting point for Pillar Two, but it does not contain the full set of data, tax logic, adjustments, and jurisdictional reporting structure needed for GloBE-ready outputs.
+    </p>
+
+    <div class="article-meta">Cluster article &middot; Pillar Two Data Readiness</div>
+
+    <nav class="article-toc" aria-label="In this article">
+      <strong>In this article</strong>
+      <ol>
+        <li><a href="#what-the-trial-balance-actually-provides">What the Trial Balance Actually Provides</a></li>
+        <li><a href="#why-the-trial-balance-falls-short">Why the Trial Balance Falls Short</a></li>
+        <li><a href="#why-pillar-two-needs-a-multi-source-data-model">Why Pillar Two Needs a Multi-Source Data Model</a></li>
+        <li><a href="#what-additional-sources-are-usually-required">What Additional Sources Are Usually Required</a></li>
+        <li><a href="#what-this-means-for-data-readiness">What This Means for Data Readiness</a></li>
+        <li><a href="#implications-for-implementation">Implications for Implementation</a></li>
+        <li><a href="#link-to-the-next-layer">Link to the Next Layer</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ol>
+    </nav>
+
+    <section class="concept-visual" aria-label="Pillar Two source systems visual">
+      <div class="visual-kicker">Source systems</div>
+      <h3>The trial balance is an anchor, not the full model</h3>
+      <p class="visual-caption">Pillar Two needs trial balance data to connect with tax, consolidation, local reporting, and adjustment layers.</p>
+      <div class="visual-flow">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Trial balance</strong><span>Structured starting point for financial data.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Other sources</strong><span>Tax, consolidation, local, and manual support layers.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>GloBE input</strong><span>Controlled jurisdictional output after mapping and adjustment.</span></div>
+      </div>
+    </section>
+
+    <p>
+      A common starting point in Pillar Two implementation is the trial balance.
+    </p>
+    <p>
+      That is understandable.
+    </p>
+    <p>
+      The trial balance is structured, familiar, and already used as a base for financial reporting and tax processes. It often feels like the natural place to start when teams begin thinking about GloBE calculations.
+    </p>
+    <p>
+      In practice, however, it is not enough.
+    </p>
+    <p>
+      The trial balance provides a starting point, but it does not contain the full set of data required to support Pillar Two. More importantly, it does not explain how that data needs to be adjusted, reconciled, or governed across jurisdictions.
+    </p>
+    <p>
+      That is why relying on the trial balance alone tends to create false confidence early in the process. The real gaps only become visible later, when the organisation tries to move from a high-level model to a repeatable reporting process.
+    </p>
+
+    <h2 id="what-the-trial-balance-actually-provides">What the Trial Balance Actually Provides</h2>
+    <p>
+      The trial balance is a summary of financial accounts at a point in time.
+    </p>
+    <p>
+      It is useful because it provides:
+    </p>
+    <ul>
+      <li>revenue and expense balances</li>
+      <li>pre-tax accounting income</li>
+      <li>certain tax-related balances at a high level</li>
+      <li>a structured base for entity-level financial analysis</li>
+    </ul>
+    <p>
+      That makes it a useful anchor for initial scoping.
+    </p>
+    <p>
+      It can help answer early questions such as:
+    </p>
+    <ul>
+      <li>what the basic income profile looks like</li>
+      <li>where major balances sit</li>
+      <li>how entity-level financial data is organised</li>
+      <li>whether the chart of accounts structure is broadly usable</li>
+    </ul>
+    <p>
+      But that is only part of what Pillar Two requires.
+    </p>
+
+    <h2 id="why-the-trial-balance-falls-short">Why the Trial Balance Falls Short</h2>
+    <p>
+      The problem is not that the trial balance is irrelevant.
+    </p>
+    <p>
+      The problem is that Pillar Two sits above and beyond it.
+    </p>
+
+    <h3>It lacks the granularity Pillar Two often needs</h3>
+    <p>
+      The trial balance works at account level.
+    </p>
+    <p>
+      Pillar Two often requires more detailed breakdowns, including:
+    </p>
+    <ul>
+      <li>separation of income or expense categories that receive different treatment under GloBE</li>
+      <li>identification of specific adjustment categories</li>
+      <li>more precise visibility over tax-related balances</li>
+      <li>supporting detail that sits behind account totals</li>
+    </ul>
+    <p>
+      In many cases, the required distinction is not visible from the account balance alone.
+    </p>
+    <p>
+      A single line in the trial balance may contain items that need to be treated differently for Pillar Two purposes. Once that happens, the trial balance stops being a complete input and becomes only a starting point.
+    </p>
+
+    <h3>It does not contain the full tax layer</h3>
+    <p>
+      This is one of the biggest misunderstandings in early implementation.
+    </p>
+    <p>
+      Pillar Two does not work off current tax expense alone. It requires a broader and more refined tax view, including:
+    </p>
+    <ul>
+      <li>adjusted current tax</li>
+      <li>deferred tax components</li>
+      <li>remeasurements or movements that need separate treatment</li>
+      <li>other tax adjustments needed to arrive at covered taxes</li>
+    </ul>
+    <p>
+      Much of this does not sit cleanly in the trial balance.
+    </p>
+    <p>
+      In practice, the trial balance usually shows the accounting outcome of tax entries, but not the full logic needed to determine covered taxes under Pillar Two. That logic often sits in tax provisioning systems, tax reporting schedules, or separate supporting workpapers.
+    </p>
+
+    <section class="concept-visual" aria-label="Trial balance limitation visual">
+      <div class="visual-kicker">Limitation</div>
+      <h3>What the trial balance does not show</h3>
+      <p class="visual-caption">The account balance may exist, while the Pillar Two treatment still depends on detail outside the trial balance.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Granularity</strong><span>Account totals may hide items with different GloBE treatment.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Tax layer</strong><span>Covered tax logic often sits in provisioning or support files.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Adjustments</strong><span>Manual overlays and local interpretation are usually outside the TB.</span></div>
+        <div class="visual-card"><strong>Jurisdictional view</strong><span>Entity-level balances do not automatically become GloBE reporting outputs.</span></div>
+      </div>
+    </section>
+
+    <h3>It has no visibility over the adjustment layer</h3>
+    <p>
+      This is where many projects run into trouble.
+    </p>
+    <p>
+      The trial balance reflects accounting outputs before Pillar Two-specific adjustments are applied. It does not show:
+    </p>
+    <ul>
+      <li>how accounting income is adjusted to GloBE income</li>
+      <li>how covered taxes are modified</li>
+      <li>where judgement-based treatment is applied</li>
+      <li>how manual overlays are introduced</li>
+      <li>whether the same methodology is being applied across jurisdictions</li>
+    </ul>
+    <p>
+      Those steps are essential.
+    </p>
+    <p>
+      And because they usually sit outside the trial balance, a process built too heavily around TB extraction will eventually need a second layer of logic built on top of it.
+    </p>
+    <p>
+      That second layer is often where complexity really begins.
+    </p>
+
+    <h3>It is not naturally aligned to jurisdictional reporting</h3>
+    <p>
+      Trial balances are usually maintained at legal entity level.
+    </p>
+    <p>
+      Pillar Two operates primarily at jurisdiction level.
+    </p>
+    <p>
+      That sounds like a simple aggregation problem, but it often is not.
+    </p>
+    <p>
+      In practice, moving from entity-level trial balance data to jurisdiction-level GloBE outputs may require:
+    </p>
+    <ul>
+      <li>aggregation across multiple entities</li>
+      <li>alignment across different local account structures</li>
+      <li>reconciliation between local books and group reporting</li>
+      <li>consistent treatment of entities within the same jurisdiction</li>
+      <li>treatment of items that do not align neatly between legal entity and reporting views</li>
+    </ul>
+    <p>
+      The trial balance does not solve that automatically.
+    </p>
+    <p>
+      It gives you raw entity-level balances. It does not give you a finished jurisdictional reporting model.
+    </p>
+
+    <h2 id="why-pillar-two-needs-a-multi-source-data-model">Why Pillar Two Needs a Multi-Source Data Model</h2>
+    <p>
+      The deeper issue is that Pillar Two does not sit in one reporting layer.
+    </p>
+    <p>
+      It cuts across several.
+    </p>
+    <p>
+      A workable Pillar Two process usually depends on information drawn from:
+    </p>
+    <ul>
+      <li>financial accounting records</li>
+      <li>consolidation systems</li>
+      <li>tax provision or tax reporting processes</li>
+      <li>local statutory reporting</li>
+      <li>manual adjustment and support files</li>
+    </ul>
+    <p>
+      Each of these serves a different purpose.
+    </p>
+    <p>
+      The trial balance helps with book-level financial data. The consolidation system helps with group reporting logic and eliminations. Tax systems help with current and deferred tax analysis. Local statutory accounts may explain local accounting treatments or reporting differences. Manual workpapers often hold the adjustment logic that has not yet been embedded in a system.
+    </p>
+    <p>
+      That is why a single-source mindset creates problems.
+    </p>
+    <p>
+      Pillar Two is not just a data extraction exercise. It is a data construction exercise across multiple reporting layers.
+    </p>
+
+    <h2 id="what-additional-sources-are-usually-required">What Additional Sources Are Usually Required</h2>
+
+    <h3>Consolidation systems</h3>
+    <p>
+      These are often needed to support:
+    </p>
+    <ul>
+      <li>group-level financial alignment</li>
+      <li>eliminations and consolidation adjustments</li>
+      <li>the starting point for jurisdictional aggregation</li>
+      <li>consistency with consolidated reporting</li>
+    </ul>
+    <p>
+      They are especially important where local trial balances alone do not reflect the reporting view used by the group.
+    </p>
+
+    <h3>Tax reporting or provisioning systems</h3>
+    <p>
+      These are critical for:
+    </p>
+    <ul>
+      <li>current and deferred tax analysis</li>
+      <li>tax provision detail</li>
+      <li>supporting schedules behind tax balances</li>
+      <li>identifying tax adjustments that do not appear clearly in the trial balance</li>
+    </ul>
+    <p>
+      Without this layer, covered tax analysis is usually incomplete.
+    </p>
+
+    <h3>Local statutory accounts and local reporting files</h3>
+    <p>
+      These are often needed where:
+    </p>
+    <ul>
+      <li>local accounting treatment differs from group treatment</li>
+      <li>statutory disclosures provide supporting detail not visible elsewhere</li>
+      <li>jurisdiction-specific positions need to be understood more clearly</li>
+      <li>the group needs to reconcile differences between local and consolidated views</li>
+    </ul>
+    <p>
+      This is especially relevant in multinational groups with uneven local system maturity.
+    </p>
+
+    <h3>Manual workpapers and support files</h3>
+    <p>
+      In many organisations, important parts of the Pillar Two logic still sit outside formal systems.
+    </p>
+    <p>
+      That may include:
+    </p>
+    <ul>
+      <li>local calculation files</li>
+      <li>adjustment schedules</li>
+      <li>deferred tax support</li>
+      <li>mapping files</li>
+      <li>review and reconciliation workpapers</li>
+    </ul>
+    <p>
+      These are often unavoidable, especially in early-stage implementation.
+    </p>
+    <p>
+      But they also create risk:
+    </p>
+    <ul>
+      <li>inconsistent local practice</li>
+      <li>weak traceability</li>
+      <li>dependency on individual knowledge</li>
+      <li>limited scalability</li>
+    </ul>
+
+    <section class="concept-visual" aria-label="Pillar Two multi-source model visual">
+      <div class="visual-kicker">Multi-source model</div>
+      <h3>GloBE inputs are constructed across reporting layers</h3>
+      <p class="visual-caption">A reliable model distinguishes source-of-record data from supporting detail and manual adjustment logic.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Accounting records</strong><span>Book-level balances and entity-level financial data.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Consolidation</strong><span>Group reporting logic, aggregation, and eliminations.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Tax systems</strong><span>Current tax, deferred tax, provisions, and support schedules.</span></div>
+        <div class="visual-card"><strong>Local support</strong><span>Statutory files, manual workpapers, mappings, and reconciliations.</span></div>
+      </div>
+    </section>
+
+    <h2 id="what-this-means-for-data-readiness">What This Means for Data Readiness</h2>
+    <p>
+      Understanding source systems is not only about identifying where data exists.
+    </p>
+    <p>
+      It is about understanding how the reporting model is actually built.
+    </p>
+    <p>
+      The key questions are:
+    </p>
+    <ul>
+      <li>which system is the source of record for each major input</li>
+      <li>which sources provide supporting detail only</li>
+      <li>where transformations occur</li>
+      <li>where data is aggregated</li>
+      <li>where manual intervention is required</li>
+      <li>where reconciliations are needed</li>
+      <li>whether the result can be repeated under reporting timelines</li>
+    </ul>
+    <p>
+      Without this, it is not possible to design a reliable Pillar Two data model.
+    </p>
+    <p>
+      A group may believe it has the necessary data because the trial balance exists. In practice, the real question is whether the group can connect that trial balance to the other layers required to produce GloBE-ready outputs under control.
+    </p>
+
+    <h2 id="implications-for-implementation">Implications for Implementation</h2>
+    <p>
+      The limitations of the trial balance affect how Pillar Two projects should be structured.
+    </p>
+
+    <h3>Data mapping becomes multi-source</h3>
+    <p>
+      The mapping exercise is not simply:
+    </p>
+    <p>
+      trial balance account to calculation line
+    </p>
+    <p>
+      It usually becomes:
+    </p>
+    <p>
+      trial balance plus tax data plus consolidation logic plus local support plus manual adjustments to GloBE input
+    </p>
+    <p>
+      That is a very different exercise.
+    </p>
+
+    <h3>Reconciliation becomes a core activity</h3>
+    <p>
+      Once multiple sources are involved, reconciliation becomes central.
+    </p>
+    <p>
+      Groups need to understand and explain differences between:
+    </p>
+    <ul>
+      <li>book and tax data</li>
+      <li>local and group reporting</li>
+      <li>system outputs and manual adjustments</li>
+      <li>entity-level and jurisdiction-level views</li>
+    </ul>
+    <p>
+      This is not side work. It is part of the core implementation effort.
+    </p>
+
+    <h3>Control requirements increase quickly</h3>
+    <p>
+      The moment the process depends on several systems and manual files, control design becomes much more important.
+    </p>
+    <p>
+      Groups need enough structure to ensure:
+    </p>
+    <ul>
+      <li>consistent treatment across jurisdictions</li>
+      <li>traceability of adjustments</li>
+      <li>repeatability across periods</li>
+      <li>auditability of outputs</li>
+    </ul>
+    <p>
+      That is why a Pillar Two reporting model built on multiple data layers needs stronger governance than a simple extraction model.
+    </p>
+
+    <h2 id="link-to-the-next-layer">Link to the Next Layer</h2>
+    <p>
+      Once the source system landscape is understood, the next challenge becomes clearer.
+    </p>
+    <p>
+      Even with the right data sources, the process still depends on how accounting data is transformed into GloBE-ready inputs.
+    </p>
+    <p>
+      That is where the adjustment layer becomes critical.
+    </p>
+    <p>
+      The next question is no longer only: which systems hold the data?
+    </p>
+    <p>
+      It becomes: what needs to happen to the data before it can be used?
+    </p>
+    <p>
+      That is where manual adjustments, local workarounds, and control design start to matter most.
+    </p>
+
+    <h2 id="conclusion">Conclusion</h2>
+    <p>
+      The trial balance is a useful starting point for Pillar Two.
+    </p>
+    <p>
+      But it is only that: a starting point.
+    </p>
+    <p>
+      It does not contain the full set of tax information, it does not explain the adjustment layer, and it does not by itself produce a jurisdictional reporting model. Pillar Two depends on a broader multi-source structure that brings together financial data, tax logic, consolidation views, local reporting detail, and controlled adjustments.
+    </p>
+    <p>
+      For multinational groups, the implication is practical: Pillar Two data readiness cannot be built on trial balance extraction alone. It requires a multi-source approach with clear mapping, reconciliation, and control across the reporting chain.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article sits within the <em>Pillar Two Data Readiness</em> cluster and follows the data assessment article.
+      </p>
+      <ul>
+        <li><a href="post11.html">Pillar Two Data Readiness: How to Get Your Data, Systems, and Controls Ready for GloBE</a></li>
+        <li><a href="post12.html">What a Pillar Two Data Assessment Should Actually Cover</a></li>
+        <li><a href="post10.html">Why Pillar Two Is a Data Problem Before It Is a Calculation Problem</a></li>
+        <li><a href="thoughts.html">Back to the Thoughts index</a></li>
+      </ul>
+    </div>
+  </main>  <footer>
+    <div class="footer-inner">
+      <img src="logo3.png" alt="Aaron Kuo logo">
+      <span>&copy; 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+

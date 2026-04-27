@@ -1,0 +1,663 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adjustment Ledgers for Pillar Two: How to Track GloBE and Covered Tax Adjustments | Aaron Kuo</title>
+  <meta name="description" content="Why repeatable GloBE reporting needs a structured adjustment ledger, clear ownership, evidence, and automation status tracking." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0b1220;
+      --line: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.12);
+      --max: 1040px;
+      --article-max: 820px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.82);
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+    }
+
+    .nav-inner, .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-mark {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0;
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .article {
+      width: min(var(--article-max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .topic-tag,
+    .series-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+
+    .topic-tag {
+      background: var(--accent-soft);
+      border: 1px solid rgba(96,165,250,0.24);
+      color: #bfdbfe;
+    }
+
+    .series-tag {
+      background: rgba(148,163,184,0.08);
+      border: 1px solid rgba(148,163,184,0.16);
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: 52px;
+      line-height: 1.02;
+      letter-spacing: 0;
+      margin: 0 0 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .concept-visual {
+      margin: 34px 0 40px;
+      padding: 26px;
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(7, 16, 20, 0.96), rgba(17, 24, 39, 0.96));
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+    }
+
+    .visual-kicker {
+      color: #2dd4bf;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .concept-visual h3 {
+      margin: 0 0 8px;
+      color: #f8fafc;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .visual-caption {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 22px;
+    }
+
+    .visual-panel,
+    .visual-card {
+      border: 1px solid rgba(226, 232, 240, 0.16);
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    .visual-floor {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 20px;
+      align-items: center;
+      padding: 22px;
+    }
+
+    .visual-big-number {
+      color: #f8fafc;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-rate-track {
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f59e0b 0 38%, #2dd4bf 38% 100%);
+      margin-bottom: 12px;
+    }
+
+    .visual-rate-labels,
+    .visual-flow,
+    .visual-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .visual-rate-labels {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .visual-flow {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .visual-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visual-card {
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .visual-card strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 24px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .visual-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .visual-card .visual-step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: #2dd4bf;
+      color: #071014;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .visual-card:nth-child(2) .visual-step { background: #facc15; color: #071014; }
+    .visual-card:nth-child(3) .visual-step { background: #60a5fa; color: #071014; }
+
+    @media (max-width: 680px) {
+      .concept-visual { padding: 20px; }
+      .visual-floor,
+      .visual-flow,
+      .visual-grid,
+      .visual-rate-labels { grid-template-columns: 1fr; }
+      .concept-visual h3 { font-size: 24px; }
+      .visual-big-number { font-size: 44px; }
+    }
+
+    h2 {
+      font-size: 28px;
+      letter-spacing: 0;
+      margin: 54px 0 18px;
+      padding-left: 14px;
+      border-left: 3px solid #2dd4bf;
+      color: #f8fafc;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 1px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #2dd4bf, rgba(250, 204, 21, 0.68), transparent);
+    }
+
+    h3 {
+      font-size: 21px;
+      letter-spacing: 0;
+      margin: 32px 0 12px;
+      color: #bfdbfe;
+    }
+
+    .article-toc {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(8, 13, 23, 0.82));
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 30px 0 40px;
+    }
+
+    .article-toc strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #2dd4bf;
+      font-size: 13px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .article-toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 2;
+      column-gap: 34px;
+    }
+
+    .article-toc li {
+      break-inside: avoid;
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .article-toc a {
+      color: var(--text);
+    }
+
+    .article-toc a:hover {
+      color: #2dd4bf;
+    }
+
+    p, li {
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+
+    .formula,
+    .note,
+    .related {
+      background: linear-gradient(180deg, rgba(11,18,32,0.96), rgba(9,14,25,0.96));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin: 26px 0;
+    }
+
+    .formula strong,
+    .note strong,
+    .related strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .formula p,
+    .note p,
+    .related p,
+    .related li {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .related ul {
+      margin-top: 10px;
+    }
+
+    .related a {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 41, 59, 0.85);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-inner img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    @media (max-width: 880px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; }
+      .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { flex-direction: column; }
+      h1 { font-size: 36px; }
+      p, li { font-size: 16px; }
+      .intro { font-size: 17px; }
+      .article-toc ol { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand-wrap">
+        <a href="index.html" class="brand">
+          <img src="logo3.png" alt="Aaron Kuo logo">
+        </a>
+        <a href="index.html" class="brand-mark">AK</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="thoughts.html" class="active">Thoughts</a>
+        <a href="book.html">Book</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article">
+    <div class="topic-tag">Pillar Two Data Readiness</div>
+    <div class="series-tag">Part of: <a href="post11.html">Pillar Two Data Readiness</a></div>
+
+    <h1>Adjustment Ledgers for Pillar Two: How to Track GloBE and Covered Tax Adjustments</h1>
+
+    <p class="intro">
+      Repeatable GloBE reporting depends on more than a calculation model. It needs a structured adjustment ledger that shows what changed, why it changed, who owns it, and what evidence supports it.
+    </p>
+
+    <div class="article-meta">Cluster article &middot; Pillar Two Data Readiness</div>
+
+    <nav class="article-toc" aria-label="In this article">
+      <strong>In this article</strong>
+      <ol>
+        <li><a href="#why-adjustment-ledgers-matter">Why Adjustment Ledgers Matter</a></li>
+        <li><a href="#what-the-ledger-should-track">What the Ledger Should Track</a></li>
+        <li><a href="#ownership-and-review">Ownership and Review</a></li>
+        <li><a href="#evidence-and-control-status">Evidence and Control Status</a></li>
+        <li><a href="#automation-readiness">Automation Readiness</a></li>
+        <li><a href="#practical-design-principles">Practical Design Principles</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ol>
+    </nav>
+
+    <section class="concept-visual" aria-label="Pillar Two adjustment ledger visual">
+      <div class="visual-kicker">Adjustment ledger</div>
+      <h3>Every adjustment needs a controlled record</h3>
+      <p class="visual-caption">A useful ledger connects the source number, GloBE treatment, owner, evidence, review status, and automation pathway.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Source input</strong><span>Where the number comes from and how it ties back.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Adjustment logic</strong><span>Why the amount changes for GloBE or covered tax purposes.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Ownership</strong><span>Who prepares, reviews, approves, and maintains the treatment.</span></div>
+        <div class="visual-card"><strong>Evidence status</strong><span>Whether the adjustment is supported, repeatable, and ready for automation.</span></div>
+      </div>
+    </section>
+
+    <h2 id="why-adjustment-ledgers-matter">Why Adjustment Ledgers Matter</h2>
+    <p>
+      Pillar Two reporting often starts with accounting data, but it rarely ends there.
+    </p>
+    <p>
+      To produce GloBE income, adjusted covered taxes, and jurisdictional outputs, groups usually need to apply a series of adjustments. Some are rule-driven. Some arise from differences between accounting, consolidation, local tax, and reporting definitions. Some are temporary workarounds while systems mature.
+    </p>
+    <p>
+      The problem is not that adjustments exist. The problem is when they are managed as disconnected spreadsheet tabs, local notes, or individual judgement calls.
+    </p>
+    <ul>
+      <li>the same adjustment may be applied differently across jurisdictions</li>
+      <li>reviewers may not know whether the treatment has changed</li>
+      <li>evidence may sit outside the reporting process</li>
+      <li>manual work may become embedded without an automation path</li>
+      <li>future periods may depend on the memory of one preparer</li>
+    </ul>
+    <p>
+      An adjustment ledger solves a practical governance problem. It gives the group a single, controlled place to track the movement from source data to GloBE-ready data.
+    </p>
+
+    <h2 id="what-the-ledger-should-track">What the Ledger Should Track</h2>
+    <p>
+      A useful adjustment ledger should be simple enough to maintain and structured enough to support review.
+    </p>
+    <p>
+      At minimum, it should track:
+    </p>
+    <ul>
+      <li>the entity, jurisdiction, and reporting period</li>
+      <li>the source system or workpaper used</li>
+      <li>the original account, line item, or data field</li>
+      <li>the adjustment category and GloBE treatment</li>
+      <li>whether the adjustment affects GloBE income, covered taxes, deferred tax, or another input</li>
+      <li>the adjustment amount and direction</li>
+      <li>the rationale for the treatment</li>
+      <li>the evidence reference</li>
+      <li>the preparer, reviewer, and approver</li>
+      <li>the status of review, control, and automation</li>
+    </ul>
+    <p>
+      This does not mean every group needs a sophisticated tool on day one. The important point is that the ledger should be designed as a repeatable control record, not just as a calculation tab.
+    </p>
+
+    <section class="concept-visual" aria-label="Pillar Two adjustment ledger components visual">
+      <div class="visual-kicker">Ledger structure</div>
+      <h3>The ledger should explain the movement from book data to GloBE-ready data</h3>
+      <p class="visual-caption">Each adjustment needs enough metadata to support consistency, review, audit trail, and future process improvement.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Classification</strong><span>What type of adjustment is it?</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Rationale</strong><span>Why is the treatment appropriate?</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Evidence</strong><span>Where is the support retained?</span></div>
+        <div class="visual-card"><strong>Operating status</strong><span>Manual, controlled, repeatable, or automated.</span></div>
+      </div>
+    </section>
+
+    <h2 id="ownership-and-review">Ownership and Review</h2>
+    <p>
+      Adjustment ledgers work only when ownership is explicit.
+    </p>
+    <p>
+      In many multinational groups, the information needed to support a GloBE or covered tax adjustment sits across tax, finance, consolidation, local controllers, and sometimes technology teams. A ledger should make this visible.
+    </p>
+    <p>
+      For each recurring adjustment, the group should know:
+    </p>
+    <ul>
+      <li>who prepares the amount</li>
+      <li>who validates the source data</li>
+      <li>who owns the technical treatment</li>
+      <li>who reviews consistency across jurisdictions</li>
+      <li>who approves changes to methodology</li>
+    </ul>
+    <p>
+      Without this structure, the adjustment process can become a hidden dependency. The calculation may still run, but the group may struggle to explain whether the treatment was applied consistently or reviewed by the right people.
+    </p>
+
+    <h2 id="evidence-and-control-status">Evidence and Control Status</h2>
+    <p>
+      The adjustment ledger should also function as an evidence map.
+    </p>
+    <p>
+      For a recurring covered tax adjustment, for example, the ledger should point to the source schedule, explain how the amount was derived, show who reviewed it, and identify whether the evidence is retained centrally or locally.
+    </p>
+    <p>
+      A practical status model can be simple:
+    </p>
+    <ul>
+      <li>draft: treatment identified but not reviewed</li>
+      <li>approved: treatment reviewed and accepted</li>
+      <li>evidenced: supporting documentation retained</li>
+      <li>controlled: preparation and review steps are embedded in the close process</li>
+      <li>automated: source, logic, and posting are system-supported</li>
+    </ul>
+    <p>
+      This helps teams avoid a common problem: treating every adjustment as complete simply because it has been included in the calculation. Inclusion is not the same as readiness.
+    </p>
+
+    <h2 id="automation-readiness">Automation Readiness</h2>
+    <p>
+      The ledger should also show which adjustments are candidates for automation.
+    </p>
+    <p>
+      Not every adjustment should be automated immediately. Some may depend on judgement, policy interpretation, or local facts that are still being stabilised. Others may be recurring, rules-based, and suitable for system logic once the source data is reliable.
+    </p>
+    <p>
+      A useful ledger can classify adjustments by automation status:
+    </p>
+    <ul>
+      <li>manual and temporary</li>
+      <li>manual but recurring</li>
+      <li>partially system-supported</li>
+      <li>ready for automation</li>
+      <li>automated with review control</li>
+    </ul>
+    <p>
+      This classification gives technology and process teams a realistic roadmap. It also prevents the group from trying to automate unstable treatments before the underlying ownership, evidence, and logic are mature.
+    </p>
+
+    <h2 id="practical-design-principles">Practical Design Principles</h2>
+    <p>
+      The best adjustment ledgers are not overly complicated. They are disciplined.
+    </p>
+    <p>
+      In practice, a multinational group should design the ledger around a few principles.
+    </p>
+    <ul>
+      <li>Use consistent adjustment categories across jurisdictions.</li>
+      <li>Separate GloBE income adjustments from covered tax adjustments.</li>
+      <li>Capture both the amount and the reason for the treatment.</li>
+      <li>Link every material adjustment to evidence.</li>
+      <li>Assign ownership at the adjustment level, not only at the entity level.</li>
+      <li>Track whether the adjustment is recurring or one-off.</li>
+      <li>Maintain status fields for review, control, and automation.</li>
+      <li>Keep the ledger close to the reporting process so it is updated every period.</li>
+    </ul>
+    <p>
+      The objective is not to create documentation after the fact. The objective is to make the adjustment process itself visible, reviewable, and repeatable.
+    </p>
+
+    <h2 id="conclusion">Conclusion</h2>
+    <p>
+      Pillar Two adjustments are where technical requirements meet operating reality.
+    </p>
+    <p>
+      If they are tracked informally, the group may be able to complete an initial calculation but struggle to repeat it under reporting deadlines, answer review questions, or move toward automation.
+    </p>
+    <p>
+      A structured adjustment ledger gives tax, finance, local controllers, consolidation teams, and technology teams a common operating record. It shows what changed, why it changed, who owns it, what evidence supports it, and whether the process is ready to scale.
+    </p>
+    <p>
+      For multinational groups, this is a practical foundation for repeatable GloBE reporting. The ledger turns adjustment logic from scattered knowledge into a controlled part of the reporting model.
+    </p>
+
+    <div class="related">
+      <strong>Related articles</strong>
+      <p>
+        This article sits within the <em>Pillar Two Data Readiness</em> cluster and links back to the parent pillar page.
+      </p>
+      <ul>
+        <li><a href="post11.html">Pillar Two Data Readiness: How to Get Your Data, Systems, and Controls Ready for GloBE</a></li>
+        <li><a href="post13.html">Source Systems for Pillar Two: Why Trial Balance Alone Is Not Enough</a></li>
+        <li><a href="post12.html">What a Pillar Two Data Assessment Should Actually Cover</a></li>
+        <li><a href="post10.html">Why Pillar Two Is a Data Problem Before It Is a Calculation Problem</a></li>
+        <li><a href="thoughts.html">Back to the Thoughts index</a></li>
+      </ul>
+    </div>
+  </main>  <footer>
+    <div class="footer-inner">
+      <img src="logo3.png" alt="Aaron Kuo logo">
+      <span>&copy; 2026 Aaron Kuo</span>
+    </div>
+  </footer>
+</body>
+</html>

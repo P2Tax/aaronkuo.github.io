@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adjustment Ledgers for Pillar Two: How to Track GloBE and Covered Tax Adjustments | Aaron Kuo</title>
-  <meta name="description" content="Why repeatable GloBE reporting needs a structured adjustment ledger, clear ownership, evidence, and automation status tracking." />
+  <title>Pillar Two Data Ownership: Why Tax Cannot Solve the Reporting Problem Alone | Aaron Kuo</title>
+  <meta name="description" content="How finance, tax, consolidation, local controllers, and technology teams need clear ownership for repeatable GloBE reporting." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -453,10 +453,10 @@
     <div class="topic-tag">Pillar Two Data Readiness</div>
     <div class="series-tag">Part of: <a href="post11.html">Pillar Two Data Readiness</a></div>
 
-    <h1>Adjustment Ledgers for Pillar Two: How to Track GloBE and Covered Tax Adjustments</h1>
+    <h1>Pillar Two Data Ownership: Why Tax Cannot Solve the Reporting Problem Alone</h1>
 
     <p class="intro">
-      Repeatable GloBE reporting depends on more than a calculation model. It needs a structured adjustment ledger that shows what changed, why it changed, who owns it, and what evidence supports it.
+      Pillar Two reporting fails most often when ownership is unclear. Tax may understand the rules, but it rarely owns the source systems, local close processes, consolidation reporting, or the evidence chain. If ownership is not explicit across finance, tax, consolidation, local controllers, and technology teams, the process becomes slow, inconsistent, and hard to defend.
     </p>
 
     <div class="article-meta">Cluster article &middot; Pillar Two Data Readiness</div>
@@ -464,180 +464,135 @@
     <nav class="article-toc" aria-label="In this article">
       <strong>In this article</strong>
       <ol>
-        <li><a href="#why-adjustment-ledgers-matter">Why Adjustment Ledgers Matter</a></li>
-        <li><a href="#what-the-ledger-should-track">What the Ledger Should Track</a></li>
-        <li><a href="#ownership-and-review">Ownership and Review</a></li>
-        <li><a href="#evidence-and-control-status">Evidence and Control Status</a></li>
-        <li><a href="#automation-readiness">Automation Readiness</a></li>
-        <li><a href="#practical-design-principles">Practical Design Principles</a></li>
+        <li><a href="#why-ownership-is-the-constraint">Why Ownership Is the Constraint</a></li>
+        <li><a href="#the-four-types-of-ownership-you-need">The Four Types of Ownership You Need</a></li>
+        <li><a href="#ownership-by-input-chain">Ownership by Input Chain</a></li>
+        <li><a href="#what-good-ownership-looks-like">What Good Ownership Looks Like</a></li>
+        <li><a href="#how-to-implement-ownership-without-politics">How to Implement Ownership Without Politics</a></li>
         <li><a href="#conclusion">Conclusion</a></li>
       </ol>
     </nav>
 
-    <section class="concept-visual" aria-label="Pillar Two adjustment ledger visual">
-      <div class="visual-kicker">Adjustment ledger</div>
-      <h3>Every adjustment needs a controlled record</h3>
-      <p class="visual-caption">A useful ledger connects the source number, GloBE treatment, owner, evidence, review status, and automation pathway.</p>
+    <section class="concept-visual" aria-label="Pillar Two data ownership overview">
+      <div class="visual-kicker">Ownership model</div>
+      <h3>Turn a tax requirement into an operating process</h3>
+      <p class="visual-caption">Ownership needs to be explicit across data, logic, controls, and delivery.</p>
       <div class="visual-grid">
-        <div class="visual-card"><span class="visual-step">1</span><strong>Source input</strong><span>Where the number comes from and how it ties back.</span></div>
-        <div class="visual-card"><span class="visual-step">2</span><strong>Adjustment logic</strong><span>Why the amount changes for GloBE or covered tax purposes.</span></div>
-        <div class="visual-card"><span class="visual-step">3</span><strong>Ownership</strong><span>Who prepares, reviews, approves, and maintains the treatment.</span></div>
-        <div class="visual-card"><strong>Evidence status</strong><span>Whether the adjustment is supported, repeatable, and ready for automation.</span></div>
+        <div class="visual-card"><span class="visual-step">1</span><strong>Data owner</strong><span>Controls extraction and definition at source.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Logic owner</strong><span>Defines adjustments and policy treatments.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Control owner</strong><span>Runs review, approvals, and evidence retention.</span></div>
+        <div class="visual-card"><span class="visual-step">4</span><strong>Delivery owner</strong><span>Owns timelines, reconciliation, and sign-off.</span></div>
       </div>
     </section>
 
-    <h2 id="why-adjustment-ledgers-matter">Why Adjustment Ledgers Matter</h2>
+    <h2 id="why-ownership-is-the-constraint">Why Ownership Is the Constraint</h2>
     <p>
-      Pillar Two reporting often starts with accounting data, but it rarely ends there.
+      In early Pillar Two work, teams often treat the problem as a calculation build. But the recurring work is operational: data collection, adjustments, reconciliations, approvals, and documentation.
     </p>
     <p>
-      To produce GloBE income, adjusted covered taxes, and jurisdictional outputs, groups usually need to apply a series of adjustments. Some are rule-driven. Some arise from differences between accounting, consolidation, local tax, and reporting definitions. Some are temporary workarounds while systems mature.
-    </p>
-    <p>
-      The problem is not that adjustments exist. The problem is when they are managed as disconnected spreadsheet tabs, local notes, or individual judgement calls.
+      When ownership is unclear, three predictable outcomes follow:
     </p>
     <ul>
-      <li>the same adjustment may be applied differently across jurisdictions</li>
-      <li>reviewers may not know whether the treatment has changed</li>
-      <li>evidence may sit outside the reporting process</li>
-      <li>manual work may become embedded without an automation path</li>
-      <li>future periods may depend on the memory of one preparer</li>
+      <li><strong>Delay:</strong> work waits for &quot;someone&quot; to provide data, clarify definitions, or approve treatments.</li>
+      <li><strong>Inconsistency:</strong> different jurisdictions apply different assumptions or adjustments.</li>
+      <li><strong>Weak auditability:</strong> numbers can be produced, but not reliably explained later.</li>
     </ul>
     <p>
-      An adjustment ledger solves a practical governance problem. It gives the group a single, controlled place to track the movement from source data to GloBE-ready data.
+      Clear ownership is the simplest way to reduce repeated negotiation every reporting cycle.
     </p>
 
-    <h2 id="what-the-ledger-should-track">What the Ledger Should Track</h2>
+    <h2 id="the-four-types-of-ownership-you-need">The Four Types of Ownership You Need</h2>
     <p>
-      A useful adjustment ledger should be simple enough to maintain and structured enough to support review.
-    </p>
-    <p>
-      At minimum, it should track:
+      Ownership should be defined in a way that matches how Pillar Two reporting actually runs. In practice, it helps to separate:
     </p>
     <ul>
-      <li>the entity, jurisdiction, and reporting period</li>
-      <li>the source system or workpaper used</li>
-      <li>the original account, line item, or data field</li>
-      <li>the adjustment category and GloBE treatment</li>
-      <li>whether the adjustment affects GloBE income, covered taxes, deferred tax, or another input</li>
-      <li>the adjustment amount and direction</li>
-      <li>the rationale for the treatment</li>
-      <li>the evidence reference</li>
-      <li>the preparer, reviewer, and approver</li>
-      <li>the status of review, control, and automation</li>
+      <li><strong>Data ownership</strong> (who owns the source and its definition)</li>
+      <li><strong>Logic ownership</strong> (who owns the adjustment and the treatment)</li>
+      <li><strong>Control ownership</strong> (who runs the review, approval, and evidence expectations)</li>
+      <li><strong>Delivery ownership</strong> (who owns the end-to-end close, timeline, and sign-off)</li>
     </ul>
     <p>
-      This does not mean every group needs a sophisticated tool on day one. The important point is that the ledger should be designed as a repeatable control record, not just as a calculation tab.
+      These can sit in different teams. The key is that they must be explicit.
     </p>
 
-    <section class="concept-visual" aria-label="Pillar Two adjustment ledger components visual">
-      <div class="visual-kicker">Ledger structure</div>
-      <h3>The ledger should explain the movement from book data to GloBE-ready data</h3>
-      <p class="visual-caption">Each adjustment needs enough metadata to support consistency, review, audit trail, and future process improvement.</p>
-      <div class="visual-grid">
-        <div class="visual-card"><span class="visual-step">1</span><strong>Classification</strong><span>What type of adjustment is it?</span></div>
-        <div class="visual-card"><span class="visual-step">2</span><strong>Rationale</strong><span>Why is the treatment appropriate?</span></div>
-        <div class="visual-card"><span class="visual-step">3</span><strong>Evidence</strong><span>Where is the support retained?</span></div>
-        <div class="visual-card"><strong>Operating status</strong><span>Manual, controlled, repeatable, or automated.</span></div>
-      </div>
-    </section>
+    <h2 id="ownership-by-input-chain">Ownership by Input Chain</h2>
+    <p>
+      The most practical way to assign ownership is to map it to the input chain. A typical split looks like:
+    </p>
 
-    <h2 id="ownership-and-review">Ownership and Review</h2>
+    <h3>Finance and local controllers</h3>
+    <ul>
+      <li>accounting close outputs and local packs</li>
+      <li>sub-ledger detail and local reporting schedules</li>
+      <li>local adjustments that explain variance and mapping</li>
+    </ul>
+
+    <h3>Consolidation teams</h3>
+    <ul>
+      <li>group consolidation reporting and entity/jurisdiction structure</li>
+      <li>intercompany elimination logic and consolidation adjustments</li>
+      <li>standardised reporting packs and data governance rules</li>
+    </ul>
+
+    <h3>Tax teams</h3>
+    <ul>
+      <li>policy interpretation and technical positions</li>
+      <li>covered tax logic, timing analysis, and adjustment design</li>
+      <li>consistency checks across jurisdictions and periods</li>
+    </ul>
+
+    <h3>Technology teams</h3>
+    <ul>
+      <li>data pipelines, mapping logic, access, and security</li>
+      <li>workflow tooling, evidence retention, and audit trail</li>
+      <li>automation roadmap and monitoring</li>
+    </ul>
+
     <p>
-      Adjustment ledgers work only when ownership is explicit.
+      Ownership works best when paired with a structured inventory. That is one reason an
+      <a href="pillar-two-adjustment-ledgers.html">adjustment ledger</a> is useful: it makes the adjustment layer visible and assignable.
     </p>
+
+    <h2 id="what-good-ownership-looks-like">What Good Ownership Looks Like</h2>
     <p>
-      In many multinational groups, the information needed to support a GloBE or covered tax adjustment sits across tax, finance, consolidation, local controllers, and sometimes technology teams. A ledger should make this visible.
-    </p>
-    <p>
-      For each recurring adjustment, the group should know:
+      &quot;Good ownership&quot; is not a slide with names. It is operational clarity that holds under deadlines.
+      Practically, that means:
     </p>
     <ul>
-      <li>who prepares the amount</li>
-      <li>who validates the source data</li>
-      <li>who owns the technical treatment</li>
-      <li>who reviews consistency across jurisdictions</li>
-      <li>who approves changes to methodology</li>
+      <li>each material input has a named owner and a defined refresh cadence</li>
+      <li>definitions are stable and documented (especially entity/jurisdiction mapping)</li>
+      <li>adjustments are owned, reviewed, and evidence-linked</li>
+      <li>exceptions are logged with accountable resolution</li>
+      <li>the reporting calendar includes review and approval checkpoints</li>
     </ul>
     <p>
-      Without this structure, the adjustment process can become a hidden dependency. The calculation may still run, but the group may struggle to explain whether the treatment was applied consistently or reviewed by the right people.
+      If you need the broader framing, the parent pillar page provides the overall structure:
+      <a href="post11.html">Pillar Two Data Readiness: How to Get Your Data, Systems, and Controls Ready for GloBE</a>.
     </p>
 
-    <h2 id="evidence-and-control-status">Evidence and Control Status</h2>
+    <h2 id="how-to-implement-ownership-without-politics">How to Implement Ownership Without Politics</h2>
     <p>
-      The adjustment ledger should also function as an evidence map.
-    </p>
-    <p>
-      For a recurring covered tax adjustment, for example, the ledger should point to the source schedule, explain how the amount was derived, show who reviewed it, and identify whether the evidence is retained centrally or locally.
-    </p>
-    <p>
-      A practical status model can be simple:
+      Ownership discussions can become political if they start with &quot;who is responsible for Pillar Two&quot;.
+      A more effective approach is to start with the data chain and ask, for each input:
     </p>
     <ul>
-      <li>draft: treatment identified but not reviewed</li>
-      <li>approved: treatment reviewed and accepted</li>
-      <li>evidenced: supporting documentation retained</li>
-      <li>controlled: preparation and review steps are embedded in the close process</li>
-      <li>automated: source, logic, and posting are system-supported</li>
+      <li>who produces it today?</li>
+      <li>who can certify its definition and completeness?</li>
+      <li>who owns the adjustment and the judgement calls?</li>
+      <li>who reviews it, and where is evidence retained?</li>
+      <li>what part of this can be automated over time?</li>
     </ul>
     <p>
-      This helps teams avoid a common problem: treating every adjustment as complete simply because it has been included in the calculation. Inclusion is not the same as readiness.
-    </p>
-
-    <h2 id="automation-readiness">Automation Readiness</h2>
-    <p>
-      The ledger should also show which adjustments are candidates for automation.
-    </p>
-    <p>
-      Not every adjustment should be automated immediately. Some may depend on judgement, policy interpretation, or local facts that are still being stabilised. Others may be recurring, rules-based, and suitable for system logic once the source data is reliable.
-    </p>
-    <p>
-      A useful ledger can classify adjustments by automation status:
-    </p>
-    <ul>
-      <li>manual and temporary</li>
-      <li>manual but recurring</li>
-      <li>partially system-supported</li>
-      <li>ready for automation</li>
-      <li>automated with review control</li>
-    </ul>
-    <p>
-      This classification gives technology and process teams a realistic roadmap. It also prevents the group from trying to automate unstable treatments before the underlying ownership, evidence, and logic are mature.
-    </p>
-
-    <h2 id="practical-design-principles">Practical Design Principles</h2>
-    <p>
-      The best adjustment ledgers are not overly complicated. They are disciplined.
-    </p>
-    <p>
-      In practice, a multinational group should design the ledger around a few principles.
-    </p>
-    <ul>
-      <li>Use consistent adjustment categories across jurisdictions.</li>
-      <li>Separate GloBE income adjustments from covered tax adjustments.</li>
-      <li>Capture both the amount and the reason for the treatment.</li>
-      <li>Link every material adjustment to evidence.</li>
-      <li>Assign ownership at the adjustment level, not only at the entity level.</li>
-      <li>Track whether the adjustment is recurring or one-off.</li>
-      <li>Maintain status fields for review, control, and automation.</li>
-      <li>Keep the ledger close to the reporting process so it is updated every period.</li>
-    </ul>
-    <p>
-      The objective is not to create documentation after the fact. The objective is to make the adjustment process itself visible, reviewable, and repeatable.
+      This keeps the conversation practical: it assigns ownership where the work already sits, and it makes gaps visible without turning the model into an abstract debate.
     </p>
 
     <h2 id="conclusion">Conclusion</h2>
     <p>
-      Pillar Two adjustments are where technical requirements meet operating reality.
+      Tax cannot solve Pillar Two reporting alone because the reporting problem is cross-functional.
+      Repeatable GloBE reporting needs ownership that is explicit across finance, consolidation, local teams, tax, and technology.
     </p>
     <p>
-      If they are tracked informally, the group may be able to complete an initial calculation but struggle to repeat it under reporting deadlines, answer review questions, or move toward automation.
-    </p>
-    <p>
-      A structured adjustment ledger gives tax, finance, local controllers, consolidation teams, and technology teams a common operating record. It shows what changed, why it changed, who owns it, what evidence supports it, and whether the process is ready to scale.
-    </p>
-    <p>
-      For multinational groups, this is a practical foundation for repeatable GloBE reporting. The ledger turns adjustment logic from scattered knowledge into a controlled part of the reporting model.
+      When ownership is clear, the process becomes faster, more consistent, and easier to defend. When it is unclear, every reporting cycle becomes a re-implementation exercise.
     </p>
 
     <div class="related">
@@ -647,7 +602,7 @@
       </p>
       <ul>
         <li><a href="post11.html">Pillar Two Data Readiness: How to Get Your Data, Systems, and Controls Ready for GloBE</a></li>
-        <li><a href="pillar-two-data-ownership.html">Pillar Two Data Ownership: Why Tax Cannot Solve the Reporting Problem Alone</a></li>
+        <li><a href="pillar-two-adjustment-ledgers.html">Adjustment Ledgers for Pillar Two: How to Track GloBE and Covered Tax Adjustments</a></li>
         <li><a href="post13.html">Source Systems for Pillar Two: Why Trial Balance Alone Is Not Enough</a></li>
         <li><a href="post12.html">What a Pillar Two Data Assessment Should Actually Cover</a></li>
         <li><a href="post10.html">Why Pillar Two Is a Data Problem Before It Is a Calculation Problem</a></li>

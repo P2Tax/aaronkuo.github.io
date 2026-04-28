@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pillar Two Data Ownership: Why Tax Cannot Solve the Reporting Problem Alone | Aaron Kuo</title>
-  <meta name="description" content="How finance, tax, consolidation, local controllers, and technology teams need clear ownership for repeatable GloBE reporting." />
+  <title>Pillar Two Evidence and Controls: What Tax Teams Need to Retain for GloBE Reporting | Aaron Kuo</title>
+  <meta name="description" content="How to think about audit trail, source evidence, review controls, approvals, and documentation for Pillar Two calculations." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -453,10 +453,10 @@
     <div class="topic-tag">Pillar Two Data Readiness</div>
     <div class="series-tag">Part of: <a href="post11.html">Pillar Two Data Readiness</a></div>
 
-    <h1>Pillar Two Data Ownership: Why Tax Cannot Solve the Reporting Problem Alone</h1>
+    <h1>Pillar Two Evidence and Controls: What Tax Teams Need to Retain for GloBE Reporting</h1>
 
     <p class="intro">
-      Pillar Two reporting fails most often when ownership is unclear. Tax may understand the rules, but it rarely owns the source systems, local close processes, consolidation reporting, or the evidence chain. If ownership is not explicit across finance, tax, consolidation, local controllers, and technology teams, the process becomes slow, inconsistent, and hard to defend.
+      Pillar Two reporting is not only a calculation exercise. Groups need to retain enough evidence to explain where the data came from, how GloBE and covered tax adjustments were made, who reviewed them, and why the final position is supportable.
     </p>
 
     <div class="article-meta">Cluster article &middot; Pillar Two Data Readiness</div>
@@ -464,135 +464,171 @@
     <nav class="article-toc" aria-label="In this article">
       <strong>In this article</strong>
       <ol>
-        <li><a href="#why-ownership-is-the-constraint">Why Ownership Is the Constraint</a></li>
-        <li><a href="#the-four-types-of-ownership-you-need">The Four Types of Ownership You Need</a></li>
-        <li><a href="#ownership-by-input-chain">Ownership by Input Chain</a></li>
-        <li><a href="#what-good-ownership-looks-like">What Good Ownership Looks Like</a></li>
-        <li><a href="#how-to-implement-ownership-without-politics">How to Implement Ownership Without Politics</a></li>
+        <li><a href="#why-evidence-matters">Why Evidence Matters</a></li>
+        <li><a href="#what-tax-teams-need-to-retain">What Tax Teams Need to Retain</a></li>
+        <li><a href="#controls-over-source-data">Controls Over Source Data</a></li>
+        <li><a href="#controls-over-adjustments">Controls Over Adjustments</a></li>
+        <li><a href="#review-and-approval-evidence">Review and Approval Evidence</a></li>
+        <li><a href="#how-to-make-evidence-repeatable">How to Make Evidence Repeatable</a></li>
         <li><a href="#conclusion">Conclusion</a></li>
       </ol>
     </nav>
 
-    <section class="concept-visual" aria-label="Pillar Two data ownership overview">
-      <div class="visual-kicker">Ownership model</div>
-      <h3>Turn a tax requirement into an operating process</h3>
-      <p class="visual-caption">Ownership needs to be explicit across data, logic, controls, and delivery.</p>
+    <section class="concept-visual" aria-label="Pillar Two evidence and controls overview">
+      <div class="visual-kicker">Evidence model</div>
+      <h3>Every reported number needs a supportable path</h3>
+      <p class="visual-caption">A practical evidence model connects source data, adjustments, review controls, approvals, and retained documentation.</p>
       <div class="visual-grid">
-        <div class="visual-card"><span class="visual-step">1</span><strong>Data owner</strong><span>Controls extraction and definition at source.</span></div>
-        <div class="visual-card"><span class="visual-step">2</span><strong>Logic owner</strong><span>Defines adjustments and policy treatments.</span></div>
-        <div class="visual-card"><span class="visual-step">3</span><strong>Control owner</strong><span>Runs review, approvals, and evidence retention.</span></div>
-        <div class="visual-card"><span class="visual-step">4</span><strong>Delivery owner</strong><span>Owns timelines, reconciliation, and sign-off.</span></div>
+        <div class="visual-card"><span class="visual-step">1</span><strong>Source</strong><span>Where the input came from and who owns it.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Adjustment</strong><span>What changed before the input became GloBE-ready.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Review</strong><span>Who checked the data, logic, and consistency.</span></div>
+        <div class="visual-card"><strong>Retention</strong><span>Where the support is stored for future reporting and audit trail.</span></div>
       </div>
     </section>
 
-    <h2 id="why-ownership-is-the-constraint">Why Ownership Is the Constraint</h2>
+    <h2 id="why-evidence-matters">Why Evidence Matters</h2>
     <p>
-      In early Pillar Two work, teams often treat the problem as a calculation build. But the recurring work is operational: data collection, adjustments, reconciliations, approvals, and documentation.
+      Pillar Two calculations can look precise even when the underlying evidence is weak.
     </p>
     <p>
-      When ownership is unclear, three predictable outcomes follow:
+      A group may be able to produce a jurisdictional effective tax rate, top-up tax position, or safe harbour assessment. The harder question is whether it can explain the result later, under review, using retained evidence rather than memory or recreated workpapers.
     </p>
-    <ul>
-      <li><strong>Delay:</strong> work waits for &quot;someone&quot; to provide data, clarify definitions, or approve treatments.</li>
-      <li><strong>Inconsistency:</strong> different jurisdictions apply different assumptions or adjustments.</li>
-      <li><strong>Weak auditability:</strong> numbers can be produced, but not reliably explained later.</li>
-    </ul>
     <p>
-      Clear ownership is the simplest way to reduce repeated negotiation every reporting cycle.
-    </p>
-
-    <h2 id="the-four-types-of-ownership-you-need">The Four Types of Ownership You Need</h2>
-    <p>
-      Ownership should be defined in a way that matches how Pillar Two reporting actually runs. In practice, it helps to separate:
+      Evidence matters because Pillar Two reporting depends on several layers of judgement and transformation:
     </p>
     <ul>
-      <li><strong>Data ownership</strong> (who owns the source and its definition)</li>
-      <li><strong>Logic ownership</strong> (who owns the adjustment and the treatment)</li>
-      <li><strong>Control ownership</strong> (who runs the review, approval, and evidence expectations)</li>
-      <li><strong>Delivery ownership</strong> (who owns the end-to-end close, timeline, and sign-off)</li>
+      <li>source data pulled from finance, tax, consolidation, and local reporting systems</li>
+      <li>mapping from accounting data to GloBE concepts</li>
+      <li>adjustments to GloBE income or covered taxes</li>
+      <li>jurisdictional aggregation and entity classification</li>
+      <li>review and approval of positions before reporting</li>
     </ul>
     <p>
-      These can sit in different teams. The key is that they must be explicit.
+      If those layers are not evidenced, the calculation may be difficult to defend even if the arithmetic is correct.
     </p>
 
-    <h2 id="ownership-by-input-chain">Ownership by Input Chain</h2>
+    <h2 id="what-tax-teams-need-to-retain">What Tax Teams Need to Retain</h2>
     <p>
-      The most practical way to assign ownership is to map it to the input chain. A typical split looks like:
+      Evidence retention should be designed around the reporting chain, not around a generic folder structure.
     </p>
-
-    <h3>Finance and local controllers</h3>
-    <ul>
-      <li>accounting close outputs and local packs</li>
-      <li>sub-ledger detail and local reporting schedules</li>
-      <li>local adjustments that explain variance and mapping</li>
-    </ul>
-
-    <h3>Consolidation teams</h3>
-    <ul>
-      <li>group consolidation reporting and entity/jurisdiction structure</li>
-      <li>intercompany elimination logic and consolidation adjustments</li>
-      <li>standardised reporting packs and data governance rules</li>
-    </ul>
-
-    <h3>Tax teams</h3>
-    <ul>
-      <li>policy interpretation and technical positions</li>
-      <li>covered tax logic, timing analysis, and adjustment design</li>
-      <li>consistency checks across jurisdictions and periods</li>
-    </ul>
-
-    <h3>Technology teams</h3>
-    <ul>
-      <li>data pipelines, mapping logic, access, and security</li>
-      <li>workflow tooling, evidence retention, and audit trail</li>
-      <li>automation roadmap and monitoring</li>
-    </ul>
-
     <p>
-      Ownership works best when paired with a structured inventory. That is one reason an
-      <a href="pillar-two-adjustment-ledgers.html">adjustment ledger</a> is useful: it makes the adjustment layer visible and assignable.
-    </p>
-
-    <h2 id="what-good-ownership-looks-like">What Good Ownership Looks Like</h2>
-    <p>
-      &quot;Good ownership&quot; is not a slide with names. It is operational clarity that holds under deadlines.
-      Practically, that means:
+      At a minimum, tax teams should retain support for:
     </p>
     <ul>
-      <li>each material input has a named owner and a defined refresh cadence</li>
-      <li>definitions are stable and documented (especially entity/jurisdiction mapping)</li>
-      <li>adjustments are owned, reviewed, and evidence-linked</li>
-      <li>exceptions are logged with accountable resolution</li>
-      <li>the reporting calendar includes review and approval checkpoints</li>
+      <li>source reports used for financial accounting income, covered taxes, deferred tax, and jurisdictional data</li>
+      <li>data extracts and reporting packages received from finance, consolidation, and local teams</li>
+      <li>mapping logic from source accounts or fields to GloBE reporting inputs</li>
+      <li>adjustment workpapers and rationale for recurring treatments</li>
+      <li>reconciliations between source data, adjusted data, and final reporting outputs</li>
+      <li>review notes, approvals, and issue resolution decisions</li>
+      <li>version history for material calculation files or reporting models</li>
     </ul>
     <p>
-      If you need the broader framing, the parent pillar page provides the overall structure:
-      <a href="post11.html">Pillar Two Data Readiness: How to Get Your Data, Systems, and Controls Ready for GloBE</a>.
+      This does not mean retaining every possible file. It means retaining the files that explain the path from source data to reported output.
     </p>
 
-    <h2 id="how-to-implement-ownership-without-politics">How to Implement Ownership Without Politics</h2>
+    <section class="concept-visual" aria-label="Pillar Two evidence chain visual">
+      <div class="visual-kicker">Evidence chain</div>
+      <h3>Evidence should follow the number through the process</h3>
+      <p class="visual-caption">The strongest evidence packs show how the number was sourced, transformed, reviewed, and retained.</p>
+      <div class="visual-grid">
+        <div class="visual-card"><span class="visual-step">1</span><strong>Input file</strong><span>System report, local package, or tax schedule.</span></div>
+        <div class="visual-card"><span class="visual-step">2</span><strong>Mapping</strong><span>How the input connects to the GloBE reporting line.</span></div>
+        <div class="visual-card"><span class="visual-step">3</span><strong>Adjustment</strong><span>What changed and why.</span></div>
+        <div class="visual-card"><strong>Sign-off</strong><span>Reviewer approval and final retained support.</span></div>
+      </div>
+    </section>
+
+    <h2 id="controls-over-source-data">Controls Over Source Data</h2>
     <p>
-      Ownership discussions can become political if they start with &quot;who is responsible for Pillar Two&quot;.
-      A more effective approach is to start with the data chain and ask, for each input:
+      Source evidence is strongest when the source itself is controlled.
+    </p>
+    <p>
+      For Pillar Two, source data may come from trial balances, consolidation systems, tax provision files, local statutory accounts, deferred tax schedules, country-by-country reporting data, or manual local workpapers. Each source should have a clear owner and a defined extraction process.
+    </p>
+    <p>
+      Practical source controls include:
     </p>
     <ul>
-      <li>who produces it today?</li>
-      <li>who can certify its definition and completeness?</li>
-      <li>who owns the adjustment and the judgement calls?</li>
-      <li>who reviews it, and where is evidence retained?</li>
-      <li>what part of this can be automated over time?</li>
+      <li>defined source-of-record for each major input</li>
+      <li>period and entity scope checks before data is used</li>
+      <li>reconciliation to financial reporting or local reporting totals</li>
+      <li>review of manual files received from local teams</li>
+      <li>retention of data extracts used in the calculation, not only the final output</li>
     </ul>
     <p>
-      This keeps the conversation practical: it assigns ownership where the work already sits, and it makes gaps visible without turning the model into an abstract debate.
+      These controls help distinguish a repeatable process from a one-time data collection exercise.
+    </p>
+
+    <h2 id="controls-over-adjustments">Controls Over Adjustments</h2>
+    <p>
+      Adjustments are where evidence often becomes thin.
+    </p>
+    <p>
+      A recurring GloBE or covered tax adjustment should not be retained only as a number in a spreadsheet. It should have a documented rationale, source reference, owner, reviewer, and status.
+    </p>
+    <p>
+      This is where an <a href="pillar-two-adjustment-ledgers.html">adjustment ledger</a> becomes useful. The ledger can track the adjustment category, amount, evidence reference, review status, and whether the treatment is manual, controlled, or ready for automation.
+    </p>
+    <p>
+      For material adjustments, the control question should be simple:
+    </p>
+    <ul>
+      <li>can the adjustment be traced to source data?</li>
+      <li>is the technical treatment documented?</li>
+      <li>has the treatment been reviewed consistently across jurisdictions?</li>
+      <li>is the evidence retained in a location that future reviewers can find?</li>
+    </ul>
+
+    <h2 id="review-and-approval-evidence">Review and Approval Evidence</h2>
+    <p>
+      Review evidence is more than a final sign-off email.
+    </p>
+    <p>
+      A practical Pillar Two control framework should show who reviewed the key inputs, what they reviewed, what issues were identified, and how those issues were resolved.
+    </p>
+    <p>
+      Useful review evidence may include:
+    </p>
+    <ul>
+      <li>review checklists for source data completeness and period accuracy</li>
+      <li>approval records for material technical positions</li>
+      <li>exception logs for missing data, late submissions, or local judgement areas</li>
+      <li>evidence of reconciliation review</li>
+      <li>documented approval of final jurisdictional results before reporting</li>
+    </ul>
+    <p>
+      Ownership matters here. As discussed in <a href="pillar-two-data-ownership.html">Pillar Two Data Ownership</a>, tax cannot own every upstream input. But tax should be able to show that the right owners reviewed and approved the parts of the process they control.
+    </p>
+
+    <h2 id="how-to-make-evidence-repeatable">How to Make Evidence Repeatable</h2>
+    <p>
+      Evidence retention becomes difficult when it is treated as an after-the-fact documentation exercise.
+    </p>
+    <p>
+      The better approach is to design evidence into the reporting calendar. For example:
+    </p>
+    <ul>
+      <li>define required evidence by input category before data collection starts</li>
+      <li>use standard file naming and storage conventions</li>
+      <li>link evidence references directly to adjustment and calculation workpapers</li>
+      <li>separate draft, reviewed, and approved versions</li>
+      <li>retain issue logs and resolution notes with the period file</li>
+      <li>review evidence completeness before final sign-off</li>
+    </ul>
+    <p>
+      This turns evidence retention from a scramble into a repeatable control step.
     </p>
 
     <h2 id="conclusion">Conclusion</h2>
     <p>
-      Tax cannot solve Pillar Two reporting alone because the reporting problem is cross-functional.
-      Repeatable GloBE reporting needs ownership that is explicit across finance, consolidation, local teams, tax, and technology.
+      Pillar Two reporting needs a defensible audit trail.
     </p>
     <p>
-      When ownership is clear, the process becomes faster, more consistent, and easier to defend. When it is unclear, every reporting cycle becomes a re-implementation exercise.
+      For multinational groups, the practical question is not only whether the calculation can be performed. It is whether the group can show where the inputs came from, how adjustments were made, who reviewed them, and what evidence supports the final position.
+    </p>
+    <p>
+      Evidence and controls are therefore part of data readiness. They turn a calculation into a repeatable reporting process and help tax teams move from first-year compliance to a more sustainable GloBE operating model.
     </p>
 
     <div class="related">
@@ -603,7 +639,7 @@
       <ul>
         <li><a href="post11.html">Pillar Two Data Readiness: How to Get Your Data, Systems, and Controls Ready for GloBE</a></li>
         <li><a href="pillar-two-adjustment-ledgers.html">Adjustment Ledgers for Pillar Two: How to Track GloBE and Covered Tax Adjustments</a></li>
-        <li><a href="pillar-two-evidence-controls.html">Pillar Two Evidence and Controls: What Tax Teams Need to Retain for GloBE Reporting</a></li>
+        <li><a href="pillar-two-data-ownership.html">Pillar Two Data Ownership: Why Tax Cannot Solve the Reporting Problem Alone</a></li>
         <li><a href="post13.html">Source Systems for Pillar Two: Why Trial Balance Alone Is Not Enough</a></li>
         <li><a href="post12.html">What a Pillar Two Data Assessment Should Actually Cover</a></li>
         <li><a href="post10.html">Why Pillar Two Is a Data Problem Before It Is a Calculation Problem</a></li>
